@@ -1,0 +1,104 @@
+{
+  "schema_version": "1.0",
+  "protocol_id": "scienceworld_iper_auto_obligation_v1",
+  "experiment_id": "E11F",
+  "status": "formal_frozen_test_unlocked",
+  "reporting_boundary": "followup_machine_result",
+  "benchmark": {
+    "name": "ScienceWorld",
+    "version": "1.2.3",
+    "release_commit": "5d569f9e4ff43ab6242a3622f7e25f9bc367ccd1",
+    "python": "3.10.11",
+    "java": "Microsoft OpenJDK 17.0.20.1",
+    "simplifications": "",
+    "max_environment_steps": 100
+  },
+  "amendment_rationale": "v0 的 90 个 IPER episode 均未发生 obligation 检索，因为触发完全依赖模型自发输出 request_evidence。本跟进版本加入自动、可审计的动作程序覆盖与执行停滞触发器；保留 v0 全部结果，不作覆盖或静默合并。",
+  "selection": {
+    "salt": "lanternquest-scienceworld-auto-obligation-v1",
+    "rule": "对每个 task_id 和 split，将官方 variation 按 SHA256('{salt}|{task_id}|{split}|{variation}') 排序并选最小者；test 额外排除 v0 已使用的同任务 test variation。",
+    "test_overlap_with_v0": 0,
+    "pilot_reporting": "开发集只验证机制触发、稳定性和预算，不进入论文主结果。",
+    "formal_gate": "只有开发集 obligation episode 覆盖率大于0、无义务循环且所有测试通过，才允许使用 --allow-test 运行预冻结测试集。"
+  },
+  "runs": {
+    "formal_seeds": [11, 29, 47],
+    "model_temperature": 0.0,
+    "max_model_calls_per_episode": 100,
+    "max_retrieval_calls_per_episode": 8,
+    "initial_retrieval_k": 5,
+    "obligation_retrieval_k": 3,
+    "automatic_obligation_policy": "unsupported_or_stalled",
+    "max_automatic_obligations_per_episode": 3,
+    "failure_policy": "超时、环境异常、无法解析输出和非法动作均保留并分类，不从分母删除。"
+  },
+  "mechanism": {
+    "unsupported_action": "若 IPER 候选动作在已检索的同任务训练程序中没有同操作符证据，则生成一次动作证据义务、做任务图加权检索并重新规划。",
+    "execution_stall": "若动作后 observation 哈希不变、reward=0 且未终止，则生成一次停滞恢复义务并重新检索。",
+    "loop_control": "同一 observation 哈希与动作组合的同类自动义务最多触发一次。",
+    "controller_budget": "每个 episode 最多触发3次自动义务；自动模式关闭模型自由 request_evidence，以隔离控制器机制。",
+    "information_boundary": "训练技能检索不能揭示当前 variation 的隐藏对象位置；look/open/close/go/inventory 等观察导航操作不触发程序缺失义务。",
+    "control": "B4 继续使用固定初始检索，自动义务只对 IPER 生效。"
+  },
+  "development_amendment": {
+    "basis": "开发集 task 1-1 variation 17 seed 11 的首次配对 pilot；测试集未运行。",
+    "observed_failure": "模型把训练技能检索当作当前状态查询，重复提出位置问题并耗尽8次检索预算。",
+    "changes_before_formal_freeze": [
+      "自动模式禁用模型自由 request_evidence",
+      "观察导航动作免于程序缺失触发",
+      "自动义务上限设为3",
+      "自动模式响应 schema 删除 evidence_query 字段，避免互相冲突的输出约束",
+      "义务检索过滤已看过的技能，记录实际新增证据"
+    ]
+  },
+  "pilot_gate": {
+    "audit": "artifacts/benchmarks/scienceworld/followup_pilot_final/scienceworld_iper_auto_obligation_v1/bit_qwen3_235b/PILOT_AUDIT.json",
+    "three_complete_pairs": true,
+    "formal_test_may_unlock": true,
+    "claim_boundary": "开发集只解锁预冻结测试；不用于声称涨点、显著性或SOTA。"
+  },
+  "methods": [
+    "b4_sequential_planner",
+    "iper_rag"
+  ],
+  "primary_comparison": "iper_rag - b4_sequential_planner",
+  "primary_metrics": ["clipped official average score", "task success rate"],
+  "mechanism_metrics": [
+    "episodes_with_obligation_retrieval",
+    "obligation_source_counts",
+    "new_skill_yield_per_obligation",
+    "retrieval_budget_exhaustion"
+  ],
+  "selected_variations": [
+    {"task_id": "1-1", "task_name": "boil", "train": 5, "dev": 17, "test": 21},
+    {"task_id": "1-4", "task_name": "change-the-state-of-matter-of", "train": 6, "dev": 20, "test": 22},
+    {"task_id": "6-1", "task_name": "chemistry-mix", "train": 13, "dev": 22, "test": 25},
+    {"task_id": "6-2", "task_name": "chemistry-mix-paint-secondary-color", "train": 0, "dev": 19, "test": 28},
+    {"task_id": "6-3", "task_name": "chemistry-mix-paint-tertiary-color", "train": 13, "dev": 24, "test": 28},
+    {"task_id": "4-4", "task_name": "find-animal", "train": 9, "dev": 151, "test": 267},
+    {"task_id": "4-1", "task_name": "find-living-thing", "train": 71, "dev": 159, "test": 283},
+    {"task_id": "4-2", "task_name": "find-non-living-thing", "train": 96, "dev": 211, "test": 229},
+    {"task_id": "4-3", "task_name": "find-plant", "train": 73, "dev": 180, "test": 236},
+    {"task_id": "1-3", "task_name": "freeze", "train": 4, "dev": 19, "test": 23},
+    {"task_id": "5-2", "task_name": "grow-fruit", "train": 29, "dev": 84, "test": 104},
+    {"task_id": "5-1", "task_name": "grow-plant", "train": 40, "dev": 82, "test": 104},
+    {"task_id": "8-1", "task_name": "identify-life-stages-1", "train": 5, "dev": 8, "test": 12},
+    {"task_id": "8-2", "task_name": "identify-life-stages-2", "train": 3, "dev": 4, "test": 9},
+    {"task_id": "9-1", "task_name": "inclined-plane-determine-angle", "train": 71, "dev": 92, "test": 128},
+    {"task_id": "9-2", "task_name": "inclined-plane-friction-named-surfaces", "train": 602, "dev": 772, "test": 1370},
+    {"task_id": "9-3", "task_name": "inclined-plane-friction-unnamed-surfaces", "train": 78, "dev": 82, "test": 152},
+    {"task_id": "7-1", "task_name": "lifespan-longest-lived", "train": 37, "dev": 69, "test": 105},
+    {"task_id": "7-3", "task_name": "lifespan-longest-lived-then-shortest-lived", "train": 12, "dev": 86, "test": 109},
+    {"task_id": "7-2", "task_name": "lifespan-shortest-lived", "train": 50, "dev": 86, "test": 109},
+    {"task_id": "2-2", "task_name": "measure-melting-point-known-substance", "train": 53, "dev": 230, "test": 418},
+    {"task_id": "2-3", "task_name": "measure-melting-point-unknown-substance", "train": 129, "dev": 154, "test": 262},
+    {"task_id": "1-2", "task_name": "melt", "train": 2, "dev": 15, "test": 27},
+    {"task_id": "10-1", "task_name": "mendelian-genetics-known-plant", "train": 48, "dev": 66, "test": 119},
+    {"task_id": "10-2", "task_name": "mendelian-genetics-unknown-plant", "train": 120, "dev": 338, "test": 382},
+    {"task_id": "3-1", "task_name": "power-component", "train": 8, "dev": 10, "test": 19},
+    {"task_id": "3-2", "task_name": "power-component-renewable-vs-nonrenewable-energy", "train": 7, "dev": 10, "test": 18},
+    {"task_id": "3-3", "task_name": "test-conductivity", "train": 177, "dev": 476, "test": 867},
+    {"task_id": "3-4", "task_name": "test-conductivity-of-unknown-substances", "train": 253, "dev": 340, "test": 578},
+    {"task_id": "2-1", "task_name": "use-thermometer", "train": 117, "dev": 304, "test": 455}
+  ]
+}

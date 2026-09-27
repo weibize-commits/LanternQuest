@@ -1,0 +1,7 @@
+﻿method,method_label,episodes,grounded_task_success_rate,decision_type_accuracy,mean_evidence_coverage,locked_intent_preservation_rate,unsupported_action_count,invalid_action_count,avoidable_rework_count,external_failure_count
+b0_full_context,B0 Full context,12,0.16666666666666666,0.4166666666666667,0.7083333333333334,0.8333333333333334,6,6,0,0
+b1_rag,B1 RAG,12,0.08333333333333333,0.4166666666666667,0.6527777777777778,0.75,7,6,1,0
+b2_kg_rag,B2 KG-RAG,12,0.75,0.75,1.0,1.0,0,0,0,0
+b4_sequential,B4 Sequential,12,0.75,0.75,1.0,1.0,0,0,1,0
+iper_rag,IPER-RAG,12,1.0,1.0,1.0,1.0,0,0,0,0
+ensr,ENSR,12,1.0,1.0,1.0,1.0,0,0,0,0

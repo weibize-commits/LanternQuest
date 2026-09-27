@@ -1,0 +1,5 @@
+﻿comparison,component,paired_tasks,score_delta,score_low,score_high,success_delta_pp,success_low_pp,success_high_pp,p_raw,p_holm,holm_significant
+full_control_minus_without_hierarchical_subgoals,Hierarchical subgoals,30,6.133333333333334,1.6166666666666667,11.583333333333334,5.0,0.0,10.0,0.01814909254537273,0.054447277636118195,False
+full_control_minus_without_symbolic_transition_verifier,Symbolic transition verifier,30,8.016666666666667,2.5833333333333335,15.15041666666663,1.6666666666666667,-8.333333333333332,11.666666666666666,0.0022998850057497125,0.00919954002299885,True
+full_control_minus_without_obligation_conditioned_retrieval,Obligation-conditioned retrieval,30,1.4,-1.7170833333333329,5.433333333333334,5.0,0.0,13.333333333333334,0.6046197690115495,0.7938603069846508,False
+full_control_minus_accumulating_fragment_memory,Fragment replacement,30,1.9166666666666667,-1.3,6.15,6.666666666666667,0.0,15.0,0.3969301534923254,0.7938603069846508,False

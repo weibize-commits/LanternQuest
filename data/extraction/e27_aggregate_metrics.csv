@@ -1,0 +1,10 @@
+evaluation,method,entity_precision,entity_recall,entity_f1,relation_precision,relation_recall,relation_f1,domain_range_compliance
+record_level_fivefold,Rule and lexicon,0.68,0.287,0.404,0.222,0.097,0.135,1.0
+record_level_fivefold,BERT constrained candidates,0.516,0.656,0.577,0.285,0.371,0.322,1.0
+record_level_fivefold,BERT neural only,0.516,0.656,0.577,0.105,0.398,0.166,0.613
+record_level_fivefold,BERT ontology mask,0.516,0.656,0.577,0.169,0.398,0.238,1.0
+record_level_fivefold,BERT ontology and evidence gate,0.516,0.656,0.577,0.169,0.398,0.238,1.0
+record_level_fivefold,MacBERT full pipeline,0.472,0.575,0.518,0.134,0.339,0.192,1.0
+record_level_fivefold,Joint BERT full pipeline,0.542,0.679,0.603,0.147,0.441,0.221,1.0
+source_group_holdout,BERT constrained candidates,0.204,0.238,0.219,0.0,0.0,0.0,1.0
+source_group_holdout,Joint BERT full pipeline,0.235,0.254,0.244,0.056,0.005,0.01,1.0

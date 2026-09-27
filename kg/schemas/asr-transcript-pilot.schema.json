@@ -1,0 +1,99 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/lanternquest/schemas/asr-transcript-pilot.schema.json",
+  "title": "LanternQuest ASR development pilot",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "pilot_id",
+    "reporting_boundary",
+    "source",
+    "reference_text_source_id",
+    "model",
+    "inference",
+    "segments",
+    "transcript_text",
+    "interpretation"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {"const": "0.1"},
+    "pilot_id": {"type": "string", "minLength": 1},
+    "reporting_boundary": {"const": "development_pilot_not_accuracy_evaluation"},
+    "source": {
+      "type": "object",
+      "required": [
+        "source_id",
+        "relative_path",
+        "sha256",
+        "size_bytes",
+        "rights_status",
+        "processing_scope"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "source_id": {"type": "string", "minLength": 1},
+        "relative_path": {"type": "string", "minLength": 1},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "size_bytes": {"type": "integer", "minimum": 1},
+        "rights_status": {"type": "string", "minLength": 1},
+        "processing_scope": {"const": "local_internal"}
+      }
+    },
+    "reference_text_source_id": {"type": "string", "minLength": 1},
+    "model": {
+      "type": "object",
+      "required": [
+        "model_id",
+        "revision",
+        "faster_whisper_version",
+        "ctranslate2_version",
+        "weight_file_sha256",
+        "combined_model_files_sha256",
+        "execution",
+        "compute_type",
+        "fine_tuned"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "model_id": {"type": "string", "minLength": 1},
+        "revision": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+        "faster_whisper_version": {"type": "string", "minLength": 1},
+        "ctranslate2_version": {"const": "4.4.0"},
+        "weight_file_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "combined_model_files_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "execution": {"const": "local_cpu"},
+        "compute_type": {"const": "int8"},
+        "fine_tuned": {"const": false}
+      }
+    },
+    "inference": {"type": "object"},
+    "segments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "segment_id",
+          "start_seconds",
+          "end_seconds",
+          "text",
+          "avg_logprob",
+          "no_speech_probability",
+          "status"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "segment_id": {"type": "string", "minLength": 1},
+          "start_seconds": {"type": "number", "minimum": 0},
+          "end_seconds": {"type": "number", "minimum": 0},
+          "text": {"type": "string"},
+          "avg_logprob": {"type": "number"},
+          "no_speech_probability": {"type": "number", "minimum": 0, "maximum": 1},
+          "status": {"const": "human_review"}
+        }
+      }
+    },
+    "transcript_text": {"type": "string"},
+    "interpretation": {"type": "string", "minLength": 1}
+  }
+}

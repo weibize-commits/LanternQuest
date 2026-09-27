@@ -1,0 +1,112 @@
+{
+  "schema_version": "1.0",
+  "experiment_id": "E27",
+  "title": "Local entity and relation extraction from rights-cleared Bianjing lantern evidence",
+  "status": "frozen_pre_gold",
+  "research_question": "Does ontology-constrained local extraction with an evidence gate improve entity, relation and end-to-end triple F1 over rule-based and unconstrained local extraction?",
+  "rights_policy": {
+    "allowed_research_use": true,
+    "allowed_external_processing": false,
+    "allowed_model_training": false,
+    "execution_boundary": "local_only"
+  },
+  "sources": [
+    {
+      "source_group": "N001",
+      "source_id": "src_6843709ed16f5fac",
+      "path": "02_工艺制作/01_制作视频/N001_无骨万眼萝灯十三步制作_农广天地/N001_视频文字稿.txt"
+    },
+    {
+      "source_group": "田野06",
+      "source_id": "src_6c6d6766079adb3d",
+      "path": "03_口述与访谈/03_田野调查材料/02_工艺与数字化访谈/01_灯型工艺核验与数字化边界_调研问答/田野06_信息总结+文字稿.txt"
+    },
+    {
+      "source_group": "田野07",
+      "source_id": "src_16b2d629f1facdb9",
+      "path": "03_口述与访谈/03_田野调查材料/02_工艺与数字化访谈/02_万眼萝灯难度与透光寓意_补访/田野07_信息总结+文字稿.txt"
+    }
+  ],
+  "annotation": {
+    "design": "two independent annotators followed by third-expert adjudication",
+    "span_convention": "zero-based Unicode code-point offsets with an exclusive end",
+    "entity_types": [
+      "LANTERN_TYPE",
+      "PROCESS",
+      "MATERIAL",
+      "TOOL",
+      "PATTERN",
+      "STRUCTURE",
+      "EFFECT",
+      "CONDITION_PARAMETER",
+      "ACTOR"
+    ],
+    "relation_types": [
+      "USES_MATERIAL",
+      "USES_TOOL",
+      "APPLIES_TO",
+      "HAS_PATTERN",
+      "HAS_COMPONENT",
+      "PRECEDES",
+      "PRODUCES_EFFECT",
+      "HAS_CONDITION",
+      "PERFORMED_BY"
+    ]
+  },
+  "evaluation": {
+    "split_strategy": "source-stratified development/test split grouped by evidence locator",
+    "target_corpus_size": 160,
+    "test_fraction": 0.8,
+    "primary_metrics": [
+      "exact entity micro F1 on the frozen test partition",
+      "end-to-end relation micro F1 on the frozen test partition",
+      "end-to-end triple micro F1 on the frozen test partition"
+    ],
+    "secondary_metrics": [
+      "entity macro F1",
+      "overlap entity F1",
+      "per-type F1",
+      "schema-valid relation rate",
+      "grounded entity rate"
+    ],
+    "methods": [
+      "B0 rule and lexicon baseline",
+      "B1 unconstrained local Qwen3-8B zero-shot",
+      "B2 ontology-constrained local Qwen3-8B",
+      "E27 ontology-constrained local Qwen3-8B with evidence gate"
+    ],
+    "formal_result_gate": "No formal score may be produced until every gold record is adjudicated and frozen."
+  },
+  "comparability_note": "The Xuan-paper extraction pipeline motivates the task design, but its reported 84.6% F1 concerns entity retrieval and linking rather than a separately reported relation-extraction F1. E27 is therefore evaluated on its own frozen corpus without claiming a direct SOTA comparison.",
+  "frozen_at": "2026-09-26T14:48:30.933098+08:00",
+  "dataset": {
+    "annotation_package": "artifacts/review_packages/LanternQuest_E27_实体关系抽取标注包_v1",
+    "pending_gold_template": "artifacts/review_packages/LanternQuest_E27_实体关系抽取标注包_v1/04_gold_template_pending.jsonl",
+    "segment_manifest": "artifacts/review_packages/LanternQuest_E27_实体关系抽取标注包_v1/05_segment_manifest.json",
+    "segment_count": 160,
+    "development_count": 34,
+    "test_count": 126,
+    "corpus_sha256": "f22882ac29d12487194122117dc248b7ad70490b9bb20a3966e08e07089164ad"
+  },
+  "frozen_artifact_sha256": {
+    "kg/schemas/lantern-ie-annotation.schema.json": "0e91a0ca31f8af56565fa89b26b4039644aabb8931d9e711cd1e9b818111bb6e",
+    "scripts/build_lanternquest_e27_ie_package.py": "d5f8ccc2d04349d8dc7854c0f2a6485b296b9f0bce4be2f956e7517fb58fcec2",
+    "scripts/prepare_lanternquest_e27_gold.py": "98fd7d14161ebdb99b32eb35ab24626c731be9aa3c1710479fa6e5dc44ff4b08",
+    "scripts/evaluate_lanternquest_e27_ie.py": "5a0018b51fa8bd9c3f39bdd5b9dadd00c2400a92c1d1642746aa69ad590d9892",
+    "scripts/run_lanternquest_e27_rule_baseline.py": "67a663530c4333c011fcd8624bb28e45f8e56aeb5cc3ae739d5a65baaa45f96c",
+    "scripts/run_lanternquest_e27_local_extraction.py": "573459bfe7675a33e7b43e5dab25966daf2381929b5b051be046c4dc0736456f",
+    "artifacts/review_packages/LanternQuest_E27_实体关系抽取标注包_v1/04_gold_template_pending.jsonl": "7f693849dbb350aeb641a8204f811084518daaa425c6cfde5e3fda01a88ef2a9",
+    "artifacts/review_packages/LanternQuest_E27_实体关系抽取标注包_v1/05_segment_manifest.json": "c6de2bb6e26fa6b20d6b56c3e2665f1989aaacba01a248de2416890f56a6568f",
+    "artifacts/benchmarks/e27_ie/B0_rule_lexicon_predictions_frozen.jsonl": "135515113698d6fa6b62787fd0f99b5ebdc1c722a6a80f4fc7cbd6d5890d0e14",
+    "artifacts/benchmarks/e27_ie/B0_rule_lexicon_manifest.json": "0cf325905713802e8ee6f4a4718121aa7f3d869929f907108b34358c0dca21ca",
+    "configs/lanternquest_local_qwen3_8b_frozen.json": "044b21e4ec2882b71cfe0074646444d828c2d3833569f099044941c5f2eb69ec"
+  },
+  "gold_status": "pending dual annotation and third-expert adjudication",
+  "formal_scores_available": false,
+  "qa": {
+    "package_integrity": "passed",
+    "adjudication_text_integrity": "passed for all 160 segments",
+    "merge_finalize_evaluate_synthetic_smoke": "passed; artifacts are explicitly marked DO_NOT_REPORT",
+    "pending_gold_score_guard": "passed"
+  }
+}

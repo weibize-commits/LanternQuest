@@ -1,0 +1,6 @@
+﻿stage,lane,x_position,boundary,detail,status
+E14-SENS,E15 protocol,0,Diagnostic only,Failure modes identified; primary E14 retained,audit
+Freeze 1,E15 protocol,1,Before E15 calls,16k chars · T=0 · 1 structured retry,freeze
+E15 held-out,E15 protocol,2,180 episodes,2/3 profiles pass · overall FAIL,fail
+Freeze 2,E15R recovery,3,"After E15, before E15R",12k · T=0.7 · p=0.8 · 2048 out,freeze
+E15R held-out,E15R recovery,4,60 episodes,Direction PASS · operation FAIL,fail

@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0",
+  "amendment_id": "e11f_qwen_notfound_recovery_v1",
+  "experiment_id": "E11F",
+  "created_at": "2026-09-18T00:45:00+08:00",
+  "reason": "原始 E11F 正式矩阵中 111/180 个 episode 因学校平台无运行实例返回 NotFoundError；错误集中在运行后半段，不能解释为算法结果。",
+  "original_matrix": {
+    "root": "artifacts/benchmarks/scienceworld/formal_followup_v1/scienceworld_iper_auto_obligation_v1/bit_qwen3_235b/test",
+    "episodes": 180,
+    "notfound_targets": 111,
+    "non_target_reuse": 69,
+    "targets_by_method": {
+      "b4_sequential_planner": 55,
+      "iper_rag": 56
+    }
+  },
+  "recovery_policy": {
+    "target": "只补跑 error_type == NotFoundError 的 episode",
+    "reuse": "其余 69 个 episode 逐字节复制并校验 SHA-256",
+    "preservation": "原始矩阵只读保留；恢复矩阵写入独立目录",
+    "unchanged": [
+      "模型与提供方",
+      "协议与实现哈希",
+      "方法、任务 variation、种子与预算",
+      "失败计入分母政策"
+    ],
+    "non_targets": "ValueError、InternalServerError、任务失败和预算终止均不在本次定向恢复范围内"
+  },
+  "frozen_inputs": {
+    "protocol_sha256": "167f55a101c9e4154eadfcbabbffa6c4b617f4148b65c76a2993d218767f7415",
+    "implementation_sha256": "af36782817afe549f543023230868d9b786904a396f4484b615a7f0d73e1f532",
+    "model_profiles_sha256": "ebfc77b074922d951659c2e83ef2f220424be16e2fe40160a8b79307e4cdd415"
+  },
+  "reporting": "原始矩阵与恢复矩阵并列保存；论文算法比较只解释恢复矩阵，且单独报告提供方中断。"
+}

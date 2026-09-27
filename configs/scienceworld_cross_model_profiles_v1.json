@@ -1,0 +1,91 @@
+{
+  "schema_version": "1.0",
+  "profile_set_id": "scienceworld_cross_model_v1",
+  "selection_boundary": "Operational compatibility probes only; no cross-model ScienceWorld test outcome was inspected before profile freeze.",
+  "profiles": [
+    {
+      "profile_id": "bit_qwen3_235b",
+      "provider": "BIT MaaS (GPUStack)",
+      "base_url": "https://maas.bit.edu.cn/v1-openai",
+      "model_id": "qwen3-235b",
+      "api_key_setting": "bit_api_key",
+      "max_output_tokens": 512,
+      "temperature": 0.0,
+      "reasoning_effort": null,
+      "structured_output_mode": "json_schema",
+      "role": "existing E13 anchor"
+    },
+    {
+      "profile_id": "bit_ceep_70b",
+      "provider": "BIT MaaS (GPUStack)",
+      "base_url": "https://maas.bit.edu.cn/v1-openai",
+      "model_id": "ceep-70b",
+      "api_key_setting": "bit_api_key",
+      "max_output_tokens": 1024,
+      "temperature": 0.0,
+      "reasoning_effort": null,
+      "structured_output_mode": "json_schema",
+      "role": "cross-family robustness"
+    },
+    {
+      "profile_id": "bit_qwen3_32b",
+      "provider": "BIT MaaS (GPUStack)",
+      "base_url": "https://maas.bit.edu.cn/v1-openai",
+      "model_id": "qwen3-32b",
+      "api_key_setting": "bit_api_key",
+      "max_output_tokens": 2048,
+      "temperature": 0.0,
+      "reasoning_effort": null,
+      "structured_output_mode": "json_schema",
+      "role": "model-scale robustness"
+    },
+    {
+      "profile_id": "bit_qwen3_8b",
+      "provider": "BIT MaaS (GPUStack)",
+      "base_url": "https://maas.bit.edu.cn/v1-openai",
+      "model_id": "qwen3-8b",
+      "api_key_setting": "bit_api_key",
+      "max_output_tokens": 2048,
+      "temperature": 0.0,
+      "reasoning_effort": null,
+      "structured_output_mode": "json_object",
+      "role": "model-scale robustness"
+    },
+    {
+      "profile_id": "bit_qwen3_0_6b",
+      "provider": "BIT MaaS (GPUStack)",
+      "base_url": "https://maas.bit.edu.cn/v1-openai",
+      "model_id": "qwen3-0.6b",
+      "api_key_setting": "bit_api_key",
+      "max_output_tokens": 2048,
+      "temperature": 0.0,
+      "reasoning_effort": null,
+      "structured_output_mode": "json_schema",
+      "role": "small-model stress test"
+    },
+    {
+      "profile_id": "deepseek_flash_2048",
+      "provider": "DeepSeek API",
+      "base_url": "https://api.deepseek.com",
+      "model_id": "deepseek-flash",
+      "api_key_setting": "deepseek_api_key",
+      "max_output_tokens": 2048,
+      "temperature": 0.0,
+      "reasoning_effort": null,
+      "structured_output_mode": "json_schema",
+      "role": "optional external-provider robustness"
+    },
+    {
+      "profile_id": "deepseek_v4_pro_2048",
+      "provider": "DeepSeek API",
+      "base_url": "https://api.deepseek.com",
+      "model_id": "deepseek-v4-pro",
+      "api_key_setting": "deepseek_api_key",
+      "max_output_tokens": 2048,
+      "temperature": 0.0,
+      "reasoning_effort": null,
+      "structured_output_mode": "json_schema",
+      "role": "optional external-provider robustness"
+    }
+  ]
+}

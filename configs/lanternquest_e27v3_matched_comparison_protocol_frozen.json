@@ -1,0 +1,79 @@
+{
+  "schema_version": "1.0",
+  "experiment_id": "E27v3",
+  "title": "Matched supervised baselines and constraint ablations for LanternQuest entity and relation extraction",
+  "status": "frozen_before_execution",
+  "frozen_at": "2026-09-26T20:37:38+08:00",
+  "analysis_role": "post-freeze extended algorithm comparison",
+  "integrity_statement": "E27 and E27v2.1 remain immutable. E27v3 is a separate exploratory comparison. Every record is predicted out of fold and every method is scored with the same evaluator.",
+  "dataset": {
+    "records": 160,
+    "entities": 421,
+    "relations": 186,
+    "entity_types": 9,
+    "relation_types": 9,
+    "gold": "artifacts/benchmarks/e27_ie/formal_gold_v1/E27_expert_adjudicated_gold_frozen.jsonl"
+  },
+  "evaluation": {
+    "folds": 5,
+    "fold_assignment": "deterministic round robin stratified within source group",
+    "seed": 27021,
+    "primary_metrics": [
+      "strict entity micro F1",
+      "end-to-end relation micro F1"
+    ],
+    "secondary_metrics": [
+      "overlap entity micro F1",
+      "relation F1 with gold entity endpoints",
+      "grounded entity rate",
+      "schema-valid relation rate"
+    ],
+    "uncertainty": "paired segment bootstrap with 5000 resamples",
+    "interpretation": "record-level internal cross-validation; not source-held-out external validation"
+  },
+  "methods": [
+    {
+      "id": "B0",
+      "name": "frozen rule and lexicon baseline"
+    },
+    {
+      "id": "BERT_NEURAL",
+      "name": "bert-base-chinese BIO entity extraction and unrestricted relation classification"
+    },
+    {
+      "id": "BERT_ONTOLOGY",
+      "name": "BERT_NEURAL with ontology domain-range masking"
+    },
+    {
+      "id": "BERT_EVIDENCE",
+      "name": "BERT_ONTOLOGY with exact-span evidence and audit gate"
+    },
+    {
+      "id": "MACBERT_EVIDENCE",
+      "name": "hfl/chinese-macbert-base with ontology and evidence gate"
+    },
+    {
+      "id": "JOINT_SHARED_BERT",
+      "name": "shared-encoder joint BIO and ordered-pair relation model"
+    }
+  ],
+  "fixed_hyperparameters": {
+    "entity_epochs": 14,
+    "relation_epochs": 12,
+    "joint_epochs": 16,
+    "batch_size": 12,
+    "joint_batch_size": 4,
+    "learning_rate": 0.00003,
+    "max_length": 192,
+    "negative_ratio": 2,
+    "relation_threshold": 0.30,
+    "joint_relation_loss_weight": 1.0
+  },
+  "reporting_rules": [
+    "XPKG values are external context and are not placed in the same ranking table.",
+    "Identical scores between ontology and evidence variants are retained rather than hidden.",
+    "No SOTA claim is made on a private corpus.",
+    "Original failed zero-shot results remain reportable.",
+    "Training-based results are publication-conditional until local model-training rights are documented."
+  ]
+}

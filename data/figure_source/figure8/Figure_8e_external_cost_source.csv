@@ -1,0 +1,5 @@
+﻿provider,profile,estimated_low_cny,estimated_high_cny,pricing_retrieved_at,usd_to_cny
+DeepSeek,deepseek_v4_pro_external,45.847609649999995,239.18284800000004,2026-09-24,6.7489
+GLM,glm_5_3_external,39.460934,141.415436,2026-09-24,6.7489
+GPT,gpt_6_astra_external,17.288049729,87.29769639,2026-09-24,6.7489
+Kimi,kimi_k2_6_external,8.350967,42.066299,2026-09-24,6.7489

@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.0",
+  "selection_id": "bit_maas_model_pilot_v0",
+  "status": "selected_for_extended_dev_pilot_not_frozen",
+  "selected_on": "2026-09-17",
+  "scope": "ScienceWorld text benchmark",
+  "provider": "BIT MaaS (GPUStack)",
+  "api_format": "OpenAI Responses API compatible",
+  "base_url": "https://maas.bit.edu.cn/v1-openai",
+  "requested_model": "qwen3-235b",
+  "observed_resolved_model": "qwen3-235b-vLLM",
+  "resolved_model_policy": "Record the response model identifier and system fingerprint returned by every call.",
+  "pilot_parameters": {
+    "temperature": 0.0,
+    "reasoning_effort": null,
+    "max_output_tokens": 512,
+    "structured_output_mode": "json_schema_with_local_semantic_validation"
+  },
+  "candidate_probes": [
+    {
+      "provider": "BIT MaaS",
+      "model": "qwen3-235b",
+      "result": "Responses API and JSON output succeeded; a 100-call development episode completed without provider failure."
+    },
+    {
+      "provider": "BIT MaaS",
+      "model": "qwen3-32b",
+      "result": "The first structured ScienceWorld probe returned no output text."
+    },
+    {
+      "provider": "BIT MaaS",
+      "model": "deepseek-v4-flash",
+      "result": "The Responses endpoint returned HTTP 500 because the backend lacked chat_template_kwargs support."
+    },
+    {
+      "provider": "BIT MaaS",
+      "model": "DeepSeek-V3.2",
+      "result": "The upstream model endpoint was unavailable during the probe."
+    },
+    {
+      "provider": "DeepSeek API",
+      "model": "deepseek-flash",
+      "result": "Authentication succeeded, but the pilot showed schema echoing, occasional empty output, and high context cost."
+    }
+  ],
+  "development_findings": [
+    "Raw train trajectories can contaminate decisions with source-variation entities; source targets are now abstracted before prompting.",
+    "Locked intent must constrain candidate actions, rather than relying only on a prompt instruction.",
+    "Zero-reward repeated state-action transitions are logged and removed to control avoidable rework; wait1 remains repeatable.",
+    "B4 and IPER development failures remain algorithm outcomes and are not grounds for choosing a model from formal test results."
+  ],
+  "freeze_rule": "Run the preregistered extended development pilot, verify parsing, action validity, latency, cost and trajectory stability, then freeze settings before any formal test run.",
+  "fairness_rule": "Use the same requested model, endpoint, decoding settings and output budget for B0, B1, B2, B4 and IPER-RAG.",
+  "selection_rule": "Select on operational development criteria only; do not inspect formal test outcomes when choosing or changing the model.",
+  "sources": [
+    "https://maas.bit.edu.cn/",
+    "https://docs.gpustack.ai/latest/integrations/inference-apis/",
+    "https://api-docs.deepseek.com/guides/json_mode/"
+  ]
+}

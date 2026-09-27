@@ -1,0 +1,4 @@
+﻿experiment,variant,outcome,paired_episodes,retrieval_reduction_pct,success_delta_pp,score_delta,score_ci95_low,score_ci95_high,trace_replay_integrity,development_gate_passed
+E23,Unanchored,Gate fail,20,87.21804511278195,-5.0,-0.9,-11.0,8.3,True,False
+E24,Anchored 32B,Pass,20,68.53932584269663,0.0,0.0,0.0,0.0,True,True
+E25,Anchored 8B,Trace boundary,20,58.44155844155844,0.0,0.3,-0.3,1.15,False,False

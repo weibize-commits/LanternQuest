@@ -1,0 +1,48 @@
+[build-system]
+requires = ["setuptools>=75", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lanternquest"
+version = "0.1.0"
+description = "Local, provenance-first research environment for LanternQuest"
+readme = "README.md"
+requires-python = ">=3.10,<3.13"
+dependencies = [
+  "pydantic>=2.10,<3",
+  "pydantic-settings>=2.7,<3",
+  "typer>=0.15,<1",
+]
+
+[project.optional-dependencies]
+analysis = ["pandas>=2,<3", "statsmodels>=0.14,<1", "scipy>=1.11,<2"]
+figures = ["matplotlib>=3.8,<4", "seaborn>=0.13,<1"]
+dev = [
+  "pytest>=8.3,<9",
+  "ruff>=0.9,<1",
+]
+documents = [
+  "Pillow>=11,<13",
+  "pypdf>=5,<7",
+  "python-docx>=1.1,<2",
+]
+llm = [
+  "openai>=3.14,<4",
+]
+
+[project.scripts]
+lanternquest = "lanternquest.cli:app"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]

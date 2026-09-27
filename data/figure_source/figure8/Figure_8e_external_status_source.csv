@@ -1,0 +1,9 @@
+﻿profile,provider,method,terminal_success,terminal_failure,budget_exhausted,plan_exhausted,model_stop,invalid_decision,external_error,episodes
+deepseek_v4_pro_external,DeepSeek,iper_rag,11,3,12,0,2,2,0,30
+deepseek_v4_pro_external,DeepSeek,ensr_v2,7,0,7,16,0,0,0,30
+glm_5_3_external,GLM,iper_rag,15,6,9,0,0,0,0,30
+glm_5_3_external,GLM,ensr_v2,7,0,14,9,0,0,0,30
+gpt_6_astra_external,GPT,iper_rag,0,0,0,0,30,0,0,30
+gpt_6_astra_external,GPT,ensr_v2,10,0,20,0,0,0,0,30
+kimi_k2_6_external,Kimi,iper_rag,5,9,1,0,4,11,0,30
+kimi_k2_6_external,Kimi,ensr_v2,4,0,6,20,0,0,0,30

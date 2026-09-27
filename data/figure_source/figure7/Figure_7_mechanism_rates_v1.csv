@@ -1,0 +1,9 @@
+﻿metric_key,metric,without_kg_per_100_steps,with_kg_per_100_steps,delta_per_100_steps
+knowledge_graph_action_count,KG-guided actions,0.0,7.246376811594203,7.246376811594203
+symbolic_goal_action_count,Symbolic-goal actions,12.3956326268465,17.891963109354414,5.496330482507915
+exploration_action_count,Exploration actions,79.06229929351316,72.41106719367589,-6.651232099837273
+measurement_poll_action_count,Measurement polling,3.5110254763433955,0.764163372859025,-2.7468621034843705
+focus_stage_advance_count,Focus-stage advances,0.6208520659387712,1.0276679841897234,0.4068159182509522
+contradictory_fact_rejection_count,Contradiction rejections,0.0,0.21080368906455862,0.21080368906455862
+local_replan_count,Local replans,2.376364804110469,2.345191040843215,-0.031173763267254184
+no_progress_action_count,No-progress events,13.76578891029758,14.071146245059289,0.3053573347617089

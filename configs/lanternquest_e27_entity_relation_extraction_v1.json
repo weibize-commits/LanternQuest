@@ -1,0 +1,81 @@
+{
+  "schema_version": "1.0",
+  "experiment_id": "E27",
+  "title": "Local entity and relation extraction from rights-cleared Bianjing lantern evidence",
+  "status": "annotation_package_ready",
+  "research_question": "Does ontology-constrained local extraction with an evidence gate improve entity, relation and end-to-end triple F1 over rule-based and unconstrained local extraction?",
+  "rights_policy": {
+    "allowed_research_use": true,
+    "allowed_external_processing": false,
+    "allowed_model_training": false,
+    "execution_boundary": "local_only"
+  },
+  "sources": [
+    {
+      "source_group": "N001",
+      "source_id": "src_6843709ed16f5fac",
+      "path": "02_工艺制作/01_制作视频/N001_无骨万眼萝灯十三步制作_农广天地/N001_视频文字稿.txt"
+    },
+    {
+      "source_group": "田野06",
+      "source_id": "src_6c6d6766079adb3d",
+      "path": "03_口述与访谈/03_田野调查材料/02_工艺与数字化访谈/01_灯型工艺核验与数字化边界_调研问答/田野06_信息总结+文字稿.txt"
+    },
+    {
+      "source_group": "田野07",
+      "source_id": "src_16b2d629f1facdb9",
+      "path": "03_口述与访谈/03_田野调查材料/02_工艺与数字化访谈/02_万眼萝灯难度与透光寓意_补访/田野07_信息总结+文字稿.txt"
+    }
+  ],
+  "annotation": {
+    "design": "two independent annotators followed by third-expert adjudication",
+    "span_convention": "zero-based Unicode code-point offsets with an exclusive end",
+    "entity_types": [
+      "LANTERN_TYPE",
+      "PROCESS",
+      "MATERIAL",
+      "TOOL",
+      "PATTERN",
+      "STRUCTURE",
+      "EFFECT",
+      "CONDITION_PARAMETER",
+      "ACTOR"
+    ],
+    "relation_types": [
+      "USES_MATERIAL",
+      "USES_TOOL",
+      "APPLIES_TO",
+      "HAS_PATTERN",
+      "HAS_COMPONENT",
+      "PRECEDES",
+      "PRODUCES_EFFECT",
+      "HAS_CONDITION",
+      "PERFORMED_BY"
+    ]
+  },
+  "evaluation": {
+    "split_strategy": "source-stratified development/test split grouped by evidence locator",
+    "target_corpus_size": 160,
+    "test_fraction": 0.8,
+    "primary_metrics": [
+      "exact entity micro F1 on the frozen test partition",
+      "end-to-end relation micro F1 on the frozen test partition",
+      "end-to-end triple micro F1 on the frozen test partition"
+    ],
+    "secondary_metrics": [
+      "entity macro F1",
+      "overlap entity F1",
+      "per-type F1",
+      "schema-valid relation rate",
+      "grounded entity rate"
+    ],
+    "methods": [
+      "B0 rule and lexicon baseline",
+      "B1 unconstrained local Qwen3-8B zero-shot",
+      "B2 ontology-constrained local Qwen3-8B",
+      "E27 ontology-constrained local Qwen3-8B with evidence gate"
+    ],
+    "formal_result_gate": "No formal score may be produced until every gold record is adjudicated and frozen."
+  },
+  "comparability_note": "The Xuan-paper extraction pipeline motivates the task design, but its reported 84.6% F1 concerns entity retrieval and linking rather than a separately reported relation-extraction F1. E27 is therefore evaluated on its own frozen corpus without claiming a direct SOTA comparison."
+}

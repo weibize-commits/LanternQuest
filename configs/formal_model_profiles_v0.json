@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0",
+  "profile_set_id": "scienceworld_dual_model_v0",
+  "frozen_on": "2026-09-17",
+  "selection_boundary": "Models and parameters were frozen before any formal test-model call.",
+  "profiles": [
+    {
+      "profile_id": "bit_qwen3_235b",
+      "provider": "BIT MaaS (GPUStack)",
+      "base_url": "https://maas.bit.edu.cn/v1-openai",
+      "model_id": "qwen3-235b",
+      "api_key_setting": "bit_api_key",
+      "max_output_tokens": 512,
+      "temperature": 0.0,
+      "reasoning_effort": null,
+      "structured_output_mode": "json_schema",
+      "role": "primary"
+    },
+    {
+      "profile_id": "deepseek_flash",
+      "provider": "DeepSeek API",
+      "base_url": "https://api.deepseek.com",
+      "model_id": "deepseek-flash",
+      "api_key_setting": "deepseek_api_key",
+      "max_output_tokens": 2048,
+      "temperature": 0.0,
+      "reasoning_effort": "low",
+      "structured_output_mode": "json_object",
+      "role": "cross-model robustness"
+    }
+  ],
+  "within_profile_fairness": "B0, B1, B2, B4 and IPER-RAG share the same profile, task subset, seeds and budgets.",
+  "failure_policy": "Provider, parsing and budget failures remain in the denominator and are reported by category.",
+  "test_policy": "Run all 30 frozen test variations with seeds 11, 29 and 47; never select a model or task using formal outcomes."
+}

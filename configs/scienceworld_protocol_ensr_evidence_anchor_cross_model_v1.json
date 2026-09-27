@@ -1,0 +1,258 @@
+{
+  "schema_version": "1.0",
+  "protocol_id": "scienceworld_ensr_evidence_anchor_cross_model_v1",
+  "experiment_id": "E25",
+  "status": "cross_model_development_replication_frozen",
+  "created_at": "2026-09-26T04:14:33.199358+00:00",
+  "reporting_boundary": "cross_model_development_replication_not_confirmatory_or_sota",
+  "selection_rule": "Reuse the complete frozen E24 case set without replacement or outcome-based filtering. Change only the model profile from Qwen3-32B to the previously validated school Qwen3-8B profile.",
+  "source_protocol_sha256": "26c28acbc932d9c99196b50f96bd7b7e705de47a96be305a458f601ae4d81e47",
+  "replay_audit_sha256": "cae0e35ead35c1e9dfed27bfa6c1eb08dcdbd4406aab5266fd20717b029c4dd9",
+  "e23_protocol_sha256": "dea26389b93b1fd6681b62e03695655c6b0f2d8d037cd9a48bfa2a8ff25d05da",
+  "model_profiles_sha256": "d56191fd865ef1c2e3a838e601c742898cad8a5634c46f109c413cb58357e442",
+  "memory_sha256": "d08d1ca87741b1e43d45680529de6ed7737a543ce6e8d09b6fca014bb102fb3e",
+  "model_profile": "bit_qwen3_8b_clean",
+  "split": "dev",
+  "seed": 13,
+  "case_count_per_arm": 20,
+  "arm_count": 2,
+  "total_episode_count": 40,
+  "benchmark": {
+    "name": "ScienceWorld",
+    "version": "1.2.3",
+    "simplifications": "",
+    "max_environment_steps": 100
+  },
+  "runs": {
+    "formal_seeds": [
+      13
+    ],
+    "max_model_calls_per_episode": 100,
+    "max_retrieval_calls_per_episode": 8,
+    "max_planner_calls_per_episode": 4,
+    "initial_retrieval_k": 5,
+    "obligation_retrieval_k": 3,
+    "candidate_action_limit": 12,
+    "automatic_obligation_policy": "unsupported_or_stalled",
+    "max_automatic_obligations_per_episode": 3,
+    "failure_policy": "Retain and classify every timeout, adapter error, parse failure, invalid action, environment failure, and trace failure. Never remove these episodes from a denominator.",
+    "baseline_candidate_action_limit": 12
+  },
+  "adaptive_slow_path": {
+    "enabled": false,
+    "max_continuation_plans_per_episode": 2,
+    "force_llm_after_local_replan": true,
+    "protected_task_ids": [
+      "2-2",
+      "2-3",
+      "3-3",
+      "3-4"
+    ]
+  },
+  "knowledge_graph_semantic_control": {
+    "enabled": true,
+    "task_kinds": [
+      "find-living-thing",
+      "find-non-living-thing",
+      "find-plant",
+      "lifespan-longest-lived"
+    ],
+    "navigation_graph_source": "train-memory verified go transitions",
+    "irreversible_focus_policy": "semantic entity constraint before focus",
+    "delivery_policy": "verified focus, acquisition, graph routing, exact box action"
+  },
+  "model": {
+    "profiles": [
+      "bit_qwen3_8b_clean"
+    ],
+    "profile_set": "configs/scienceworld_clean_adapter_profiles_v1.json",
+    "parameter_training": false
+  },
+  "selected_variations": [
+    {
+      "task_id": "1-2",
+      "task_name": "melt",
+      "dev_variations": [
+        17
+      ]
+    },
+    {
+      "task_id": "1-3",
+      "task_name": "freeze",
+      "dev_variations": [
+        16
+      ]
+    },
+    {
+      "task_id": "1-4",
+      "task_name": "change-the-state-of-matter-of",
+      "dev_variations": [
+        16,
+        17
+      ]
+    },
+    {
+      "task_id": "2-2",
+      "task_name": "measure-melting-point-known-substance",
+      "dev_variations": [
+        226
+      ]
+    },
+    {
+      "task_id": "2-3",
+      "task_name": "measure-melting-point-unknown-substance",
+      "dev_variations": [
+        182,
+        206
+      ]
+    },
+    {
+      "task_id": "3-2",
+      "task_name": "power-component-renewable-vs-nonrenewable-energy",
+      "dev_variations": [
+        12,
+        14
+      ]
+    },
+    {
+      "task_id": "5-1",
+      "task_name": "grow-plant",
+      "dev_variations": [
+        91
+      ]
+    },
+    {
+      "task_id": "6-3",
+      "task_name": "chemistry-mix-paint-tertiary-color",
+      "dev_variations": [
+        19,
+        21
+      ]
+    },
+    {
+      "task_id": "8-1",
+      "task_name": "identify-life-stages-1",
+      "dev_variations": [
+        7,
+        8
+      ]
+    },
+    {
+      "task_id": "8-2",
+      "task_name": "identify-life-stages-2",
+      "dev_variations": [
+        4
+      ]
+    },
+    {
+      "task_id": "9-1",
+      "task_name": "inclined-plane-determine-angle",
+      "dev_variations": [
+        95
+      ]
+    },
+    {
+      "task_id": "9-3",
+      "task_name": "inclined-plane-friction-unnamed-surfaces",
+      "dev_variations": [
+        81
+      ]
+    },
+    {
+      "task_id": "10-1",
+      "task_name": "mendelian-genetics-known-plant",
+      "dev_variations": [
+        63
+      ]
+    },
+    {
+      "task_id": "10-2",
+      "task_name": "mendelian-genetics-unknown-plant",
+      "dev_variations": [
+        306,
+        328
+      ]
+    }
+  ],
+  "evidence_debt_scheduler": {
+    "enabled": false,
+    "retrieval_threshold": 0.58,
+    "anchor_first_debt_per_subgoal": true,
+    "state_space": [
+      "unknown",
+      "contradicted",
+      "resolved"
+    ],
+    "policy": "Retrieve the complete candidate set for the first unresolved debt in each subgoal. Later debts use the frozen priority rule and may reuse active evidence when expected information gain is low."
+  },
+  "trace_control": {
+    "control_mode": "record",
+    "scheduler_mode": "replay_until_divergence",
+    "rule": "Replay every byte-equivalent model request before the first algorithm-induced request change. After that planned divergence, use live calls and preserve the shared-prefix audit."
+  },
+  "arms": [
+    {
+      "arm_id": "full_control",
+      "settings": {
+        "enable_hierarchical_subgoals": true,
+        "enable_symbolic_transition_verifier": true,
+        "enable_obligation_conditioned_retrieval": true,
+        "enable_evidence_debt_scheduler": false,
+        "evidence_debt_retrieval_threshold": 0.58,
+        "evidence_debt_anchor_first_subgoal": false,
+        "fragment_memory_policy": "replace"
+      }
+    },
+    {
+      "arm_id": "evidence_anchor_scheduler",
+      "settings": {
+        "enable_hierarchical_subgoals": true,
+        "enable_symbolic_transition_verifier": true,
+        "enable_obligation_conditioned_retrieval": true,
+        "enable_evidence_debt_scheduler": true,
+        "evidence_debt_retrieval_threshold": 0.58,
+        "evidence_debt_anchor_first_subgoal": true,
+        "fragment_memory_policy": "replace"
+      }
+    }
+  ],
+  "primary_comparison": "evidence_anchor_scheduler_minus_full_control",
+  "primary_metrics": [
+    "mean_clipped_score",
+    "task_success_rate"
+  ],
+  "mechanism_metrics": [
+    "obligation_retrieval_calls",
+    "model_calls",
+    "input_tokens",
+    "verified_transition_rate",
+    "evidence_scheduler_retrieval_count",
+    "evidence_scheduler_reuse_count",
+    "evidence_debt_resolved_count",
+    "shared_model_trace_prefix"
+  ],
+  "development_gates": {
+    "complete_pairing": true,
+    "trace_mismatch_count": 0,
+    "minimum_shared_prefix_calls_per_episode": 1,
+    "score_noninferiority_margin": -2.0,
+    "success_rate_must_not_decrease": true,
+    "obligation_retrieval_reduction_at_least": 0.25,
+    "verified_transition_rate_drop_at_most": 0.05,
+    "model_call_ratio_at_most": 1.1,
+    "uncontrolled_failure_count": 0
+  },
+  "statistics": {
+    "unit": "episode with task-clustered sensitivity analysis",
+    "estimator": "paired scheduler-minus-control difference",
+    "interval": "20,000-sample paired bootstrap 95% confidence interval",
+    "testing_role": "cross-model development replication gate"
+  },
+  "interpretation_boundary": "E25 tests whether the E24 resource-preservation result transfers from the school Qwen3-32B profile to Qwen3-8B on the same frozen development cases. It is a model-portability test, not a new holdout or SOTA claim.",
+  "freeze": {
+    "frozen_at": "2026-09-26T04:14:33.199358+00:00",
+    "implementation_sha256": "ee9f1e1784060b7c64cdd5d8cdc6a3aa0e9544de39848f5b8dd72bdd9c6d0ad0",
+    "post_freeze_rule": "Do not change cases, scheduler policy, threshold, weights, anchor rule, budgets, trace policy, memory, prompts, model profile, or gates after the first E25 provider call."
+  },
+  "replication_of": "E24"
+}

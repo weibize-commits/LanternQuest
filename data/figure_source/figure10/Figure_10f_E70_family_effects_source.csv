@@ -1,0 +1,13 @@
+﻿case_id,case_number,case_family,correctness_delta_ensr_minus_b4,evidence_delta_ensr_minus_b4,intent_delta_ensr_minus_b4,unsafe_claim_delta_ensr_minus_b4
+lq_049_test_compositional_choices,049,compositional_choices,1.6666666666666665,1.6666666666666665,0.0,0.0
+lq_050_test_compositional_choices,050,compositional_choices,1.6666666666666665,1.6666666666666665,0.0,0.0
+lq_051_test_compositional_choices,051,compositional_choices,0.0,0.0,0.0,0.0
+lq_052_test_compositional_choices,052,compositional_choices,0.0,0.0,0.0,0.0
+lq_053_test_intent_and_rework,053,intent_and_rework,0.0,0.0,0.0,0.0
+lq_054_test_intent_and_rework,054,intent_and_rework,0.0,0.0,0.0,0.0
+lq_055_test_intent_and_rework,055,intent_and_rework,1.6666666666666665,1.6666666666666665,1.0,-1.0
+lq_056_test_intent_and_rework,056,intent_and_rework,0.0,0.0,0.0,0.0
+lq_057_test_evidence_boundary,057,evidence_boundary,0.0,0.0,0.0,0.0
+lq_058_test_evidence_boundary,058,evidence_boundary,0.0,0.0,0.0,0.0
+lq_059_test_evidence_boundary,059,evidence_boundary,0.0,0.0,0.0,0.0
+lq_060_test_evidence_boundary,060,evidence_boundary,1.6666666666666665,1.6666666666666665,0.0,0.0

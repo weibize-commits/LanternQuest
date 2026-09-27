@@ -1,0 +1,5 @@
+﻿method,label,icc_2_k,complete_cases
+ensr,ENSR,0.96,12
+b4_sequential,B4 Sequential,0.9005424954792044,12
+all,confidence_4,,20
+all,confidence_5,,16

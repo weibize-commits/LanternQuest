@@ -1,0 +1,141 @@
+@prefix lqkg: <https://example.org/lanternquest/kg/> .
+@prefix cidoc: <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+lqkg:LanternQuestOntology a owl:Ontology ;
+    rdfs:label "LanternQuest evidence and task-state ontology"@en ;
+    rdfs:comment "Development ontology. Domain assertions require source and expert review."@en .
+
+# Heritage evidence graph
+lqkg:SourceRecord a owl:Class ; rdfs:subClassOf prov:Entity .
+lqkg:EvidenceSegment a owl:Class ; rdfs:subClassOf prov:Entity .
+lqkg:Claim a owl:Class ; rdfs:subClassOf cidoc:E89_Propositional_Object .
+lqkg:ApplicabilityScope a owl:Class ; rdfs:subClassOf cidoc:E89_Propositional_Object .
+lqkg:ReviewAssertion a owl:Class ; rdfs:subClassOf prov:Entity .
+lqkg:Conflict a owl:Class ; rdfs:subClassOf cidoc:E89_Propositional_Object .
+lqkg:MediaAsset a owl:Class ; rdfs:subClassOf prov:Entity .
+lqkg:ImageAsset a owl:Class ; rdfs:subClassOf lqkg:MediaAsset .
+lqkg:VideoAsset a owl:Class ; rdfs:subClassOf lqkg:MediaAsset .
+lqkg:AudioAsset a owl:Class ; rdfs:subClassOf lqkg:MediaAsset .
+lqkg:TextAsset a owl:Class ; rdfs:subClassOf lqkg:MediaAsset .
+lqkg:DocumentAsset a owl:Class ; rdfs:subClassOf lqkg:MediaAsset .
+lqkg:WebIndexAsset a owl:Class ; rdfs:subClassOf lqkg:MediaAsset .
+lqkg:ImageRegion a owl:Class ; rdfs:subClassOf lqkg:EvidenceSegment .
+lqkg:VideoSegment a owl:Class ; rdfs:subClassOf lqkg:EvidenceSegment .
+lqkg:AudioSegment a owl:Class ; rdfs:subClassOf lqkg:EvidenceSegment .
+lqkg:TranscriptSegment a owl:Class ; rdfs:subClassOf lqkg:EvidenceSegment .
+lqkg:DocumentRegion a owl:Class ; rdfs:subClassOf lqkg:EvidenceSegment .
+lqkg:FeatureVector a owl:Class ; rdfs:subClassOf prov:Entity .
+lqkg:NeuralModel a owl:Class ; rdfs:subClassOf prov:SoftwareAgent .
+lqkg:AlignmentCandidate a owl:Class ; rdfs:subClassOf prov:Entity .
+lqkg:SymbolicRule a owl:Class ; rdfs:subClassOf cidoc:E89_Propositional_Object .
+lqkg:InferenceAssertion a owl:Class ; rdfs:subClassOf prov:Entity .
+lqkg:SourceGroup a owl:Class ; rdfs:subClassOf prov:Collection .
+
+# Domain and task-state graph
+lqkg:CraftProcess a owl:Class ; rdfs:subClassOf cidoc:E7_Activity .
+lqkg:Action a owl:Class ; rdfs:subClassOf cidoc:E7_Activity .
+lqkg:Material a owl:Class ; rdfs:subClassOf cidoc:E57_Material .
+lqkg:Tool a owl:Class ; rdfs:subClassOf cidoc:E22_Human-Made_Object .
+lqkg:WorkProduct a owl:Class ; rdfs:subClassOf cidoc:E22_Human-Made_Object .
+lqkg:Task a owl:Class ; rdfs:subClassOf cidoc:E7_Activity .
+lqkg:Goal a owl:Class .
+lqkg:StateVariable a owl:Class .
+lqkg:Intent a owl:Class ; rdfs:subClassOf cidoc:E89_Propositional_Object .
+lqkg:CompletedWork a owl:Class ; rdfs:subClassOf prov:Entity .
+lqkg:ConsentEvent a owl:Class ; rdfs:subClassOf prov:Activity .
+lqkg:EvidenceObligation a owl:Class .
+lqkg:Plan a owl:Class ; rdfs:subClassOf prov:Entity .
+lqkg:RiskControl a owl:Class ; rdfs:subClassOf cidoc:E89_Propositional_Object .
+lqkg:UnknownCondition a owl:Class ; rdfs:subClassOf cidoc:E89_Propositional_Object .
+lqkg:Decision a owl:Class .
+lqkg:DecisionOption a owl:Class .
+
+# Evidence relations
+lqkg:supportedBy a owl:ObjectProperty ;
+    rdfs:domain lqkg:Claim ; rdfs:range lqkg:EvidenceSegment .
+lqkg:contradicts a owl:ObjectProperty, owl:SymmetricProperty ;
+    rdfs:domain lqkg:Claim ; rdfs:range lqkg:Claim .
+lqkg:extractedFrom a owl:ObjectProperty ;
+    rdfs:domain lqkg:EvidenceSegment ; rdfs:range lqkg:SourceRecord ;
+    rdfs:subPropertyOf prov:wasDerivedFrom .
+lqkg:accessibleVia a owl:ObjectProperty ;
+    rdfs:domain lqkg:EvidenceSegment ; rdfs:range lqkg:SourceRecord .
+lqkg:hasScope a owl:ObjectProperty ;
+    rdfs:domain lqkg:Claim ; rdfs:range lqkg:ApplicabilityScope .
+lqkg:reviewedBy a owl:ObjectProperty ; rdfs:range prov:Agent .
+lqkg:hasContent a owl:ObjectProperty ;
+    rdfs:domain lqkg:SourceRecord ; rdfs:range lqkg:MediaAsset .
+lqkg:inSourceGroup a owl:ObjectProperty ;
+    rdfs:domain lqkg:SourceRecord ; rdfs:range lqkg:SourceGroup .
+lqkg:hasSegment a owl:ObjectProperty ;
+    rdfs:domain lqkg:MediaAsset ; rdfs:range lqkg:EvidenceSegment .
+lqkg:hasFeatureVector a owl:ObjectProperty ;
+    rdfs:domain prov:Entity ; rdfs:range lqkg:FeatureVector .
+lqkg:encodedBy a owl:ObjectProperty ;
+    rdfs:domain lqkg:FeatureVector ; rdfs:range lqkg:NeuralModel .
+lqkg:alignmentSource a owl:ObjectProperty ;
+    rdfs:domain lqkg:AlignmentCandidate ; rdfs:range prov:Entity .
+lqkg:alignmentTarget a owl:ObjectProperty ;
+    rdfs:domain lqkg:AlignmentCandidate ; rdfs:range prov:Entity .
+lqkg:evaluatedByRule a owl:ObjectProperty ;
+    rdfs:domain lqkg:AlignmentCandidate ; rdfs:range lqkg:SymbolicRule .
+lqkg:inferredByRule a owl:ObjectProperty ;
+    rdfs:domain lqkg:InferenceAssertion ; rdfs:range lqkg:SymbolicRule .
+lqkg:derivedFromCandidate a owl:ObjectProperty ;
+    rdfs:domain lqkg:InferenceAssertion ; rdfs:range lqkg:AlignmentCandidate .
+lqkg:generatedByModel a owl:ObjectProperty ;
+    rdfs:domain prov:Entity ; rdfs:range lqkg:NeuralModel .
+
+# Planning and consent relations
+lqkg:hasPrecondition a owl:ObjectProperty ;
+    rdfs:domain lqkg:Action ; rdfs:range lqkg:StateVariable .
+lqkg:hasEffect a owl:ObjectProperty ;
+    rdfs:domain lqkg:Action ; rdfs:range lqkg:StateVariable .
+lqkg:requiresEvidence a owl:ObjectProperty ;
+    rdfs:range lqkg:EvidenceObligation .
+lqkg:obligationForClaim a owl:ObjectProperty ;
+    rdfs:domain lqkg:EvidenceObligation ; rdfs:range lqkg:Claim .
+lqkg:changesIntent a owl:ObjectProperty ;
+    rdfs:domain lqkg:Action ; rdfs:range lqkg:Intent .
+lqkg:invalidatesWork a owl:ObjectProperty ;
+    rdfs:domain lqkg:Action ; rdfs:range lqkg:CompletedWork .
+lqkg:authorizedBy a owl:ObjectProperty ;
+    rdfs:range lqkg:ConsentEvent .
+lqkg:usesTool a owl:ObjectProperty ;
+    rdfs:domain lqkg:Action ; rdfs:range lqkg:Tool .
+lqkg:usesMaterial a owl:ObjectProperty ;
+    rdfs:domain lqkg:Action ; rdfs:range lqkg:Material .
+lqkg:precedes a owl:ObjectProperty, owl:TransitiveProperty ;
+    rdfs:domain lqkg:Action ; rdfs:range lqkg:Action .
+
+# Audit data
+lqkg:locator a owl:DatatypeProperty ; rdfs:range xsd:string .
+lqkg:sha256 a owl:DatatypeProperty ; rdfs:range xsd:string .
+lqkg:reviewStatus a owl:DatatypeProperty ; rdfs:range xsd:string .
+lqkg:rightsStatus a owl:DatatypeProperty ; rdfs:range xsd:string .
+lqkg:stateValue a owl:DatatypeProperty ;
+    rdfs:domain lqkg:StateVariable ; rdfs:range xsd:string .
+lqkg:stateVersion a owl:DatatypeProperty ; rdfs:range xsd:string .
+lqkg:intentLocked a owl:DatatypeProperty ;
+    rdfs:domain lqkg:Intent ; rdfs:range xsd:boolean .
+lqkg:intentPriority a owl:DatatypeProperty ;
+    rdfs:domain lqkg:Intent ; rdfs:range xsd:integer .
+lqkg:mediaType a owl:DatatypeProperty ; rdfs:range xsd:string .
+lqkg:widthPixels a owl:DatatypeProperty ; rdfs:range xsd:integer .
+lqkg:heightPixels a owl:DatatypeProperty ; rdfs:range xsd:integer .
+lqkg:durationSeconds a owl:DatatypeProperty ; rdfs:range xsd:decimal .
+lqkg:temporalStart a owl:DatatypeProperty ; rdfs:range xsd:decimal .
+lqkg:temporalEnd a owl:DatatypeProperty ; rdfs:range xsd:decimal .
+lqkg:boundingBox a owl:DatatypeProperty ; rdfs:range xsd:string .
+lqkg:modelRevision a owl:DatatypeProperty ; rdfs:range xsd:string .
+lqkg:weightsHash a owl:DatatypeProperty ; rdfs:range xsd:string .
+lqkg:vectorUri a owl:DatatypeProperty ; rdfs:range xsd:anyURI .
+lqkg:neuralScore a owl:DatatypeProperty ; rdfs:range xsd:decimal .
+lqkg:ruleResult a owl:DatatypeProperty ; rdfs:range xsd:string .
+lqkg:fusedConfidence a owl:DatatypeProperty ; rdfs:range xsd:decimal .
+lqkg:alignmentDecision a owl:DatatypeProperty ; rdfs:range xsd:string .

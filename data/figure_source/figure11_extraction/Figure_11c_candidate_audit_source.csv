@@ -1,0 +1,3 @@
+condition,predicted_relations,true_positive,false_positive,domain_range_compliance,relation_f1
+BERT neural-only,706,74,632,0.613314447592068,0.16591928251121077
+BERT plus ontology mask,437,74,363,1.0,0.23756019261637237

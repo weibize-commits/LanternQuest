@@ -1,0 +1,403 @@
+{
+  "schema_version": "1.0",
+  "protocol_id": "scienceworld_ensr_mechanism_ablation_v1",
+  "experiment_id": "E16",
+  "status": "development_ablation_frozen",
+  "created_at": "2026-09-23T10:53:43.615950+00:00",
+  "reporting_boundary": "development_mechanism_ablation_only",
+  "source_protocol_sha256": "45594eb82a22279c5f584e163af18661f63152b4fad4fd977231e469c6cfd304",
+  "model_profiles_sha256": "d56191fd865ef1c2e3a838e601c742898cad8a5634c46f109c413cb58357e442",
+  "source_e15_implementation_sha256": "ead3835a357fc4f298a8f3e7787b9047fdbf97daca710b392cdc3c94d7dfe6aa",
+  "model_profile": "bit_qwen3_32b_clean",
+  "split": "dev",
+  "seed": 13,
+  "case_count_per_arm": 60,
+  "arm_count": 5,
+  "total_episode_count": 300,
+  "benchmark": {
+    "name": "ScienceWorld",
+    "version": "1.2.3",
+    "simplifications": "",
+    "max_environment_steps": 100
+  },
+  "runs": {
+    "formal_seeds": [
+      13
+    ],
+    "max_model_calls_per_episode": 100,
+    "max_retrieval_calls_per_episode": 8,
+    "max_planner_calls_per_episode": 4,
+    "initial_retrieval_k": 5,
+    "obligation_retrieval_k": 3,
+    "candidate_action_limit": 12,
+    "automatic_obligation_policy": "unsupported_or_stalled",
+    "max_automatic_obligations_per_episode": 3,
+    "failure_policy": "超时、接口错误、解析失败、非法动作和环境异常全部保留并分类，不得从分母删除。",
+    "baseline_candidate_action_limit": 12
+  },
+  "adaptive_slow_path": {
+    "enabled": false,
+    "max_continuation_plans_per_episode": 2,
+    "force_llm_after_local_replan": true,
+    "protected_task_ids": [
+      "2-2",
+      "2-3",
+      "3-3",
+      "3-4"
+    ]
+  },
+  "knowledge_graph_semantic_control": {
+    "enabled": true,
+    "task_kinds": [
+      "find-living-thing",
+      "find-non-living-thing",
+      "find-plant",
+      "lifespan-longest-lived"
+    ],
+    "navigation_graph_source": "train-memory verified go transitions",
+    "irreversible_focus_policy": "semantic entity constraint before focus",
+    "delivery_policy": "verified focus, acquisition, graph routing, exact box action"
+  },
+  "model": {
+    "profiles": [
+      "bit_qwen3_32b_clean"
+    ],
+    "profile_set": "configs/scienceworld_clean_adapter_profiles_v1.json",
+    "parameter_training": false
+  },
+  "selected_variations": [
+    {
+      "task_id": "1-1",
+      "task_name": "boil",
+      "dev_variations": [
+        19,
+        16
+      ]
+    },
+    {
+      "task_id": "1-4",
+      "task_name": "change-the-state-of-matter-of",
+      "dev_variations": [
+        17,
+        16
+      ]
+    },
+    {
+      "task_id": "6-1",
+      "task_name": "chemistry-mix",
+      "dev_variations": [
+        16,
+        21
+      ]
+    },
+    {
+      "task_id": "6-2",
+      "task_name": "chemistry-mix-paint-secondary-color",
+      "dev_variations": [
+        25,
+        23
+      ]
+    },
+    {
+      "task_id": "6-3",
+      "task_name": "chemistry-mix-paint-tertiary-color",
+      "dev_variations": [
+        19,
+        21
+      ]
+    },
+    {
+      "task_id": "4-4",
+      "task_name": "find-animal",
+      "dev_variations": [
+        213,
+        204
+      ]
+    },
+    {
+      "task_id": "4-1",
+      "task_name": "find-living-thing",
+      "dev_variations": [
+        202,
+        171
+      ]
+    },
+    {
+      "task_id": "4-2",
+      "task_name": "find-non-living-thing",
+      "dev_variations": [
+        177,
+        154
+      ]
+    },
+    {
+      "task_id": "4-3",
+      "task_name": "find-plant",
+      "dev_variations": [
+        187,
+        188
+      ]
+    },
+    {
+      "task_id": "1-3",
+      "task_name": "freeze",
+      "dev_variations": [
+        20,
+        16
+      ]
+    },
+    {
+      "task_id": "5-2",
+      "task_name": "grow-fruit",
+      "dev_variations": [
+        86,
+        90
+      ]
+    },
+    {
+      "task_id": "5-1",
+      "task_name": "grow-plant",
+      "dev_variations": [
+        91,
+        79
+      ]
+    },
+    {
+      "task_id": "8-1",
+      "task_name": "identify-life-stages-1",
+      "dev_variations": [
+        7,
+        8
+      ]
+    },
+    {
+      "task_id": "8-2",
+      "task_name": "identify-life-stages-2",
+      "dev_variations": [
+        4,
+        5
+      ]
+    },
+    {
+      "task_id": "9-1",
+      "task_name": "inclined-plane-determine-angle",
+      "dev_variations": [
+        95,
+        104
+      ]
+    },
+    {
+      "task_id": "9-2",
+      "task_name": "inclined-plane-friction-named-surfaces",
+      "dev_variations": [
+        755,
+        950
+      ]
+    },
+    {
+      "task_id": "9-3",
+      "task_name": "inclined-plane-friction-unnamed-surfaces",
+      "dev_variations": [
+        96,
+        81
+      ]
+    },
+    {
+      "task_id": "7-1",
+      "task_name": "lifespan-longest-lived",
+      "dev_variations": [
+        62,
+        91
+      ]
+    },
+    {
+      "task_id": "7-3",
+      "task_name": "lifespan-longest-lived-then-shortest-lived",
+      "dev_variations": [
+        72,
+        62
+      ]
+    },
+    {
+      "task_id": "7-2",
+      "task_name": "lifespan-shortest-lived",
+      "dev_variations": [
+        92,
+        91
+      ]
+    },
+    {
+      "task_id": "2-2",
+      "task_name": "measure-melting-point-known-substance",
+      "dev_variations": [
+        226,
+        243
+      ]
+    },
+    {
+      "task_id": "2-3",
+      "task_name": "measure-melting-point-unknown-substance",
+      "dev_variations": [
+        206,
+        182
+      ]
+    },
+    {
+      "task_id": "1-2",
+      "task_name": "melt",
+      "dev_variations": [
+        18,
+        17
+      ]
+    },
+    {
+      "task_id": "10-1",
+      "task_name": "mendelian-genetics-known-plant",
+      "dev_variations": [
+        85,
+        63
+      ]
+    },
+    {
+      "task_id": "10-2",
+      "task_name": "mendelian-genetics-unknown-plant",
+      "dev_variations": [
+        328,
+        306
+      ]
+    },
+    {
+      "task_id": "3-1",
+      "task_name": "power-component",
+      "dev_variations": [
+        12,
+        14
+      ]
+    },
+    {
+      "task_id": "3-2",
+      "task_name": "power-component-renewable-vs-nonrenewable-energy",
+      "dev_variations": [
+        14,
+        12
+      ]
+    },
+    {
+      "task_id": "3-3",
+      "task_name": "test-conductivity",
+      "dev_variations": [
+        528,
+        606
+      ]
+    },
+    {
+      "task_id": "3-4",
+      "task_name": "test-conductivity-of-unknown-substances",
+      "dev_variations": [
+        416,
+        392
+      ]
+    },
+    {
+      "task_id": "2-1",
+      "task_name": "use-thermometer",
+      "dev_variations": [
+        383,
+        399
+      ]
+    }
+  ],
+  "shared_budgets": {
+    "max_environment_steps": 100,
+    "max_model_calls_per_episode": 100,
+    "max_retrieval_calls_per_episode": 8,
+    "max_planner_calls_per_episode": 4,
+    "initial_retrieval_k": 5,
+    "obligation_retrieval_k": 3,
+    "candidate_action_limit": 12
+  },
+  "arms": [
+    {
+      "arm_id": "full_control",
+      "settings": {
+        "enable_hierarchical_subgoals": true,
+        "enable_symbolic_transition_verifier": true,
+        "enable_obligation_conditioned_retrieval": true,
+        "fragment_memory_policy": "replace"
+      },
+      "manipulation_check": "All core mechanisms remain eligible to trigger."
+    },
+    {
+      "arm_id": "without_hierarchical_subgoals",
+      "settings": {
+        "enable_hierarchical_subgoals": false
+      },
+      "manipulation_check": "Every episode uses one task-level subgoal; generated multi-subgoal plans must be zero."
+    },
+    {
+      "arm_id": "without_symbolic_transition_verifier",
+      "settings": {
+        "enable_symbolic_transition_verifier": false
+      },
+      "manipulation_check": "Verified-transition counts and verifier-generated obligations must be zero."
+    },
+    {
+      "arm_id": "without_obligation_conditioned_retrieval",
+      "settings": {
+        "enable_obligation_conditioned_retrieval": false
+      },
+      "manipulation_check": "Obligations remain logged, but obligation-triggered retrieval events must be zero."
+    },
+    {
+      "arm_id": "accumulating_fragment_memory",
+      "settings": {
+        "fragment_memory_policy": "accumulate"
+      },
+      "manipulation_check": "Obligation retrieval appends fragments and replacement counts must be zero."
+    }
+  ],
+  "control_policy": "Rerun the full control with the same post-E15 implementation, profile, cases, seed, and budgets. Do not reuse an older A23R control across implementation hashes.",
+  "primary_comparisons": [
+    "full_control_minus_without_hierarchical_subgoals",
+    "full_control_minus_without_symbolic_transition_verifier",
+    "full_control_minus_without_obligation_conditioned_retrieval",
+    "full_control_minus_accumulating_fragment_memory"
+  ],
+  "primary_metrics": [
+    "mean_clipped_score",
+    "task_success_rate"
+  ],
+  "statistics": {
+    "unit": "task",
+    "aggregation": "Average the two development variations within each task.",
+    "estimator": "Paired mean difference, full control minus ablated arm.",
+    "interval": "20,000-sample task-level paired bootstrap 95% CI.",
+    "multiplicity": "Report Holm-adjusted two-sided permutation p-values across the four primary score comparisons; confidence intervals remain descriptive."
+  },
+  "operational_gate": "Every arm must contain all 60 episodes, satisfy its manipulation check, and have at most 3 adapter/environment failures.",
+  "freeze_gate": [
+    "E15 has completed and its automatic audit has been persisted.",
+    "E15R has completed and its automatic audit has been persisted.",
+    "The four feature controls are implemented without changing full-control behavior.",
+    "Unit tests verify every manipulation check and full-control equivalence.",
+    "A development smoke covers every arm with zero uncontrolled failures.",
+    "The final implementation and protocol hashes are recorded before E16 calls."
+  ],
+  "interpretation_boundary": "E16 estimates component contributions on frozen development cases. It is supporting mechanism evidence and does not replace E13's held-out result.",
+  "freeze": {
+    "frozen_at": "2026-09-23T11:08:20.792531+00:00",
+    "basis": "E15 and E15R completed; unit tests and all five real-environment smoke arms passed before the formal E16 development ablation.",
+    "hashes": {
+      "scienceworld_protocol_ensr_mechanism_ablation_v1_draft.json_sha256": "617629bfcada9d4afe4a149094c51178d0d739ee35194ca9bee2ef0c03dafb77",
+      "ensr_mechanism_ablation_v1_smoke_audit.json_sha256": "c76d4435783fcacf3cdf3e559e443a6f9625d4837737e7b1a0d1737416e535d5",
+      "ensr_clean_adapter_v1_audit.json_sha256": "c25cab10a444324238b9f32177c87d0e116dd311bec260c5d35076a63a10d142",
+      "qwen3_8b_recovery_v1_audit.json_sha256": "10bd57a9878c34a97b9e67e09247fd5fa1ce245ee941baa643c88eba464386b4",
+      "scienceworld_clean_adapter_profiles_v1.json_sha256": "d56191fd865ef1c2e3a838e601c742898cad8a5634c46f109c413cb58357e442",
+      "ensr_memory_v2.json_sha256": "d08d1ca87741b1e43d45680529de6ed7737a543ce6e8d09b6fca014bb102fb3e",
+      "draft_protocol_sha256": "617629bfcada9d4afe4a149094c51178d0d739ee35194ca9bee2ef0c03dafb77",
+      "implementation_sha256": "342231c6ba970b9b5884187268ae92c92f0c69ba85f6211b6f41a7fc434182f8",
+      "skills_tree_sha256": "74e7b4dca86f26f5d6577556adfd3b8f401e894156e0237728831a17b2894eae"
+    },
+    "post_freeze_rule": "Do not change cases, model profile, prompts, component switches, memory, budgets, seed, implementation, or analysis rules after the first E16 call."
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-09-27T08:08:38.721319+00:00",
+  "analysis_id": "e90_posthoc_baseline_covariate_sensitivity_v1",
+  "analysis_role": "exploratory_post_hoc_sensitivity_primary_model_unchanged",
+  "outcome": "mean blinded evidence-constrained narrative score, range 0 to 16",
+  "estimand": "ENSR minus B4 coefficient",
+  "models": {
+    "frozen_primary_reproduction": {
+      "formula": "narrative_mean ~ ensr + pre_total + pre_form_b + lantern_familiarity_1_7",
+      "n": 78,
+      "estimate": 2.250356741430582,
+      "se_hc3": 0.41804459418160844,
+      "ci95": [
+        1.4310043929029668,
+        3.069709089958197
+      ],
+      "p": 7.323244307307944e-08,
+      "r_squared": 0.4527427123895609,
+      "design_rank": 5,
+      "parameter_count": 5,
+      "condition_number": 21.987681475721054
+    },
+    "expanded_categorical_adjustment": {
+      "formula": "narrative_mean ~ ensr + pre_total + pre_form_b + lantern_familiarity_1_7 + C(age_group) + C(education) + C(gaming_frequency) + C(genai_frequency)",
+      "added_covariates": [
+        "age group",
+        "education",
+        "gaming frequency",
+        "generative-AI use frequency"
+      ],
+      "n": 78,
+      "estimate": 2.156630819424544,
+      "se_hc3": 0.5100691914556892,
+      "ci95": [
+        1.1569135745479278,
+        3.1563480643011603
+      ],
+      "p": 2.3565812083299785e-05,
+      "r_squared": 0.4957769616498412,
+      "design_rank": 19,
+      "parameter_count": 19,
+      "condition_number": 79.38710125956251
+    },
+    "expanded_ordinal_check": {
+      "formula": "narrative_mean ~ ensr + pre_total + pre_form_b + lantern_familiarity_1_7 + age_group_ordinal + education_ordinal + gaming_frequency_ordinal + genai_frequency_ordinal",
+      "added_covariates": [
+        "ordered age category",
+        "ordered education category",
+        "ordered gaming frequency",
+        "ordered generative-AI use frequency"
+      ],
+      "n": 78,
+      "estimate": 2.175189438921629,
+      "se_hc3": 0.4255337418460385,
+      "ci95": [
+        1.3411586306968286,
+        3.009220247146429
+      ],
+      "p": 3.193178132709397e-07,
+      "r_squared": 0.46056911563742553,
+      "design_rank": 9,
+      "parameter_count": 9,
+      "condition_number": 35.6454404401916
+    }
+  },
+  "data": {
+    "scored_csv_sha256": "c549acd7778f212cb33bdc90ce20e6fdb4af45e41d329825fa4fafddcfca566b",
+    "workbook_sha256": "dc86b1d52fb93d3915770ddf1acf5d305506f911822b59eb137c0ba60edcecc9"
+  },
+  "interpretation": "The frozen primary model remains the confirmatory analysis. The expanded models test whether the ENSR coefficient is sensitive to observed baseline differences and do not redefine the primary estimand."
+}

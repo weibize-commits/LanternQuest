@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0",
+  "retrieved_at": "2026-09-24",
+  "unit": "per_1m_tokens",
+  "usd_to_cny": 6.7489,
+  "exchange_rate_source": "https://www.safe.gov.cn/AppStructured/hlw/RMBQuery.do",
+  "profiles": {
+    "deepseek_v4_pro_external": {
+      "currency": "CNY",
+      "cached_input_low": 0.15,
+      "uncached_input_low": 4.5,
+      "output_low": 13.5,
+      "cached_input_high": 0.3,
+      "uncached_input_high": 9.0,
+      "output_high": 27.0,
+      "range_basis": "off_peak_cached_to_peak_uncached",
+      "source": "https://api-docs.deepseek.com/zh-cn/quick_start/pricing/"
+    },
+    "glm_5_3_external": {
+      "currency": "CNY",
+      "cached_input_low": 2.0,
+      "uncached_input_low": 8.0,
+      "output_low": 28.0,
+      "cached_input_high": 2.0,
+      "uncached_input_high": 8.0,
+      "output_high": 28.0,
+      "range_basis": "cached_to_uncached",
+      "source": "https://docs.bigmodel.cn/cn/guide/start/pricing"
+    },
+    "gpt_6_astra_external": {
+      "currency": "USD",
+      "cached_input_low": 1.0,
+      "uncached_input_low": 10.0,
+      "output_low": 50.0,
+      "cached_input_high": 1.0,
+      "uncached_input_high": 10.0,
+      "output_high": 50.0,
+      "range_basis": "cached_to_uncached_standard_processing",
+      "source": "https://developers.openai.com/api/docs/models/gpt-6-astra"
+    },
+    "kimi_k2_6_external": {
+      "currency": "CNY",
+      "cached_input_low": 1.1,
+      "uncached_input_low": 6.5,
+      "output_low": 27.0,
+      "cached_input_high": 1.1,
+      "uncached_input_high": 6.5,
+      "output_high": 27.0,
+      "range_basis": "cached_to_uncached",
+      "source": "https://platform.kimi.com/docs/pricing/chat"
+    }
+  },
+  "limitations": [
+    "Episode artifacts record aggregate input and output tokens but not cached-input tokens.",
+    "The lower estimate treats every input token as cache-hit; the upper estimate treats every input token as uncached.",
+    "Provider invoices remain authoritative; taxes, credits, cache-write charges, regional uplifts and later price changes are not inferred."
+  ]
+}

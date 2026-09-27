@@ -1,0 +1,7 @@
+method,entity_f1,relation_f1,evaluation
+Rule and lexicon,0.40400667779632715,0.1348314606741573,"fivefold OOF, 160 segments"
+BERT neural-only,0.5774058577405857,0.16591928251121077,"fivefold OOF, 160 segments"
+BERT plus post-hoc ontology,0.5774058577405857,0.23756019261637237,"fivefold OOF, 160 segments"
+BERT plus early ontology,0.5774058577405857,0.3224299065420561,"fivefold OOF, 160 segments"
+MacBERT full pipeline,0.5182012847965739,0.19178082191780818,"fivefold OOF, 160 segments"
+Joint BERT full pipeline,0.6027397260273973,0.22072678331090176,"fivefold OOF, 160 segments"

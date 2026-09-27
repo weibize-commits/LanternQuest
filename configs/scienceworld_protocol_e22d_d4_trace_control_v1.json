@@ -1,0 +1,768 @@
+{
+  "schema_version": "1.0-frozen-development",
+  "protocol_id": "scienceworld_ensr_v3",
+  "experiment_id": "E22D-D4-D0",
+  "status": "frozen_post_e17_development_protocol",
+  "development_amendments": [
+    {
+      "amendment_id": "E12A",
+      "basis": "First five-case development smoke only; no E12 formal-test result was inspected.",
+      "changes": [
+        "Canonicalize unambiguous fact orientation and state labels with explicit audit counts.",
+        "Infer carried-container contents using a provenance-labelled symbolic rule.",
+        "Lock irreversible focus actions to the task target.",
+        "Deduplicate identical evidence obligations and stop when replanning is exhausted.",
+        "Retry malformed initial plans once while counting failed calls against the budget."
+      ],
+      "original_pilot_artifacts": "artifacts/benchmarks/scienceworld/ensr_v2_runs",
+      "amended_output_root": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v1"
+    },
+    {
+      "amendment_id": "E12A2",
+      "basis": "E12A1 development cases only; the run was interrupted after a parser defect was isolated and no formal-test result was inspected.",
+      "changes": [
+        "Parse ScienceWorld sentence-style entity descriptors into canonical entity labels.",
+        "Extract door/device states and nested container contents, including matter state.",
+        "Use visible_in for non-agent room membership and repair unambiguous reversed containment.",
+        "Represent explicit OR completion criteria with completion_mode any."
+      ],
+      "prior_development_artifacts": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v1",
+      "amended_output_root": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v2"
+    },
+    {
+      "amendment_id": "E12A3",
+      "basis": "Completed E12A2 five-case development smoke; no formal-test result was inspected.",
+      "changes": [
+        "Accumulate verified subgoal facts across transitions instead of requiring simultaneous observation.",
+        "Block repeated failed actions in the same symbolic state even when their obligation is deduplicated.",
+        "Expose one deterministic complete train-split procedure as an ordered structural example.",
+        "Prioritize valid actions matching abstract train-procedure templates.",
+        "Extend irreversible focus locking to explicitly named chemistry products and power targets."
+      ],
+      "prior_development_artifacts": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v2",
+      "amended_output_root": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v3"
+    },
+    {
+      "amendment_id": "E12A4",
+      "basis": "Completed E12A3 five-case development smoke; no formal-test result was inspected.",
+      "changes": [
+        "Execute a bounded next-step match from the train procedure when that match is currently legal.",
+        "Count only failed transitions against a subgoal retry limit.",
+        "Retry malformed action JSON once with a compact payload and count both attempts.",
+        "Require exact target semantics for irreversible focus actions.",
+        "Canonicalize explicit any completion tests and combustion state aliases."
+      ],
+      "prior_development_artifacts": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v3",
+      "amended_output_root": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v4"
+    },
+    {
+      "amendment_id": "E12A5",
+      "basis": "Completed E12A4 five-case development smoke; no formal-test result was inspected.",
+      "changes": [
+        "Ground unsatisfied symbolic facts directly into matching legal actions.",
+        "Systematically explore unvisited rooms and unopened containers before unconstrained LLM fallback.",
+        "Continue safe execution after the local-replanning budget is exhausted.",
+        "Record every action source as procedure, symbolic_goal, exploration, or llm.",
+        "Normalize recipe labels and melted/frozen state aliases."
+      ],
+      "prior_development_artifacts": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v4",
+      "amended_output_root": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v5"
+    },
+    {
+      "amendment_id": "E12A5R",
+      "basis": "E12A5 development-only controller regression; no formal-test result was inspected.",
+      "changes": [
+        "Validate deterministic actions against the full post-safety legal action set while retaining shortlist validation for LLM actions."
+      ],
+      "prior_development_artifacts": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v5",
+      "amended_output_root": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v5r"
+    },
+    {
+      "amendment_id": "E12A6",
+      "basis": "Completed E12A5R five-case development smoke; no formal-test result was inspected.",
+      "changes": [
+        "Exclude generic door waypoints from the unvisited-room set.",
+        "At a door waypoint, choose an exit other than the room just left.",
+        "Treat zero-reward returns to an already seen symbolic state as cycle obligations and block the edge at its source state."
+      ],
+      "prior_development_artifacts": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v5r",
+      "amended_output_root": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v6"
+    },
+    {
+      "amendment_id": "E12A7",
+      "basis": "Completed E12A6 five-case development smoke and read-only replay of its public environment actions; no gold path or formal-test result was inspected.",
+      "changes": [
+        "Retain the last real room while the agent is at the generic door waypoint.",
+        "Block a cyclic destination only when the source state offers another destination.",
+        "Block all surface-form aliases for the same cyclic destination while preserving a room's only exit."
+      ],
+      "prior_development_artifacts": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v6",
+      "amended_output_root": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v7"
+    },
+    {
+      "amendment_id": "E12A8",
+      "basis": "Completed E12A7 five-case development smoke; no gold path or formal-test result was inspected.",
+      "changes": [
+        "Gate train-procedure operations by the active acquisition subgoal.",
+        "Add a symbolic state-change workflow for target acquisition, target-to-pot transfer, device placement, activation, and waiting.",
+        "Mark target focus complete only after positive reward or terminal completion."
+      ],
+      "prior_development_artifacts": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v7",
+      "amended_output_root": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v8"
+    },
+    {
+      "amendment_id": "E12A9",
+      "basis": "Completed E12A8 five-case development smoke; no gold path or formal-test result was inspected.",
+      "changes": [
+        "Prefer the least-used legal destination during transit exploration.",
+        "Remember location-scoped open actions to avoid reopening the same container or fixture.",
+        "Apply the state-change workflow to any observed container holding the target.",
+        "Prioritize the active plan's grounded goal over the generic state-change workflow."
+      ],
+      "prior_development_artifacts": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v8",
+      "amended_output_root": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v9"
+    },
+    {
+      "amendment_id": "E12A10",
+      "basis": "Completed E12A9 five-case development smoke; no gold path or formal-test result was inspected.",
+      "changes": [
+        "Persist observed entity-to-room locations in a temporal symbolic map.",
+        "Route an unsatisfied symbolic goal back to the remembered room of its subject entity.",
+        "Pick up a target-bearing container before transport and route it to the remembered heat or cold device location.",
+        "Record entity-memory routing actions and final tracked-entity count as mechanism metrics."
+      ],
+      "prior_development_artifacts": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v9",
+      "amended_output_root": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v10"
+    },
+    {
+      "amendment_id": "E12A11",
+      "basis": "Completed E12A10 five-case development smoke; no gold path or formal-test result was inspected.",
+      "changes": [
+        "When a target-bearing container is already on its required device, activate or wait instead of picking the container up again.",
+        "Exclude the agent from entity-location routing so an explicit agent navigation goal cannot be overridden by a stale prior room."
+      ],
+      "prior_development_artifacts": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v10",
+      "amended_output_root": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v11"
+    },
+    {
+      "amendment_id": "E12A12",
+      "basis": "Completed E12A11 five-case development smoke plus read-only replay of its public actions and observations; no gold path or formal-test result was inspected.",
+      "changes": [
+        "Treat explicit broken-device feedback as persistent symbolic evidence and exclude failed devices from the state-change workflow.",
+        "Recover a target-bearing container from a failed device and route it to the next remembered compatible device.",
+        "Activate or wait on a device before considering redundant placement on that same device.",
+        "Repair an LLM-planned visible_in location when it conflicts with a verified initial entity location, with an explicit audit count."
+      ],
+      "prior_development_artifacts": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v11",
+      "amended_output_root": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v12"
+    },
+    {
+      "amendment_id": "E12A13",
+      "basis": "Completed E12A12 five-case development smoke and read-only replay of its public actions; no gold path or formal-test result was inspected.",
+      "changes": [
+        "Require a target container to be the grammatical action subject for pickup and device-placement rules.",
+        "Prefer a direct pick-up action over a combinatorial move-to-inventory surface form when both are exposed.",
+        "Require the task target to be the action subject for target-to-container transfer.",
+        "Reapply verified location repair as new observations arrive rather than only after the initial plan."
+      ],
+      "prior_development_artifacts": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v12",
+      "amended_output_root": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v13"
+    },
+    {
+      "amendment_id": "E12A14",
+      "basis": "Completed E12A13 five-case development smoke plus read-only replay of a public development trajectory; no gold path or formal-test result was inspected.",
+      "changes": [
+        "Open a verified closed parent container before acquiring the task target or metal pot.",
+        "Acquire the explicit task target as a global manipulation precondition rather than relying on an imperfect generated plan to request it.",
+        "Route to the remembered metal-pot location when the target is carried but the tool is not locally accessible.",
+        "Restrict heat/cold transport containers to portable vessel classes and exclude furniture and fixtures."
+      ],
+      "prior_development_artifacts": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v13",
+      "amended_output_root": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v14"
+    },
+    {
+      "amendment_id": "E12A15",
+      "basis": "Completed E12A14 five-case development smoke; no gold path or formal-test result was inspected.",
+      "changes": [
+        "Treat an explicit target already contained in a portable vessel as acquired so global acquisition cannot remove it from the verified workflow state.",
+        "Match portable-vessel classes by entity tokens so cupboard is not misclassified as cup."
+      ],
+      "prior_development_artifacts": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v14",
+      "amended_output_root": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v15"
+    },
+    {
+      "amendment_id": "E12A16",
+      "basis": "Completed E12A15 five-case development smoke plus read-only replay of a public development trajectory; no gold path or formal-test result was inspected.",
+      "changes": [
+        "Allow repeated wait or wait1 actions only when selected by the verified symbolic state-change workflow.",
+        "Do not classify those bounded temporal advances as no-progress failures or navigation cycles.",
+        "Record the number of workflow temporal-wait actions as a mechanism metric."
+      ],
+      "prior_development_artifacts": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v15",
+      "amended_output_root": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v16"
+    },
+    {
+      "amendment_id": "E12A17",
+      "basis": "Completed E12A16 five-case development smoke; no gold path or formal-test result was inspected.",
+      "changes": [
+        "When the metal-pot location is unknown, inspect an observed closed container through an exact legal open action before attempting blind tool acquisition."
+      ],
+      "prior_development_artifacts": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v16",
+      "amended_output_root": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v17"
+    },
+    {
+      "amendment_id": "E12A18",
+      "basis": "Completed the preregistered 180-episode development matrix and inspected development-only ENSR trajectories; no formal-test result or gold path was inspected.",
+      "changes": [
+        "Reject the exact irreversible action focus on agent for every task.",
+        "Skip a train-procedure step containing an unbound task-target or focus-object placeholder instead of matching only its action operator.",
+        "After both structured planning attempts fail, continue with one audited deterministic fallback subgoal that can use train-derived procedures, verified facts, and exact environment actions.",
+        "Record deterministic fallback-plan use as a mechanism metric and response normalization."
+      ],
+      "prior_development_artifacts": "artifacts/benchmarks/scienceworld/ensr_v2_dev_matrix_v1",
+      "amended_output_root": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v18"
+    },
+    {
+      "amendment_id": "E12A19",
+      "basis": "Completed the E12A18 60-episode development rerun and inspected its four development-only negative terminal trajectories; no formal-test result or gold path was inspected.",
+      "changes": [
+        "Parse ordered focus targets directly from the task description and group conditional answer targets into one alternative stage.",
+        "Expose focus actions only for the current stage and only when the named target is present in the verified visible state.",
+        "Execute a single-target focus stage symbolically, retain LLM choice only for explicit conditional alternatives, and advance the protocol only after positive reward or terminal completion.",
+        "Block every subsequent focus action after the focus protocol is complete and record verified stage advances."
+      ],
+      "prior_development_artifacts": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v18",
+      "amended_output_root": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v19"
+    },
+    {
+      "amendment_id": "E12A20",
+      "basis": "Completed the E12A19 60-episode development matrix, its formal development audit, and development-only targeted replays of high-scoring incomplete melting-point tasks; no formal-test result or gold path was inspected.",
+      "changes": [
+        "Rebuild train-only procedure memory with separate focus-tool and task-target placeholders, retaining all transition provenance.",
+        "Require procedure actions to preserve bound entity tokens and manipulation-subject structure, with an explicit examine-to-look-at surface alias.",
+        "After a verified heating or cooling setup, alternate grounded inspection and thermometer actions without treating their necessary no-change steps as failures.",
+        "Infer an above-threshold or below-threshold answer only from a measured temperature plus the still-observed phase or a verified phase transition, then choose the task-specified answer target.",
+        "Keep deterministic fallback plans under symbolic control instead of accepting an already-satisfied malformed local replan."
+      ],
+      "prior_development_artifacts": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v19",
+      "amended_memory": "artifacts/benchmarks/scienceworld/ensr_memory_v20.json",
+      "amended_output_root": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v20"
+    },
+    {
+      "amendment_id": "E12A21",
+      "basis": "Completed the E12A20 60-episode development matrix and inspected its sole negative terminal conductivity trajectory, then ran development-only targeted conductivity regressions; no formal-test result or gold path was inspected.",
+      "changes": [
+        "Separate train-derived conductivity probe structure from the variation-specific answer-box action so a training box color cannot be copied into the current task.",
+        "Build a role-consistent six-connection circuit from exact legal battery, wire, detector, and task-target endpoints, including alternate ScienceWorld endpoint surface forms.",
+        "Require two bounded waits and an observed detector on/off state before selecting the conductive or nonconductive box stated in the current task.",
+        "Preserve the focused target identity when same-named room and inventory entities coexist, and normalize the environment's unknown-substance action alias.",
+        "Record probe actions, probe waits, and evidence-conditioned terminal moves as mechanism metrics."
+      ],
+      "prior_development_artifacts": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v20",
+      "amended_memory": "artifacts/benchmarks/scienceworld/ensr_memory_v20.json",
+      "targeted_regression_artifacts": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v21_targeted3",
+      "amended_output_root": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v21"
+    },
+    {
+      "amendment_id": "E12A22",
+      "basis": "The frozen E12A21 formal test completed on 2026-09-19 and failed the pre-registered full-success rule. Its task-level outcomes were inspected only to characterize the failed confirmatory result. A22 development is restricted to train/dev, and the original test variations cannot be reused as an unbiased confirmatory set.",
+      "changes": [
+        "Represent plan exhaustion as an uncertainty trigger: if the environment remains nonterminal, request a bounded continuation plan for only the remaining work instead of stopping immediately.",
+        "After evidence-triggered local replanning, force the next non-protected action through the LLM slow path over current legal actions so deterministic controllers cannot overwrite the repair.",
+        "Provide the continuation planner with temporal KG facts, completed subgoals, recent actions, legal actions, train-only memory, and the structural train procedure.",
+        "Record continuation plans, slow-path actions, and continuation recovery counts for mechanism ablation.",
+        "Protect measurement and conductivity protocols from generic slow-path overrides, retaining their evidence-gated controllers."
+      ],
+      "literature_basis": [
+        "SwiftSage (NeurIPS 2023)",
+        "DAVIS (Findings of EMNLP 2025)",
+        "Coarse-to-Fine Grounded Memory (Findings of EMNLP 2025)",
+        "NeSyFS (arXiv:2607.28942)"
+      ],
+      "prior_formal_audit": "artifacts/benchmarks/scienceworld/ensr_v2_test_audit_a21.json",
+      "development_output_root": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v22",
+      "confirmatory_requirement": "Freeze a newly sampled held-out variation set that excludes every E12 train, dev, and original formal-test variation before any A22 confirmatory run."
+    },
+    {
+      "amendment_id": "E12A23",
+      "basis": "The A22c ten-case development regression activated bounded continuation plans but reduced mean score from 26.1 to 17.0 because unconstrained recovery plans selected incorrect entities. A23 uses only train-derived memory plus development trajectories; the original formal-test variations remain excluded from optimization.",
+      "changes": [
+        "Build a room-connectivity knowledge graph automatically from train-memory go transitions and use shortest-path routing for semantic search and delivery.",
+        "Map find-living, find-non-living, find-plant, and longest-lifespan requests to explicit semantic entity constraints before any irreversible focus action.",
+        "Track the verified focused entity through acquisition, room routing, and exact target-box delivery instead of relying on hallucinated plan entities.",
+        "Rank lifespan candidates with an auditable symbolic relation table while keeping the LLM planner and uncertainty-triggered slow path for open-ended planning.",
+        "Record knowledge-graph routing, semantic focus, acquisition, and delivery actions as separate mechanism metrics."
+      ],
+      "prior_development_artifacts": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v22c_targeted",
+      "targeted_output_root": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v23_targeted",
+      "confirmatory_requirement": "A23 must pass development gates before freezing a new held-out set that excludes train, dev, and the original formal-test variations."
+    },
+    {
+      "amendment_id": "E12A23R",
+      "basis": "A23b/c achieved 8/8 success on the targeted semantic-task dev set. The first four episodes of the mixed A23 full-dev run showed that the previously rejected A22 slow path changed unrelated 1-1 behavior, so the run was stopped before interpretation.",
+      "changes": [
+        "Split semantic knowledge-graph control from adaptive continuation and post-replan slow-path control.",
+        "Enable A23 semantic KG control while disabling the globally regressive A22 slow path.",
+        "Preserve A21 behavior for task families outside the four A23 semantic task kinds."
+      ],
+      "targeted_audit": "artifacts/benchmarks/scienceworld/ensr_v2a23_targeted_dev_audit.json",
+      "discarded_partial_output": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v23_full",
+      "amended_output_root": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v23r_full"
+    },
+    "E22D uses only frozen development variations and cannot revise E17.",
+    "The D0/D1 pilot changes only adaptive_slow_path.enabled within the evaluated controller; output roots are isolated."
+  ],
+  "reporting_boundary": "post_E17_development_only_not_confirmatory",
+  "benchmark": {
+    "name": "ScienceWorld",
+    "version": "1.2.3",
+    "simplifications": "",
+    "max_environment_steps": 100
+  },
+  "research_hypothesis": "在相同基础模型、环境步数和模型调用预算下，证据门控神经符号重规划相较最强内部基线提高截断后的官方平均分，并减少无进展重复动作。",
+  "selection": {
+    "salt": "lanternquest-scienceworld-ensr-v3-confirmatory-20260920",
+    "rule": "For every task, exclude every train, dev, and test variation selected by all listed prior protocols. Rank the remaining official test split with SHA256('{salt}|{task_id}|confirmatory_test|{variation}') and take the first variation.",
+    "prior_protocol_ids": [
+      "scienceworld_iper_v0",
+      "scienceworld_iper_auto_obligation_v1",
+      "scienceworld_ensr_v2"
+    ],
+    "prior_selected_variation_overlap": 0,
+    "prior_test_candidates_excluded": 90,
+    "formal_test_variation_count": 30,
+    "formal_test_seed_count": 3,
+    "test_lock": "The selected variations, three seeds, methods, model profile, budgets, implementation, memory, and baseline are frozen before the first E13 call."
+  },
+  "model": {
+    "profiles": [
+      "deepseek_v4_pro_external",
+      "glm_5_3_external",
+      "gpt_6_astra_external",
+      "kimi_k2_6_external"
+    ],
+    "parameter_training": false,
+    "one_variable_rule": "Only the frozen provider/model profile changes between matrices.",
+    "structured_output_policy": "Use the provider-supported structured mode fixed before formal testing."
+  },
+  "runs": {
+    "formal_seeds": [
+      13
+    ],
+    "max_model_calls_per_episode": 100,
+    "max_retrieval_calls_per_episode": 8,
+    "max_planner_calls_per_episode": 4,
+    "initial_retrieval_k": 5,
+    "obligation_retrieval_k": 3,
+    "candidate_action_limit": 12,
+    "automatic_obligation_policy": "unsupported_or_stalled",
+    "max_automatic_obligations_per_episode": 3,
+    "failure_policy": "超时、接口错误、解析失败、非法动作和环境异常全部保留并分类，不得从分母删除。"
+  },
+  "adaptive_slow_path": {
+    "enabled": false,
+    "max_continuation_plans_per_episode": 2,
+    "force_llm_after_local_replan": true,
+    "protected_task_ids": [
+      "2-2",
+      "2-3",
+      "3-3",
+      "3-4"
+    ]
+  },
+  "knowledge_graph_semantic_control": {
+    "enabled": true,
+    "task_kinds": [
+      "find-living-thing",
+      "find-non-living-thing",
+      "find-plant",
+      "lifespan-longest-lived"
+    ],
+    "navigation_graph_source": "train-memory verified go transitions",
+    "irreversible_focus_policy": "semantic entity constraint before focus",
+    "delivery_policy": "verified focus, acquisition, graph routing, exact box action"
+  },
+  "methods": [
+    {
+      "method_id": "iper_rag",
+      "role": "E11F证据义务控制器；共享扩展后的训练知识库。"
+    },
+    {
+      "method_id": "ensr_v2",
+      "role": "证据门控神经符号重规划：分层子目标、时序符号状态、转移验证、义务条件检索和局部重规划。"
+    }
+  ],
+  "primary_comparison": "ensr_v2 - strongest_internal_baseline",
+  "primary_baseline_selection": "正式测试前按完整dev矩阵的截断官方平均分选择B4或IPER；并列时按成功率选择，再并列时按method_id固定排序。",
+  "primary_baseline": "iper_rag",
+  "primary_metrics": [
+    "clipped official average score",
+    "task success rate"
+  ],
+  "secondary_metrics": [
+    "environment steps",
+    "no-progress action rate",
+    "invalid action count",
+    "model calls",
+    "retrieval calls",
+    "input/output tokens",
+    "wall-clock latency",
+    "failure category"
+  ],
+  "mechanism_metrics": [
+    "subgoal completion precision",
+    "verified transition coverage",
+    "obligation trigger count by source",
+    "retrieval new-fact yield",
+    "local replanning recovery rate",
+    "contradictory fact rejection count"
+  ],
+  "development_gates": [
+    "All 72 D0/D4 episodes and both model/action prefixes are complete.",
+    "Triggered-case mean clipped score difference is greater than zero.",
+    "Task-success difference is nonnegative for every profile.",
+    "At least two of three profiles have positive triggered-case score direction.",
+    "Verified repair progress is at least 50% of accepted repairs.",
+    "No candidate parse, ID, action replay, model replay, provider, or environment failure.",
+    "D4/D0 logical model-call ratio is at most 1.5."
+  ],
+  "formal_success_rule": {
+    "full_success": "相对最强内部基线的任务级配对bootstrap 95%区间在官方平均分上下界大于0，且成功率点估计不下降。",
+    "promising_only": "平均分点估计为正但95%区间跨0；此时只能报告趋势并预注册扩大样本，不能声称显著涨点。",
+    "failure": "平均分点估计不为正或成功率下降；保留结果，依据错误类型提出新版本，使用新的未见test复验。"
+  },
+  "planned_ablations_on_dev": [
+    "ensr_v2_without_hierarchical_subgoals",
+    "ensr_v2_without_symbolic_transition_verifier",
+    "ensr_v2_without_obligation_conditioned_retrieval",
+    "ensr_v2_accumulating_memory_instead_of_replacement"
+  ],
+  "selected_variations": [
+    {
+      "task_id": "6-3",
+      "task_name": "chemistry-mix-paint-tertiary-color",
+      "train_variations": [],
+      "dev_variations": [
+        25
+      ],
+      "test": 25
+    },
+    {
+      "task_id": "5-2",
+      "task_name": "grow-fruit",
+      "train_variations": [],
+      "dev_variations": [
+        68
+      ],
+      "test": 68
+    },
+    {
+      "task_id": "9-1",
+      "task_name": "inclined-plane-determine-angle",
+      "train_variations": [],
+      "dev_variations": [
+        110
+      ],
+      "test": 110
+    },
+    {
+      "task_id": "10-1",
+      "task_name": "mendelian-genetics-known-plant",
+      "train_variations": [],
+      "dev_variations": [
+        80
+      ],
+      "test": 80
+    },
+    {
+      "task_id": "10-2",
+      "task_name": "mendelian-genetics-unknown-plant",
+      "train_variations": [],
+      "dev_variations": [
+        247,
+        256
+      ],
+      "test": 247
+    },
+    {
+      "task_id": "6-1",
+      "task_name": "chemistry-mix",
+      "train_variations": [],
+      "dev_variations": [
+        18
+      ],
+      "test": 18
+    },
+    {
+      "task_id": "6-2",
+      "task_name": "chemistry-mix-paint-secondary-color",
+      "train_variations": [],
+      "dev_variations": [
+        19
+      ],
+      "test": 19
+    },
+    {
+      "task_id": "1-2",
+      "task_name": "melt",
+      "train_variations": [],
+      "dev_variations": [
+        20
+      ],
+      "test": 20
+    },
+    {
+      "task_id": "8-1",
+      "task_name": "identify-life-stages-1",
+      "train_variations": [],
+      "dev_variations": [
+        6
+      ],
+      "test": 6
+    },
+    {
+      "task_id": "9-3",
+      "task_name": "inclined-plane-friction-unnamed-surfaces",
+      "train_variations": [],
+      "dev_variations": [
+        111
+      ],
+      "test": 111
+    },
+    {
+      "task_id": "3-1",
+      "task_name": "power-component",
+      "train_variations": [],
+      "dev_variations": [
+        10
+      ],
+      "test": 10
+    }
+  ],
+  "confirmatory_basis": {
+    "source_protocol_id": "scienceworld_ensr_v2",
+    "development_audit": "artifacts/benchmarks/scienceworld/ensr_v2_dev_audit_a23r.json",
+    "development_score_difference": {
+      "paired_task_count": 30,
+      "point_estimate": 18.866666666666667,
+      "ci95_low": 6.966666666666667,
+      "ci95_high": 30.95,
+      "bootstrap_samples": 20000,
+      "bootstrap_seed": 12026
+    },
+    "development_success_difference": {
+      "paired_task_count": 30,
+      "point_estimate": 0.2,
+      "ci95_low": 0.05,
+      "ci95_high": 0.36666666666666664,
+      "bootstrap_samples": 20000,
+      "bootstrap_seed": 12027
+    },
+    "reason": "The original E12 formal test was retained as a failed confirmatory result. Post-formal development therefore requires a disjoint held-out test."
+  },
+  "cross_model_design": {
+    "episode_count_per_model": 90,
+    "task_count": 30,
+    "seed": 13,
+    "methods": [
+      "b4_sequential_planner",
+      "iper_rag",
+      "ensr_v2"
+    ],
+    "anchor_reuse": "Reuse the byte-identical seed-13 E13 Qwen3-235B episodes; do not rerun or selectively replace them.",
+    "primary_robustness_rule": "Report within-model ENSR minus IPER paired task effects for every model. The method is model-robust when score direction is positive and success rate does not decrease in at least four of five usable BIT models.",
+    "availability_exclusions": {
+      "DeepSeek-V3.2": "BIT upstream connection unavailable during both output-mode probes.",
+      "deepseek-v4-flash": "BIT Responses service returned a chat-template server error.",
+      "qwen2.5-14B": "BIT Responses route returned HTTP 404."
+    },
+    "non_generation_services_excluded": [
+      "PaddleOCR-VL-0.9B",
+      "bge-m3",
+      "cosyvoice-300m-sft",
+      "cosyvoice2-0.5b",
+      "faster-whisper-large-v3",
+      "jina-reranker-v2-base-multilingual",
+      "nomic-embed-text-v1.5",
+      "openpangu-embedded-7b-v1.1",
+      "qwen3-embedding-0.6b",
+      "sensevoicesmall",
+      "tts-1"
+    ],
+    "external_provider_followup": "DeepSeek flash and v4-pro passed simple compatibility probes but require a separate costed freeze before full external-provider execution."
+  },
+  "external_provider_design": {
+    "task_count": 30,
+    "seed": 13,
+    "methods": [
+      "iper_rag",
+      "ensr_v2"
+    ],
+    "episode_count_per_model": 60,
+    "total_planned_episode_count": 240,
+    "profile_count": 4,
+    "profiles": [
+      "deepseek_v4_pro_external",
+      "glm_5_3_external",
+      "gpt_6_astra_external",
+      "kimi_k2_6_external"
+    ],
+    "required_directional_pass_profiles": 3,
+    "source_case_policy": "Reuse the E14 held-out cases as a provider/model replication; do not claim this extension as a new algorithm-level confirmatory split.",
+    "primary_robustness_rule": "For every profile report paired ENSR minus IPER effects. External-provider robustness passes when clipped-score direction is positive and task-success rate does not decrease in at least three of the four frozen usable profiles.",
+    "provider_specific_strong_success_rule": "The paired 95% bootstrap lower bound for clipped score is above zero and the task-success point estimate does not decrease.",
+    "failure_policy": "Retain provider, parser, timeout, and environment failures in the intent-to-treat denominator.",
+    "data_boundary": "Public ScienceWorld data only; no E20/LanternQuest data.",
+    "availability_exclusions": {}
+  },
+  "e22_development_design": {
+    "profiles": [
+      "deepseek_v4_pro_external",
+      "glm_5_3_external",
+      "kimi_k2_6_external"
+    ],
+    "methods": [
+      "ensr_v2"
+    ],
+    "seed": 13,
+    "case_keys": [
+      "6-3:25",
+      "5-2:68",
+      "9-1:110",
+      "10-1:80",
+      "10-2:247",
+      "10-2:256",
+      "6-1:18",
+      "6-2:19",
+      "1-2:20",
+      "8-1:6",
+      "9-3:111",
+      "3-1:10"
+    ],
+    "episode_count_per_profile": 12,
+    "shared_model_prefix_requirement": "Replay every validated D0 model response by exact canonical request hash.",
+    "shared_action_prefix_requirement": "Replay every D0 environment action and verify each observation hash and score before candidate_ranking divergence.",
+    "reporting_boundary": "post_E17_development_only_not_confirmatory",
+    "arm_id": "d0_trace_capture",
+    "trace_mode": "record",
+    "selection": {
+      "salt": "lanternquest-scienceworld-e22d-d4-development-20260925",
+      "rule": "For each target task, remove every official dev variation already present in a saved ScienceWorld episode filename, rank the remainder by SHA256('{salt}|{task_id}|dev|{variation}'), and take one. If a task has no unseen dev variation, fill the 12-case quota with the globally earliest remaining ranked candidate from the target task set.",
+      "target_task_ids": [
+        "6-3",
+        "5-2",
+        "9-1",
+        "10-1",
+        "10-2",
+        "6-1",
+        "6-2",
+        "1-2",
+        "8-1",
+        "8-2",
+        "9-3",
+        "3-1"
+      ],
+      "tasks_without_unseen_dev": [
+        "8-2"
+      ],
+      "selected_case_keys": [
+        "6-3:25",
+        "5-2:68",
+        "9-1:110",
+        "10-1:80",
+        "10-2:247",
+        "10-2:256",
+        "6-1:18",
+        "6-2:19",
+        "1-2:20",
+        "8-1:6",
+        "9-3:111",
+        "3-1:10"
+      ],
+      "observed_dev_variations": {
+        "6-3": [
+          19,
+          21
+        ],
+        "5-2": [
+          86,
+          90
+        ],
+        "9-1": [
+          95,
+          104
+        ],
+        "10-1": [
+          63,
+          85
+        ],
+        "10-2": [
+          306,
+          328
+        ],
+        "6-1": [
+          16,
+          21,
+          22
+        ],
+        "6-2": [
+          23,
+          25
+        ],
+        "1-2": [
+          17,
+          18
+        ],
+        "8-1": [
+          7,
+          8
+        ],
+        "8-2": [
+          4,
+          5
+        ],
+        "9-3": [
+          81,
+          96
+        ],
+        "3-1": [
+          12,
+          14
+        ]
+      }
+    }
+  },
+  "controlled_residual_repair": {
+    "enabled": false,
+    "max_repair_requests_per_episode": 1,
+    "max_repair_actions": 3
+  },
+  "verified_transition_graph_repair": {
+    "enabled": false,
+    "max_rank_requests_per_episode": 1,
+    "max_repair_actions": 3,
+    "max_candidates": 8,
+    "max_search_depth": 1,
+    "candidate_source": "current legal actions plus stable exact-action effects from train-only memory",
+    "llm_output": "one candidate_id from a schema enum",
+    "negative_constraint_policy": "block failed symbolic-state/action edges",
+    "execution_policy": "execute one edge, observe, verify, and search again",
+    "irreversible_policy": "no conditional focus choice unless exactly one evidence-admitted target remains"
+  },
+  "freeze": {
+    "frozen_at": "2026-09-25T04:46:09.135572+00:00",
+    "salt": "lanternquest-scienceworld-e22d-d4-development-20260925",
+    "hashes": {
+      "configs/scienceworld_protocol_e22d_d3_trace_control_v1.json": "1712e760d5314cb701393f40d7431e7ed7947163901e0a60a14c842e8bb85d84",
+      "artifacts/benchmarks/scienceworld/task_catalog.json": "d2a459a0078204863da9755f85e01ed1f3e830222137dbb61e2e4e04d147a512",
+      "artifacts/benchmarks/scienceworld/ensr_memory_v20.json": "ddc5f7c45703288518d88299258222fd4ec63edffae827d5572293dbfdf6e627",
+      "configs/scienceworld_external_provider_profiles_v1_frozen.json": "8c0336a5412ec190cdc913ac6f4136ab055c38767c613b5b2e26f4a1e04c9988",
+      "src/lanternquest/verified_repair.py": "62a1aa0ece03975e24d26359e2c9dd888dcb355f65a1b9d71a2ba447e695eb7f",
+      "src/lanternquest/model_trace.py": "fb4e5c6fa32f6ce8516a21b09ecb84a964991f9ac2e7807c84677e1043328f67",
+      "src/lanternquest/llm.py": "e0994ffac6a1e0c9e16f1077b56878641134c107734d55c95b1971fce67cc208",
+      "scripts/scienceworld_ensr_harness.py": "708588d5dc9eb3cb94861f97fc67e84a306bb31d2f1b6b589e2e55d37f727b21",
+      "scripts/run_scienceworld_ensr_experiment.py": "9b236d0babb00bf377859f93e7321eb384a6a110692dfc76cd80fc4f5e661912"
+    },
+    "post_freeze_rule": "Do not change cases, prompts, search limits, validation rules, memory, or budgets after the first D4 provider call."
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "schema_version": "1.0",
+  "audit_date": "2026-09-17",
+  "local_machine": {
+    "gpu": "NVIDIA GeForce RTX 2070",
+    "vram_bytes": 8589934592,
+    "workspace_free_bytes_at_audit": 215607358464
+  },
+  "benchmarks": [
+    {
+      "experiment_id": "E30",
+      "name": "MC-Search",
+      "code": {
+        "url": "https://github.com/YennNing/MC-Search",
+        "commit": "da9fe096592ec3555b3d3c9afe284c939c257458",
+        "license": "MIT"
+      },
+      "dataset": {
+        "url": "https://huggingface.co/datasets/YennNing/MC-Search",
+        "revision": "657a8c512287f7e231283f640624acd54e712165",
+        "current_tree_bytes": 8707354023,
+        "repository_used_storage_bytes": 16460237142,
+        "knowledge_base_embedding_archive_bytes": 4427976682,
+        "declared_license": null,
+        "gated": false,
+        "rows": 3333,
+        "image_knowledge_base_count": 10953,
+        "document_knowledge_base_count": 14037
+      },
+      "retriever_weight": {
+        "name": "BAAI/bge-visualized Visualized_base_en_v1.5.pth",
+        "bytes": 392860018
+      },
+      "official_backends": [
+        "GPT API",
+        "Gemini API",
+        "InternVL3.5-8B",
+        "Qwen2-VL-7B-Instruct"
+      ],
+      "assessment": {
+        "storage_feasible": true,
+        "official_local_bfloat16_backend_feasible_on_8gb_vram": false,
+        "api_backend_feasible_after_credentials": true,
+        "result": "数据可在本机存放；正式运行需先确认数据许可并配置冻结的多模态 API 模型，或使用更大显存的 CUDA 设备。"
+      },
+      "source_urls": [
+        "https://github.com/YennNing/MC-Search",
+        "https://huggingface.co/api/datasets/YennNing/MC-Search/tree/main?recursive=true&expand=true",
+        "https://huggingface.co/api/models/BAAI/bge-visualized/tree/main?recursive=true&expand=true"
+      ]
+    },
+    {
+      "experiment_id": "E40",
+      "name": "GFPDR / Procedural Questions",
+      "code": {
+        "url": "https://github.com/YeZhenqi/GFPDR",
+        "commit": "0323a8fbfa34b6f0911ee706cb2e3e86951a8bde",
+        "declared_license": null,
+        "license_file_present": false
+      },
+      "dataset": {
+        "url": "https://huggingface.co/datasets/yzq777/Procedural_Questions",
+        "revision": "2754e63b5190ed71ddb96f1d6ed0c187cf25660d",
+        "current_tree_bytes": 1384877871,
+        "repository_used_storage_bytes": 1690795635,
+        "declared_license": null,
+        "gated": false,
+        "split_rows": {
+          "train": 4500,
+          "dev": 500,
+          "test": 500
+        }
+      },
+      "released_checkpoint": {
+        "url": "https://huggingface.co/yzq777/GFPDR",
+        "revision": "749450e7d784b0a84a758a01b6ae71bb054ea4aa",
+        "files_other_than_gitattributes": 0,
+        "usable": false
+      },
+      "training_recipe": {
+        "platform_in_release": "Linux + CUDA 11.8",
+        "python": "3.10",
+        "torch": "2.2.2+cu118",
+        "epochs": 20,
+        "train_batch_size_per_gpu": 1,
+        "gradient_accumulation_steps": 8,
+        "automatic_mixed_precision": true,
+        "hardcoded_device": "cuda"
+      },
+      "assessment": {
+        "storage_feasible": true,
+        "exact_checkpoint_reproduction_ready": false,
+        "training_on_current_windows_rtx2070_guaranteed": false,
+        "ascend_drop_in_compatible": false,
+        "result": "数据可存放，但发布 checkpoint 为空；在许可证、checkpoint 或可复现训练环境解决前，不产生正式对比结果。优先使用 CUDA Linux 设备，Ascend 需要额外移植 DGL、PyG 和 CUDA 硬编码。"
+      },
+      "source_urls": [
+        "https://github.com/YeZhenqi/GFPDR",
+        "https://huggingface.co/api/datasets/yzq777/Procedural_Questions/tree/main?recursive=true&expand=true",
+        "https://huggingface.co/api/models/yzq777/GFPDR/tree/main?recursive=true&expand=true"
+      ]
+    }
+  ]
+}

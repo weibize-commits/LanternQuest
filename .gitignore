@@ -1,0 +1,13 @@
+.env
+.venv/
+node_modules/
+dist/
+artifacts/
+models/
+*.py[cod]
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+.DS_Store
+Thumbs.db
+*.tsbuildinfo

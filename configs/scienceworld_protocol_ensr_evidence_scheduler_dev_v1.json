@@ -1,0 +1,258 @@
+{
+  "schema_version": "1.0",
+  "protocol_id": "scienceworld_ensr_evidence_scheduler_dev_v1",
+  "experiment_id": "E23",
+  "status": "development_mechanism_frozen",
+  "created_at": "2026-09-26T03:31:32.259453+00:00",
+  "reporting_boundary": "development_mechanism_test_only_not_confirmatory",
+  "selection_rule": "Select the 20 frozen E16 full-control development episodes with the largest original obligation-retrieval counts. Break ties by numeric task ID and variation. Scores and success labels are not used for selection.",
+  "source_protocol_sha256": "98f09d8d5397b80e0e632b2433c46c9b8e3bb0a0fb927de7759da57f07259474",
+  "replay_audit_sha256": "bbe82f149d43a42609b7af1abc5078a125356cb7cb94c3b446ad47e78efce0ec",
+  "model_profiles_sha256": "d56191fd865ef1c2e3a838e601c742898cad8a5634c46f109c413cb58357e442",
+  "memory_sha256": "d08d1ca87741b1e43d45680529de6ed7737a543ce6e8d09b6fca014bb102fb3e",
+  "model_profile": "bit_qwen3_32b_clean",
+  "split": "dev",
+  "seed": 13,
+  "case_count_per_arm": 20,
+  "arm_count": 2,
+  "total_episode_count": 40,
+  "benchmark": {
+    "name": "ScienceWorld",
+    "version": "1.2.3",
+    "simplifications": "",
+    "max_environment_steps": 100
+  },
+  "runs": {
+    "formal_seeds": [
+      13
+    ],
+    "max_model_calls_per_episode": 100,
+    "max_retrieval_calls_per_episode": 8,
+    "max_planner_calls_per_episode": 4,
+    "initial_retrieval_k": 5,
+    "obligation_retrieval_k": 3,
+    "candidate_action_limit": 12,
+    "automatic_obligation_policy": "unsupported_or_stalled",
+    "max_automatic_obligations_per_episode": 3,
+    "failure_policy": "Retain and classify every timeout, adapter error, parse failure, invalid action, and environment failure. Never remove these episodes from a denominator.",
+    "baseline_candidate_action_limit": 12
+  },
+  "adaptive_slow_path": {
+    "enabled": false,
+    "max_continuation_plans_per_episode": 2,
+    "force_llm_after_local_replan": true,
+    "protected_task_ids": [
+      "2-2",
+      "2-3",
+      "3-3",
+      "3-4"
+    ]
+  },
+  "knowledge_graph_semantic_control": {
+    "enabled": true,
+    "task_kinds": [
+      "find-living-thing",
+      "find-non-living-thing",
+      "find-plant",
+      "lifespan-longest-lived"
+    ],
+    "navigation_graph_source": "train-memory verified go transitions",
+    "irreversible_focus_policy": "semantic entity constraint before focus",
+    "delivery_policy": "verified focus, acquisition, graph routing, exact box action"
+  },
+  "model": {
+    "profiles": [
+      "bit_qwen3_32b_clean"
+    ],
+    "profile_set": "configs/scienceworld_clean_adapter_profiles_v1.json",
+    "parameter_training": false
+  },
+  "selected_variations": [
+    {
+      "task_id": "1-1",
+      "task_name": "boil",
+      "dev_variations": [
+        19
+      ]
+    },
+    {
+      "task_id": "1-2",
+      "task_name": "melt",
+      "dev_variations": [
+        18
+      ]
+    },
+    {
+      "task_id": "1-3",
+      "task_name": "freeze",
+      "dev_variations": [
+        20
+      ]
+    },
+    {
+      "task_id": "2-1",
+      "task_name": "use-thermometer",
+      "dev_variations": [
+        383,
+        399
+      ]
+    },
+    {
+      "task_id": "2-2",
+      "task_name": "measure-melting-point-known-substance",
+      "dev_variations": [
+        243
+      ]
+    },
+    {
+      "task_id": "3-1",
+      "task_name": "power-component",
+      "dev_variations": [
+        12,
+        14
+      ]
+    },
+    {
+      "task_id": "4-4",
+      "task_name": "find-animal",
+      "dev_variations": [
+        204
+      ]
+    },
+    {
+      "task_id": "5-1",
+      "task_name": "grow-plant",
+      "dev_variations": [
+        79
+      ]
+    },
+    {
+      "task_id": "5-2",
+      "task_name": "grow-fruit",
+      "dev_variations": [
+        86,
+        90
+      ]
+    },
+    {
+      "task_id": "6-1",
+      "task_name": "chemistry-mix",
+      "dev_variations": [
+        16,
+        21
+      ]
+    },
+    {
+      "task_id": "6-2",
+      "task_name": "chemistry-mix-paint-secondary-color",
+      "dev_variations": [
+        23,
+        25
+      ]
+    },
+    {
+      "task_id": "7-2",
+      "task_name": "lifespan-shortest-lived",
+      "dev_variations": [
+        91
+      ]
+    },
+    {
+      "task_id": "8-2",
+      "task_name": "identify-life-stages-2",
+      "dev_variations": [
+        5
+      ]
+    },
+    {
+      "task_id": "9-1",
+      "task_name": "inclined-plane-determine-angle",
+      "dev_variations": [
+        104
+      ]
+    },
+    {
+      "task_id": "10-1",
+      "task_name": "mendelian-genetics-known-plant",
+      "dev_variations": [
+        85
+      ]
+    }
+  ],
+  "evidence_debt_scheduler": {
+    "enabled": false,
+    "retrieval_threshold": 0.58,
+    "state_space": [
+      "unknown",
+      "contradicted",
+      "resolved"
+    ],
+    "priority_terms": [
+      "failure severity",
+      "unresolved fact uncertainty",
+      "candidate evidence novelty",
+      "repeated-debt escalation",
+      "remaining retrieval budget"
+    ],
+    "policy": "Retrieve only for critical debt or priority at or above the frozen threshold. Reuse active evidence when candidates are redundant or the expected information gain is below threshold."
+  },
+  "arms": [
+    {
+      "arm_id": "full_control",
+      "settings": {
+        "enable_hierarchical_subgoals": true,
+        "enable_symbolic_transition_verifier": true,
+        "enable_obligation_conditioned_retrieval": true,
+        "enable_evidence_debt_scheduler": false,
+        "evidence_debt_retrieval_threshold": 0.58,
+        "fragment_memory_policy": "replace"
+      }
+    },
+    {
+      "arm_id": "evidence_debt_scheduler",
+      "settings": {
+        "enable_hierarchical_subgoals": true,
+        "enable_symbolic_transition_verifier": true,
+        "enable_obligation_conditioned_retrieval": true,
+        "enable_evidence_debt_scheduler": true,
+        "evidence_debt_retrieval_threshold": 0.58,
+        "fragment_memory_policy": "replace"
+      }
+    }
+  ],
+  "primary_comparison": "evidence_debt_scheduler_minus_full_control",
+  "primary_metrics": [
+    "mean_clipped_score",
+    "task_success_rate"
+  ],
+  "mechanism_metrics": [
+    "obligation_retrieval_calls",
+    "model_calls",
+    "input_tokens",
+    "verified_transition_rate",
+    "evidence_scheduler_retrieval_count",
+    "evidence_scheduler_reuse_count",
+    "evidence_debt_resolved_count"
+  ],
+  "development_gates": {
+    "complete_pairing": true,
+    "score_noninferiority_margin": -2.0,
+    "success_rate_must_not_decrease": true,
+    "obligation_retrieval_reduction_at_least": 0.25,
+    "verified_transition_rate_drop_at_most": 0.05,
+    "model_call_ratio_at_most": 1.1,
+    "uncontrolled_failure_count": 0
+  },
+  "statistics": {
+    "unit": "episode with task-clustered sensitivity analysis",
+    "estimator": "paired scheduler-minus-control difference",
+    "interval": "20,000-sample paired bootstrap 95% confidence interval",
+    "testing_role": "development gate only"
+  },
+  "interpretation_boundary": "E23 tests whether evidence-debt scheduling reduces redundant retrieval without materially degrading task performance. It cannot revise E13 or support a held-out superiority claim.",
+  "freeze": {
+    "frozen_at": "2026-09-26T03:31:32.259453+00:00",
+    "implementation_sha256": "a2284ac7d996669b1fdba5f5e7cf1a8eab88f7e33ba0da1ac42d952fee0cda88",
+    "post_freeze_rule": "Do not change selected cases, threshold, weights, budgets, model profile, memory, prompts, or gates after the first E23 provider call."
+  }
+}

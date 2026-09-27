@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0",
+  "analysis_id": "e27_source_group_held_out_sensitivity_v1",
+  "status": "frozen_before_execution",
+  "frozen_at": "2026-09-27T08:09:32.555134+00:00",
+  "analysis_role": "exploratory_source_group_generalization_sensitivity",
+  "source_groups": [
+    "N001",
+    "田野06",
+    "田野07"
+  ],
+  "split_rule": "three deterministic folds, each holding out one complete source group",
+  "methods": [
+    "early ontology-constrained BERT",
+    "shared-encoder joint BERT"
+  ],
+  "primary_metrics": [
+    "exact entity micro F1",
+    "end-to-end relation micro F1"
+  ],
+  "reporting_boundary": "source-group-held-out within the three-source private corpus; not external validation or a state-of-the-art ranking",
+  "hyperparameters": {
+    "seed": 27021,
+    "entity_epochs": 14,
+    "relation_epochs": 12,
+    "joint_epochs": 16,
+    "batch_size_early": 12,
+    "batch_size_joint": 4,
+    "learning_rate": 3e-05,
+    "max_length": 192,
+    "negative_ratio": 2,
+    "relation_threshold": 0.3,
+    "relation_loss_weight": 1.0
+  },
+  "inputs": {
+    "gold": "artifacts\\benchmarks\\e27_ie\\formal_gold_v1\\E27_expert_adjudicated_gold_frozen.jsonl",
+    "gold_sha256": "722fb803abfa46029e6b8df788a32add9b6bf3fd10abf8b71890deccd9d4f3e9",
+    "authorization": "artifacts\\governance\\LanternQuest_local_model_training_authorization_v2.json",
+    "authorization_sha256": "1ffbaa6c1a323da9b9197e481cb7f58eeb849f813ffbd0fcc8fc15512f4e6687",
+    "rights_registry": "annotations\\review\\source_rights_review_v2_training_authorized.csv",
+    "rights_registry_sha256": "196dad4c438f57eca2890e28b743bc4cbba2e41a3a4cbb6639041af6eab2017f"
+  }
+}

@@ -1,0 +1,6 @@
+diagnostic,relation_f1,note
+BERT neural-only,0.16591928251121077,unrestricted candidate construction
+Post-hoc ontology mask,0.23756019261637237,mask after classification
+Early ontology constraint,0.3224299065420561,compatible candidates before training and inference
+Gold entity endpoints,0.6123595505617978,diagnostic only
+Evidence gate accuracy effect,0.0,audit condition; no additional F1

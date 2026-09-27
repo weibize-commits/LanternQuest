@@ -1,0 +1,141 @@
+{
+  "schema_version": "1.0",
+  "protocol_id": "scienceworld_iper_v0",
+  "experiment_id": "E11",
+  "reporting_boundary": "formal_machine_result",
+  "benchmark": {
+    "name": "ScienceWorld",
+    "version": "1.2.3",
+    "release_commit": "5d569f9e4ff43ab6242a3622f7e25f9bc367ccd1",
+    "python": "3.10.11",
+    "java": "Microsoft OpenJDK 17.0.20.1",
+    "simplifications": "",
+    "max_environment_steps": 100
+  },
+  "claim_boundary": "该实验只检验文本环境中的动态程序规划、训练技能证据利用和成本；不检验真实视觉理解、文化传承或用户意图保持。",
+  "selection": {
+    "official_split_counts": {
+      "train": 3592,
+      "dev": 1796,
+      "test": 1819
+    },
+    "rule": "对每个 task_id 和 split，将所有官方 variation 按 SHA256('lanternquest-scienceworld-v0|{task_id}|{split}|{variation}') 排序，选哈希最小者。",
+    "reason": "在任何方法结果产生前固定覆盖全部30类任务的资源受限子集；不得依据成功率更换样例。",
+    "pilot_reporting": "开发集仅用于调试和预算冻结，不进入论文主结果。",
+    "formal_reporting": "正式结果限定为预先选定的30个官方测试 variation，不声称等同完整1819例测试集。"
+  },
+  "runs": {
+    "formal_seeds": [11, 29, 47],
+    "model_temperature": 0.0,
+    "max_model_calls_per_episode": 100,
+    "max_retrieval_calls_per_episode": 8,
+    "initial_retrieval_k": 5,
+    "obligation_retrieval_k": 3,
+    "failure_policy": "超时、环境异常、无法解析输出和非法动作均保留并分类；不从分母删除。"
+  },
+  "information_controls": {
+    "shared": [
+      "任务描述",
+      "当前观察",
+      "当前物品栏",
+      "当前合法动作候选",
+      "同一训练技能库",
+      "相同环境步数与模型调用上限"
+    ],
+    "forbidden": [
+      "测试 variation 的 gold action sequence",
+      "测试奖励以外的隐藏状态",
+      "开发阶段查看测试输出后改选 variation",
+      "只向 IPER-RAG 提供的人工任务规则"
+    ],
+    "training_skill_source": "每个任务仅使用下表预先选定的一个官方 train variation 的 gold trajectory；技能库构建产物向所有方法开放。"
+  },
+  "methods": [
+    {
+      "method_id": "random_sanity",
+      "role": "环境下界与计分校验",
+      "paper_comparator": false
+    },
+    {
+      "method_id": "gold_oracle",
+      "role": "环境上界与可解性校验，绝不作为可部署方法",
+      "paper_comparator": false
+    },
+    {
+      "method_id": "b0_full_skills",
+      "role": "向模型提供全部冻结训练技能的全资料对照",
+      "paper_comparator": true
+    },
+    {
+      "method_id": "b1_static_rag",
+      "role": "按初始任务描述一次性检索 top-k 技能，随后不再检索",
+      "paper_comparator": true
+    },
+    {
+      "method_id": "b2_task_graph_rag",
+      "role": "基于训练技能的任务—对象—动作关系图检索",
+      "paper_comparator": true
+    },
+    {
+      "method_id": "b4_sequential_planner",
+      "role": "固定检索后使用与 IPER-RAG 相同的显式状态、证据校验与规划预算",
+      "paper_comparator": true
+    },
+    {
+      "method_id": "iper_rag",
+      "role": "部分路径产生证据义务并在冻结预算内触发针对性再检索",
+      "paper_comparator": true
+    }
+  ],
+  "primary_metrics": [
+    "official average score（负分按0截断）",
+    "task success rate（环境终止且最终分数大于0）"
+  ],
+  "secondary_metrics": [
+    "environment steps",
+    "invalid action count",
+    "retrieval calls",
+    "model calls",
+    "input/output tokens",
+    "wall-clock latency",
+    "failure category"
+  ],
+  "analysis": {
+    "unit": "task_id；每个 task_id 内先汇总三个运行种子",
+    "comparison": "IPER-RAG 与 B4 为预先指定的关键配对比较",
+    "interval": "按30个 task_id 配对重采样的95% bootstrap区间",
+    "seed_note": "三个种子用于稳定性估计，不作为额外独立样本。"
+  },
+  "selected_variations": [
+    {"task_id": "1-1", "task_name": "boil", "train": 5, "dev": 18, "test": 29},
+    {"task_id": "1-4", "task_name": "change-the-state-of-matter-of", "train": 6, "dev": 17, "test": 28},
+    {"task_id": "6-1", "task_name": "chemistry-mix", "train": 13, "dev": 19, "test": 26},
+    {"task_id": "6-2", "task_name": "chemistry-mix-paint-secondary-color", "train": 0, "dev": 19, "test": 27},
+    {"task_id": "6-3", "task_name": "chemistry-mix-paint-tertiary-color", "train": 13, "dev": 22, "test": 30},
+    {"task_id": "4-4", "task_name": "find-animal", "train": 9, "dev": 202, "test": 226},
+    {"task_id": "4-1", "task_name": "find-living-thing", "train": 71, "dev": 167, "test": 286},
+    {"task_id": "4-2", "task_name": "find-non-living-thing", "train": 96, "dev": 181, "test": 242},
+    {"task_id": "4-3", "task_name": "find-plant", "train": 73, "dev": 181, "test": 257},
+    {"task_id": "1-3", "task_name": "freeze", "train": 4, "dev": 15, "test": 27},
+    {"task_id": "5-2", "task_name": "grow-fruit", "train": 29, "dev": 88, "test": 121},
+    {"task_id": "5-1", "task_name": "grow-plant", "train": 40, "dev": 87, "test": 97},
+    {"task_id": "8-1", "task_name": "identify-life-stages-1", "train": 5, "dev": 8, "test": 13},
+    {"task_id": "8-2", "task_name": "identify-life-stages-2", "train": 3, "dev": 5, "test": 6},
+    {"task_id": "9-1", "task_name": "inclined-plane-determine-angle", "train": 71, "dev": 107, "test": 159},
+    {"task_id": "9-2", "task_name": "inclined-plane-friction-named-surfaces", "train": 602, "dev": 762, "test": 1137},
+    {"task_id": "9-3", "task_name": "inclined-plane-friction-unnamed-surfaces", "train": 78, "dev": 111, "test": 129},
+    {"task_id": "7-1", "task_name": "lifespan-longest-lived", "train": 37, "dev": 83, "test": 115},
+    {"task_id": "7-3", "task_name": "lifespan-longest-lived-then-shortest-lived", "train": 12, "dev": 72, "test": 106},
+    {"task_id": "7-2", "task_name": "lifespan-shortest-lived", "train": 50, "dev": 62, "test": 119},
+    {"task_id": "2-2", "task_name": "measure-melting-point-known-substance", "train": 53, "dev": 311, "test": 413},
+    {"task_id": "2-3", "task_name": "measure-melting-point-unknown-substance", "train": 129, "dev": 186, "test": 292},
+    {"task_id": "1-2", "task_name": "melt", "train": 2, "dev": 18, "test": 28},
+    {"task_id": "10-1", "task_name": "mendelian-genetics-known-plant", "train": 48, "dev": 64, "test": 113},
+    {"task_id": "10-2", "task_name": "mendelian-genetics-unknown-plant", "train": 120, "dev": 324, "test": 380},
+    {"task_id": "3-1", "task_name": "power-component", "train": 8, "dev": 11, "test": 16},
+    {"task_id": "3-2", "task_name": "power-component-renewable-vs-nonrenewable-energy", "train": 7, "dev": 12, "test": 16},
+    {"task_id": "3-3", "task_name": "test-conductivity", "train": 177, "dev": 574, "test": 866},
+    {"task_id": "3-4", "task_name": "test-conductivity-of-unknown-substances", "train": 253, "dev": 322, "test": 554},
+    {"task_id": "2-1", "task_name": "use-thermometer", "train": 117, "dev": 290, "test": 418}
+  ]
+}

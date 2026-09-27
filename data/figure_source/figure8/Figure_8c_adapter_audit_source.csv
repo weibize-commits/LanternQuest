@@ -1,0 +1,8 @@
+﻿experiment,model,stage,label,iper_external_failures,ensr_external_failures,operational_threshold_each_cell,operational_pass,score_delta,score_ci95_low,score_ci95_high
+E14,CEEP–70B,original,CEEP–70B  original,22,0,1,False,34.333333333333336,22.333333333333332,46.667499999999926
+E15,CEEP–70B,clean,CEEP–70B  clean,0,0,1,True,33.7,21.7,46.53333333333333
+E14,Qwen3–32B,original,Qwen3–32B  original,18,4,1,False,15.133333333333333,-0.6333333333333333,31.0
+E15,Qwen3–32B,clean,Qwen3–32B  clean,0,0,1,True,33.266666666666666,21.366666666666667,46.26749999999993
+E14,Qwen3–8B,original,Qwen3–8B  original,26,1,1,False,26.6,13.365833333333335,40.4
+E15,Qwen3–8B,clean,Qwen3–8B  clean,3,0,1,False,25.066666666666666,15.0,36.167499999999926
+E15R,Qwen3–8B,recovery,Qwen3–8B  recovery,4,0,1,False,32.56666666666667,21.4,44.766666666666666

@@ -1,0 +1,12 @@
+﻿row_type,name,episodes,grounded_task_success_rate,mean_evidence_coverage,effect,ci95_low,ci95_high,holm_adjusted_p_value
+method,b0_full_context,12,0.16666666666666666,0.7083333333333334,,,,
+method,b1_rag,12,0.08333333333333333,0.6527777777777778,,,,
+method,b2_kg_rag,12,0.75,1.0,,,,
+method,b4_sequential,12,0.75,1.0,,,,
+method,ensr,12,1.0,1.0,,,,
+method,iper_rag,12,1.0,1.0,,,,
+comparison,ensr_minus_b0_full_context,12,,,0.8333333333333334,0.5833333333333334,1.0,0.006999650017499125
+comparison,ensr_minus_b1_rag,12,,,0.9166666666666666,0.75,1.0,0.005249737513124343
+comparison,ensr_minus_b2_kg_rag,12,,,0.25,0.0,0.5,0.7628618569071547
+comparison,ensr_minus_b4_sequential,12,,,0.25,0.0,0.5,0.7628618569071547
+comparison,ensr_minus_iper_rag,12,,,0.0,0.0,0.0,1.0

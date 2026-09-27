@@ -1,0 +1,178 @@
+{
+  "schema_version": "1.0",
+  "protocol_id": "lanternquest_e21_main_v1",
+  "experiment_id": "E21",
+  "status": "frozen",
+  "reporting_boundary": "frozen_before_any_formal_test_model_call",
+  "research_question": "On frozen, source-grounded LanternQuest procedural tasks, does evidence-obligation-driven neuro-symbolic replanning improve grounded task success while preserving locked user intent and reducing unsupported actions and avoidable rework?",
+  "dataset": {
+    "path": "annotations/benchmark/lanternquest_frozen_v1.jsonl",
+    "required_e20_protocol_id": "lanternquest_e20_freeze_v1",
+    "minimum_cases": 60,
+    "maximum_cases": 120,
+    "required_splits": [
+      "train",
+      "development",
+      "test"
+    ],
+    "formal_split": "test",
+    "expected_fingerprint_sha256": "502d8f0fa6b05a1104c7f8107011e265da7b6595870d4be8d3cdfdfcec2b7496",
+    "no_test_tuning": true
+  },
+  "methods": [
+    {
+      "method_id": "b0_full_context",
+      "label": "B0 full context",
+      "role": "baseline",
+      "implementation_status": "ready"
+    },
+    {
+      "method_id": "b1_rag",
+      "label": "B1 fixed retrieval",
+      "role": "baseline",
+      "implementation_status": "ready"
+    },
+    {
+      "method_id": "b2_kg_rag",
+      "label": "B2 KG-RAG",
+      "role": "baseline",
+      "implementation_status": "ready"
+    },
+    {
+      "method_id": "b4_sequential",
+      "label": "B4 sequential planning",
+      "role": "strong_baseline",
+      "implementation_status": "ready"
+    },
+    {
+      "method_id": "iper_rag",
+      "label": "IPER-RAG",
+      "role": "mechanism_baseline",
+      "implementation_status": "ready"
+    },
+    {
+      "method_id": "ensr",
+      "label": "ENSR neuro-symbolic replanning",
+      "role": "proposed",
+      "implementation_status": "ready"
+    }
+  ],
+  "model_profile": {
+    "status": "frozen",
+    "profile_id": "local_qwen3_8b_q4_k_m_v1",
+    "provider": "local_llama_cpp",
+    "model_id": "Qwen/Qwen3-8B-GGUF:Q4_K_M",
+    "model_path": "models/Qwen3-8B-Q4_K_M.gguf",
+    "model_sha256": "d98cdcbd03e17ce47681435b5150e34c1417f50b5c0019dd560e4882c5745785",
+    "runtime": {
+      "name": "llama-cpp-python",
+      "version": "0.3.35",
+      "backend": "CPU AVX2 source build",
+      "environment": ".venv-local-llm",
+      "build_flags": {
+        "GGML_NATIVE": false,
+        "GGML_AVX": true,
+        "GGML_AVX2": true,
+        "GGML_FMA": true,
+        "GGML_AVX512": false,
+        "GGML_CUDA": false
+      },
+      "n_ctx": 8192,
+      "n_batch": 512,
+      "n_gpu_layers": 0,
+      "n_threads": 8,
+      "temperature": 0.0,
+      "seed": 21021,
+      "max_output_tokens": 800
+    },
+    "temperature": 0.0,
+    "max_output_tokens": 800,
+    "external_processing_required": false,
+    "selection_split": "development",
+    "selection_rule": "Freeze one primary profile using operational development criteria before any formal test call. Cross-model robustness requires a separate frozen amendment.",
+    "profile_config_sha256": "044b21e4ec2882b71cfe0074646444d828c2d3833569f099044941c5f2eb69ec"
+  },
+  "comparison_plan": {
+    "proposed_method_id": "ensr",
+    "eligible_baseline_method_ids": [
+      "b0_full_context",
+      "b1_rag",
+      "b2_kg_rag",
+      "b4_sequential",
+      "iper_rag"
+    ],
+    "selected_strongest_baseline_method_id": "iper_rag",
+    "selection_split": "development",
+    "selection_metric": "grounded_task_success",
+    "tie_break_order": [
+      "evidence_coverage_descending",
+      "locked_intent_preservation_descending",
+      "avoidable_rework_ascending",
+      "method_id_lexicographic"
+    ]
+  },
+  "budget": {
+    "max_depth": 6,
+    "beam_width": 16,
+    "max_retrieval_calls": 6,
+    "initial_evidence_limit": 5,
+    "evidence_per_obligation": 3,
+    "max_plans": 3
+  },
+  "endpoints": {
+    "primary": "grounded_task_success",
+    "primary_contrast": "ensr_minus_strongest_eligible_baseline_selected_on_development",
+    "secondary": [
+      "evidence_coverage",
+      "locked_intent_preservation",
+      "unsupported_action_count",
+      "invalid_action_count",
+      "avoidable_rework_count",
+      "model_calls",
+      "retrieval_calls",
+      "input_tokens",
+      "output_tokens",
+      "wall_seconds"
+    ],
+    "success_rule": "A case succeeds only when terminal success conditions are reached, no failure condition is triggered, every executed action is valid and evidence-supported, no action or evidence identifier is invented, and no locked intent is changed."
+  },
+  "statistics": {
+    "unit": "benchmark_case",
+    "paired": true,
+    "bootstrap_samples": 20000,
+    "bootstrap_seed": 21021,
+    "confidence_level": 0.95,
+    "permutation_samples": 20000,
+    "permutation_seed": 21121,
+    "multiplicity": "Holm correction across preregistered confirmatory method contrasts",
+    "failure_denominator_rule": "Provider, parser, timeout and budget failures remain in the denominator as unsuccessful cases."
+  },
+  "operational_gates": {
+    "complete_case_method_matrix": true,
+    "maximum_external_failure_rate_per_method": 0.02,
+    "require_returned_model_and_system_fingerprint": true,
+    "require_zero_test_case_selection": true
+  },
+  "freeze_rule": "Freeze only after E20 readiness and dataset audits pass, the benchmark fingerprint is written into this protocol, all six adapters pass development validation, and the primary model profile is fixed before any test call.",
+  "frozen_at": "2026-09-24T10:24:04.863915+00:00",
+  "development_selection": {
+    "split": "development",
+    "case_count": 12,
+    "score_count": 72,
+    "selected_strongest_baseline_method_id": "iper_rag",
+    "artifacts_sha256": {
+      "development_summary.json": "8cdb85f3a30d5bb3649fa4974732f22ca6df906426cb64924a404c908ade4523",
+      "run_manifest.json": "69c77710ab2105f15d34ec9011d3a5a8f0d834b2b8c0c6c3cc5975bce25b1174",
+      "scores.jsonl": "7d4dd918569da8a8966932ae3edd1465a7d11ce67e1345e62c7efcb6b067a1db",
+      "traces.json": "bc0657fe383cdbc46ff74bb81cdc0a028d61075561c896221f237e29039cad8f"
+    }
+  },
+  "implementation_sha256": {
+    "src/lanternquest/planning.py": "13f56b867775b84d0ab87441a3cdcdce0c6cc49c775038a93b647dea2f331c3e",
+    "src/lanternquest/experiment.py": "582c1c80e9f8bf3f4d3b21fb9cd89ea434bd303efae7e901298f8fdb5f6607ad",
+    "src/lanternquest/e21.py": "e8dd1072137de42eb3370f1acabfed0a5404c9b1fb5678b460a8c678768a6f48",
+    "src/lanternquest/e21_methods.py": "64ec6e81abfe2fa59208208cb1ab08cacb3ca17f13ef61c32ffee451e5d44076",
+    "src/lanternquest/llama_cpp_adapter.py": "3e5286770f6be4b0349508da6eefdd16d3b3d871c4a4716a7341f120371bd939",
+    "scripts/run_lanternquest_e21_formal.py": "e0502c18bd16391d04256c3b03a60fc5bf8b05de98f1dd9ce2e9503b11d047d0"
+  }
+}

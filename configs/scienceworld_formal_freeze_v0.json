@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0",
+  "freeze_id": "scienceworld_dual_model_formal_v0",
+  "frozen_at": "2026-09-17T15:15:00+08:00",
+  "implementation_sha256": "6b5a11df834c94f47b3d071284c85d46f0ca29192ea640dc49f2dcf2611b25ed",
+  "protocol_sha256": "be7ad7125bc399d7c2910911fc90eb318c7d711704203242831827691afbdda0",
+  "model_profiles_sha256": "ebfc77b074922d951659c2e83ef2f220424be16e2fe40160a8b79307e4cdd415",
+  "model_selection_sha256": "10f596c400a4b5182344815b16c1d501260bfdc3aa07cce8b72c400695087a37",
+  "runtime": {
+    "python": "3.10.11",
+    "java": "Microsoft OpenJDK 17.0.20.1",
+    "scienceworld": "1.2.3",
+    "platform": "Windows-10-10.0.22621-SP0"
+  },
+  "matrix": {
+    "model_profiles": ["bit_qwen3_235b", "deepseek_flash"],
+    "methods": [
+      "b0_full_skills",
+      "b1_static_rag",
+      "b2_task_graph_rag",
+      "b4_sequential_planner",
+      "iper_rag"
+    ],
+    "test_task_variations": 30,
+    "seeds": [11, 29, 47],
+    "episodes_per_profile": 450,
+    "total_episodes": 900
+  },
+  "reporting_boundary": "formal_machine_result",
+  "amendment_policy": "Do not tune from formal outcomes. Any implementation change requires a new freeze ID and results directory; existing failures remain preserved."
+}

@@ -1,0 +1,306 @@
+﻿case,task_id,variation,seed,condition,step,score,reward,action_source,action,obligation_opened,final_status,task_success
+Benefit case,4-1,171,13,Without semantic KG,1,0.0,0.0,procedure,look around,1,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,2,8.0,8.0,exploration,open door,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,3,17.0,9.0,exploration,go to hallway,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,4,17.0,0.0,procedure,open door to kitchen,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,5,17.0,0.0,procedure,go to door to kitchen,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,6,17.0,0.0,exploration,open door to outside,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,7,17.0,0.0,exploration,go to door to outside,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,8,17.0,0.0,exploration,open door to foundry,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,9,17.0,0.0,exploration,open door to greenhouse,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,10,17.0,0.0,exploration,go to door to foundry,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,11,17.0,0.0,exploration,open blast furnace,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,12,17.0,0.0,exploration,go to outside,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,13,17.0,0.0,exploration,go to door to greenhouse,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,14,17.0,0.0,exploration,open bee hive,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,15,17.0,0.0,exploration,go to door to outside,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,16,17.0,0.0,exploration,go to door to foundry,1,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,17,17.0,0.0,exploration,go to outside,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,18,17.0,0.0,exploration,go to door to greenhouse,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,19,17.0,0.0,exploration,go to door to outside,1,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,20,17.0,0.0,exploration,go to door to kitchen,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,21,17.0,0.0,exploration,open bathroom door,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,22,17.0,0.0,exploration,go to bathroom,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,23,17.0,0.0,exploration,open toilet drain,1,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,24,17.0,0.0,exploration,go to kitchen,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,25,17.0,0.0,exploration,go to bathroom door,1,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,26,17.0,0.0,exploration,go to kitchen,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,27,17.0,0.0,exploration,go to bathroom door,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,28,17.0,0.0,exploration,go to kitchen,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,29,17.0,0.0,exploration,open cupboard,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,30,17.0,0.0,exploration,go to bathroom door,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,31,17.0,0.0,exploration,go to kitchen,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,32,17.0,0.0,exploration,go to bathroom door,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,33,17.0,0.0,exploration,go to kitchen,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,34,17.0,0.0,exploration,go to bathroom door,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,35,17.0,0.0,exploration,go to kitchen,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,36,17.0,0.0,exploration,open drawer in counter,1,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,37,17.0,0.0,exploration,open drawer in cupboard,1,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,38,17.0,0.0,exploration,open freezer,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,39,17.0,0.0,exploration,go to bathroom door,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,40,17.0,0.0,exploration,go to kitchen,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,41,17.0,0.0,exploration,go to bathroom door,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,42,17.0,0.0,exploration,go to kitchen,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,43,17.0,0.0,exploration,go to bathroom door,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,44,17.0,0.0,exploration,go to kitchen,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,45,17.0,0.0,exploration,open fridge,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,46,17.0,0.0,exploration,go to bathroom door,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,47,17.0,0.0,exploration,go to kitchen,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,48,17.0,0.0,exploration,go to bathroom door,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,49,17.0,0.0,exploration,go to kitchen,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,50,17.0,0.0,exploration,open glass jar,1,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,51,17.0,0.0,exploration,open oven,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,52,17.0,0.0,exploration,go to bathroom door,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,53,17.0,0.0,exploration,go to kitchen,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,54,17.0,0.0,exploration,go to bathroom,1,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,55,17.0,0.0,exploration,go to kitchen,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,56,17.0,0.0,exploration,go to bathroom door,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,57,17.0,0.0,exploration,go to kitchen,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,58,17.0,0.0,exploration,go to door to hallway,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,59,17.0,0.0,exploration,open door to living room,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,60,17.0,0.0,exploration,go to door to living room,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,61,17.0,0.0,exploration,go to hallway,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,62,17.0,0.0,exploration,open art studio door,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,63,17.0,0.0,exploration,go to art studio,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,64,17.0,0.0,exploration,open cupboard,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,65,17.0,0.0,exploration,open drawer,1,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,66,17.0,0.0,exploration,go to hallway,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,67,17.0,0.0,exploration,go to art studio door,1,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,68,17.0,0.0,exploration,go to hallway,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,69,17.0,0.0,exploration,open bedroom door,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,70,25.0,8.0,symbolic_goal,go to bedroom,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,71,25.0,0.0,exploration,open closet,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,72,25.0,0.0,exploration,go to hallway,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,73,25.0,0.0,exploration,go to art studio door,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,74,25.0,0.0,exploration,go to hallway,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,75,25.0,0.0,exploration,go to art studio door,1,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,76,25.0,0.0,exploration,go to hallway,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,77,25.0,0.0,exploration,go to art studio door,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,78,25.0,0.0,exploration,go to hallway,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,79,25.0,0.0,exploration,go to bedroom door,1,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,80,25.0,0.0,exploration,go to hallway,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,81,25.0,0.0,exploration,go to art studio door,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,82,25.0,0.0,exploration,go to hallway,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,83,25.0,0.0,exploration,go to art studio door,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,84,25.0,0.0,exploration,go to hallway,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,85,25.0,0.0,exploration,go to bedroom door,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,86,25.0,0.0,exploration,go to hallway,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,87,25.0,0.0,exploration,go to bedroom door,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,88,25.0,0.0,exploration,go to hallway,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,89,25.0,0.0,exploration,go to door to workshop,1,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,90,25.0,0.0,exploration,open freezer,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,91,25.0,0.0,exploration,go to hallway,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,92,25.0,0.0,exploration,go to art studio,1,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,93,25.0,0.0,exploration,go to hallway,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,94,25.0,0.0,exploration,go to bedroom,1,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,95,25.0,0.0,exploration,go to hallway,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,96,25.0,0.0,exploration,go to art studio,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,97,25.0,0.0,exploration,go to hallway,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,98,25.0,0.0,exploration,go to door to workshop,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,99,25.0,0.0,exploration,go to hallway,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,Without semantic KG,100,25.0,0.0,exploration,go to bedroom,0,environment_budget_exhausted,0
+Benefit case,4-1,171,13,With semantic KG,1,8.0,8.0,symbolic_goal,open door,0,terminal_success,1
+Benefit case,4-1,171,13,With semantic KG,2,17.0,9.0,symbolic_goal,go to hallway,0,terminal_success,1
+Benefit case,4-1,171,13,With semantic KG,3,17.0,0.0,symbolic_goal,open door to greenhouse,0,terminal_success,1
+Benefit case,4-1,171,13,With semantic KG,4,17.0,0.0,symbolic_goal,go to greenhouse,0,terminal_success,1
+Benefit case,4-1,171,13,With semantic KG,5,17.0,0.0,symbolic_goal,open door to outside,0,terminal_success,1
+Benefit case,4-1,171,13,With semantic KG,6,17.0,0.0,symbolic_goal,go to outside,0,terminal_success,1
+Benefit case,4-1,171,13,With semantic KG,7,67.0,50.0,symbolic_goal,focus on baby baby beaver,0,terminal_success,1
+Benefit case,4-1,171,13,With semantic KG,8,75.0,8.0,symbolic_goal,move baby baby beaver to inventory,0,terminal_success,1
+Benefit case,4-1,171,13,With semantic KG,9,75.0,0.0,symbolic_goal,go to greenhouse,0,terminal_success,1
+Benefit case,4-1,171,13,With semantic KG,10,75.0,0.0,symbolic_goal,go to hallway,0,terminal_success,1
+Benefit case,4-1,171,13,With semantic KG,11,75.0,0.0,symbolic_goal,open bedroom door,0,terminal_success,1
+Benefit case,4-1,171,13,With semantic KG,12,83.0,8.0,symbolic_goal,go to bedroom,0,terminal_success,1
+Benefit case,4-1,171,13,With semantic KG,13,100.0,17.0,symbolic_goal,move baby baby beaver to orange box,0,terminal_success,1
+Boundary case,1-2,18,13,Without semantic KG,1,0.0,0.0,procedure,open door to kitchen,0,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,2,0.0,0.0,symbolic_goal,go to door to kitchen,0,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,3,0.0,0.0,symbolic_goal,move metal pot to inventory,1,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,4,0.0,0.0,symbolic_goal,move orange in inventory to metal pot,1,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,5,0.0,0.0,symbolic_goal,pick up metal pot,1,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,6,0.0,0.0,procedure,look around,1,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,7,0.0,0.0,procedure,open cupboard,0,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,8,0.0,0.0,symbolic_goal,move metal pot to inventory,0,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,9,0.0,0.0,procedure,look around,1,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,10,0.0,0.0,procedure,move metal pot to stove,0,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,11,0.0,0.0,exploration,open door to outside,0,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,12,0.0,0.0,exploration,go to door to outside,0,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,13,0.0,0.0,exploration,open door to foundry,0,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,14,0.0,0.0,exploration,open door to greenhouse,0,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,15,0.0,0.0,exploration,go to door to foundry,0,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,16,0.0,0.0,exploration,open blast furnace,0,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,17,0.0,0.0,exploration,go to outside,0,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,18,0.0,0.0,exploration,go to door to greenhouse,0,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,19,0.0,0.0,exploration,open bee hive,0,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,20,0.0,0.0,exploration,go to door to outside,0,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,21,0.0,0.0,exploration,go to door to foundry,1,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,22,0.0,0.0,exploration,go to outside,0,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,23,0.0,0.0,exploration,go to door to greenhouse,0,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,24,0.0,0.0,exploration,go to door to outside,0,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,25,0.0,0.0,exploration,go to door to kitchen,0,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,26,0.0,0.0,exploration,open bathroom door,0,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,27,0.0,0.0,exploration,go to bathroom,0,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,28,0.0,0.0,exploration,open toilet drain,1,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,29,0.0,0.0,exploration,go to kitchen,0,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,30,0.0,0.0,exploration,go to bathroom door,1,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,31,0.0,0.0,exploration,go to kitchen,0,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,32,0.0,0.0,exploration,go to bathroom door,0,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,33,0.0,0.0,exploration,go to kitchen,0,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,34,0.0,0.0,exploration,go to bathroom door,0,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,35,0.0,0.0,exploration,go to kitchen,0,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,36,0.0,0.0,exploration,open drawer in counter,0,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,37,0.0,0.0,exploration,go to bathroom door,0,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,38,0.0,0.0,exploration,go to kitchen,0,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,39,0.0,0.0,exploration,go to bathroom door,0,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,40,0.0,0.0,exploration,go to kitchen,0,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,41,0.0,0.0,exploration,open drawer in cupboard,1,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,42,0.0,0.0,exploration,open freezer,0,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,43,0.0,0.0,exploration,go to bathroom door,0,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,44,0.0,0.0,exploration,go to kitchen,0,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,45,0.0,0.0,exploration,go to bathroom door,0,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,46,0.0,0.0,exploration,go to kitchen,0,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,47,0.0,0.0,exploration,go to bathroom door,0,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,48,0.0,0.0,exploration,go to kitchen,0,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,49,0.0,0.0,exploration,open fridge,0,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,50,0.0,0.0,exploration,go to bathroom door,0,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,51,0.0,0.0,exploration,go to kitchen,0,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,52,0.0,0.0,exploration,open glass jar,1,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,53,0.0,0.0,exploration,open oven,0,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,54,0.0,0.0,exploration,go to bathroom door,0,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,55,0.0,0.0,exploration,go to kitchen,0,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,56,0.0,0.0,exploration,go to bathroom door,0,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,57,0.0,0.0,exploration,go to kitchen,0,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,58,0.0,0.0,exploration,go to door to hallway,0,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,59,0.0,0.0,exploration,open door to living room,0,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,60,0.0,0.0,exploration,open door to workshop,0,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,61,0.0,0.0,exploration,go to door to living room,0,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,62,0.0,0.0,exploration,go to hallway,0,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,63,2.0,2.0,exploration,go to door to workshop,0,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,64,68.0,66.0,symbolic_goal,focus on rubber,0,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,65,68.0,0.0,symbolic_goal,pick up rubber,0,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,66,68.0,0.0,procedure,look at rubber,1,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,67,68.0,0.0,exploration,open freezer,0,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,68,68.0,0.0,procedure,look at rubber,0,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,69,68.0,0.0,exploration,go to hallway,0,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,70,68.0,0.0,symbolic_goal,go to door to kitchen,0,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,71,72.0,4.0,symbolic_goal,move rubber to metal pot,0,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,72,72.0,0.0,symbolic_goal,move metal pot to stove,0,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,73,72.0,0.0,symbolic_goal,move metal pot to stove,0,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,74,72.0,0.0,symbolic_goal,move metal pot to stove,0,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,75,72.0,0.0,symbolic_goal,move metal pot to stove,1,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,76,72.0,0.0,symbolic_goal,move metal pot to stove,1,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,77,72.0,0.0,symbolic_goal,pour metal pot into stove,0,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,78,72.0,0.0,symbolic_goal,pick up rubber,0,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,79,72.0,0.0,symbolic_goal,move metal pot to stove,0,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,80,72.0,0.0,symbolic_goal,pour metal pot into stove,0,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,81,72.0,0.0,symbolic_goal,move metal pot to stove,0,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,82,72.0,0.0,symbolic_goal,pour metal pot into stove,1,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,83,72.0,0.0,symbolic_goal,pour metal pot into stove,0,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,84,73.0,1.0,symbolic_goal,activate stove,0,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,85,73.0,0.0,symbolic_goal,move metal pot to stove,0,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,86,73.0,0.0,symbolic_goal,pour metal pot into stove,0,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,87,73.0,0.0,symbolic_goal,move metal pot to stove,0,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,88,73.0,0.0,symbolic_goal,move metal pot to stove,0,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,89,73.0,0.0,symbolic_goal,move metal pot to stove,0,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,90,73.0,0.0,symbolic_goal,pour metal pot into stove,1,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,91,73.0,0.0,symbolic_goal,move metal pot to stove,0,plan_exhausted,0
+Boundary case,1-2,18,13,Without semantic KG,92,73.0,0.0,symbolic_goal,pour metal pot into stove,1,plan_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,1,0.0,0.0,symbolic_goal,open door to kitchen,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,2,0.0,0.0,symbolic_goal,go to door to kitchen,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,3,0.0,0.0,procedure,go to door to hallway,1,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,4,0.0,0.0,procedure,go to door to kitchen,1,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,5,0.0,0.0,procedure,look around,1,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,6,0.0,0.0,symbolic_goal,open drawer in counter,1,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,7,0.0,0.0,symbolic_goal,open drawer in cupboard,1,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,8,0.0,0.0,procedure,open cupboard,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,9,0.0,0.0,symbolic_goal,open drawer in cupboard,1,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,10,0.0,0.0,procedure,look around,1,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,11,0.0,0.0,exploration,open door to outside,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,12,0.0,0.0,exploration,go to door to outside,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,13,0.0,0.0,symbolic_goal,go to door to kitchen,1,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,14,0.0,0.0,exploration,open bathroom door,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,15,0.0,0.0,exploration,go to bathroom,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,16,0.0,0.0,symbolic_goal,go to kitchen,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,17,0.0,0.0,exploration,go to bathroom door,1,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,18,0.0,0.0,symbolic_goal,go to kitchen,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,19,0.0,0.0,exploration,open freezer,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,20,0.0,0.0,exploration,go to bathroom door,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,21,0.0,0.0,symbolic_goal,go to kitchen,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,22,0.0,0.0,exploration,open fridge,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,23,0.0,0.0,exploration,go to bathroom door,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,24,0.0,0.0,symbolic_goal,go to kitchen,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,25,0.0,0.0,exploration,open glass jar,1,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,26,0.0,0.0,exploration,open oven,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,27,0.0,0.0,exploration,go to bathroom door,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,28,0.0,0.0,symbolic_goal,go to kitchen,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,29,0.0,0.0,exploration,go to bathroom,1,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,30,0.0,0.0,symbolic_goal,go to kitchen,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,31,0.0,0.0,exploration,go to door to hallway,1,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,32,0.0,0.0,exploration,open door to greenhouse,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,33,0.0,0.0,symbolic_goal,go to door to kitchen,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,34,0.0,0.0,exploration,go to door to outside,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,35,0.0,0.0,exploration,open door to foundry,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,36,0.0,0.0,symbolic_goal,go to door to kitchen,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,37,0.0,0.0,exploration,go to door to outside,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,38,0.0,0.0,exploration,open door to greenhouse,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,39,0.0,0.0,symbolic_goal,go to door to kitchen,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,40,0.0,0.0,exploration,go to door to outside,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,41,0.0,0.0,exploration,go to door to foundry,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,42,0.0,0.0,exploration,open blast furnace,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,43,0.0,0.0,exploration,go to outside,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,44,0.0,0.0,exploration,go to door to greenhouse,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,45,0.0,0.0,exploration,open bee hive,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,46,0.0,0.0,exploration,go to door to hallway,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,47,0.0,0.0,exploration,open door to living room,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,48,0.0,0.0,symbolic_goal,go to door to kitchen,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,49,0.0,0.0,exploration,go to door to outside,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,50,0.0,0.0,symbolic_goal,go to door to kitchen,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,51,0.0,0.0,exploration,go to door to outside,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,52,0.0,0.0,exploration,go to door to foundry,1,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,53,0.0,0.0,exploration,go to outside,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,54,0.0,0.0,exploration,go to door to greenhouse,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,55,0.0,0.0,exploration,go to door to hallway,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,56,0.0,0.0,symbolic_goal,go to door to kitchen,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,57,0.0,0.0,exploration,go to bathroom door,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,58,0.0,0.0,symbolic_goal,go to kitchen,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,59,0.0,0.0,exploration,go to door to outside,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,60,0.0,0.0,symbolic_goal,go to door to kitchen,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,61,0.0,0.0,exploration,go to bathroom door,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,62,0.0,0.0,symbolic_goal,go to kitchen,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,63,0.0,0.0,exploration,go to bathroom door,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,64,0.0,0.0,symbolic_goal,go to kitchen,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,65,0.0,0.0,exploration,go to bathroom door,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,66,0.0,0.0,symbolic_goal,go to kitchen,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,67,0.0,0.0,exploration,go to bathroom door,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,68,0.0,0.0,symbolic_goal,go to kitchen,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,69,0.0,0.0,exploration,go to bathroom,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,70,0.0,0.0,symbolic_goal,go to kitchen,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,71,0.0,0.0,exploration,go to door to hallway,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,72,0.0,0.0,symbolic_goal,go to door to kitchen,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,73,0.0,0.0,exploration,go to door to outside,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,74,0.0,0.0,symbolic_goal,go to door to kitchen,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,75,0.0,0.0,exploration,go to door to outside,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,76,0.0,0.0,exploration,go to door to foundry,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,77,0.0,0.0,exploration,go to outside,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,78,0.0,0.0,exploration,go to door to foundry,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,79,0.0,0.0,exploration,go to outside,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,80,0.0,0.0,exploration,go to door to greenhouse,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,81,0.0,0.0,exploration,go to door to hallway,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,82,0.0,0.0,exploration,open door to workshop,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,83,0.0,0.0,symbolic_goal,go to door to kitchen,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,84,0.0,0.0,exploration,go to bathroom door,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,85,0.0,0.0,symbolic_goal,go to kitchen,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,86,0.0,0.0,exploration,go to bathroom door,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,87,0.0,0.0,symbolic_goal,go to kitchen,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,88,0.0,0.0,exploration,go to bathroom,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,89,0.0,0.0,symbolic_goal,go to kitchen,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,90,0.0,0.0,exploration,go to bathroom door,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,91,0.0,0.0,symbolic_goal,go to kitchen,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,92,0.0,0.0,exploration,go to bathroom,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,93,0.0,0.0,symbolic_goal,go to kitchen,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,94,0.0,0.0,exploration,go to door to hallway,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,95,0.0,0.0,symbolic_goal,go to door to kitchen,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,96,0.0,0.0,exploration,go to door to hallway,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,97,0.0,0.0,exploration,go to door to living room,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,98,0.0,0.0,exploration,go to hallway,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,99,0.0,0.0,symbolic_goal,go to door to kitchen,0,environment_budget_exhausted,0
+Boundary case,1-2,18,13,With semantic KG,100,0.0,0.0,exploration,go to door to hallway,0,environment_budget_exhausted,0

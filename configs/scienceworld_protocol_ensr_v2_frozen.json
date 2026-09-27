@@ -1,0 +1,886 @@
+{
+  "schema_version": "2.0-draft",
+  "protocol_id": "scienceworld_ensr_v2",
+  "experiment_id": "E12",
+  "status": "formal_frozen_test_unlocked",
+  "development_amendments": [
+    {
+      "amendment_id": "E12A",
+      "basis": "First five-case development smoke only; no E12 formal-test result was inspected.",
+      "changes": [
+        "Canonicalize unambiguous fact orientation and state labels with explicit audit counts.",
+        "Infer carried-container contents using a provenance-labelled symbolic rule.",
+        "Lock irreversible focus actions to the task target.",
+        "Deduplicate identical evidence obligations and stop when replanning is exhausted.",
+        "Retry malformed initial plans once while counting failed calls against the budget."
+      ],
+      "original_pilot_artifacts": "artifacts/benchmarks/scienceworld/ensr_v2_runs",
+      "amended_output_root": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v1"
+    },
+    {
+      "amendment_id": "E12A2",
+      "basis": "E12A1 development cases only; the run was interrupted after a parser defect was isolated and no formal-test result was inspected.",
+      "changes": [
+        "Parse ScienceWorld sentence-style entity descriptors into canonical entity labels.",
+        "Extract door/device states and nested container contents, including matter state.",
+        "Use visible_in for non-agent room membership and repair unambiguous reversed containment.",
+        "Represent explicit OR completion criteria with completion_mode any."
+      ],
+      "prior_development_artifacts": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v1",
+      "amended_output_root": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v2"
+    },
+    {
+      "amendment_id": "E12A3",
+      "basis": "Completed E12A2 five-case development smoke; no formal-test result was inspected.",
+      "changes": [
+        "Accumulate verified subgoal facts across transitions instead of requiring simultaneous observation.",
+        "Block repeated failed actions in the same symbolic state even when their obligation is deduplicated.",
+        "Expose one deterministic complete train-split procedure as an ordered structural example.",
+        "Prioritize valid actions matching abstract train-procedure templates.",
+        "Extend irreversible focus locking to explicitly named chemistry products and power targets."
+      ],
+      "prior_development_artifacts": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v2",
+      "amended_output_root": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v3"
+    },
+    {
+      "amendment_id": "E12A4",
+      "basis": "Completed E12A3 five-case development smoke; no formal-test result was inspected.",
+      "changes": [
+        "Execute a bounded next-step match from the train procedure when that match is currently legal.",
+        "Count only failed transitions against a subgoal retry limit.",
+        "Retry malformed action JSON once with a compact payload and count both attempts.",
+        "Require exact target semantics for irreversible focus actions.",
+        "Canonicalize explicit any completion tests and combustion state aliases."
+      ],
+      "prior_development_artifacts": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v3",
+      "amended_output_root": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v4"
+    },
+    {
+      "amendment_id": "E12A5",
+      "basis": "Completed E12A4 five-case development smoke; no formal-test result was inspected.",
+      "changes": [
+        "Ground unsatisfied symbolic facts directly into matching legal actions.",
+        "Systematically explore unvisited rooms and unopened containers before unconstrained LLM fallback.",
+        "Continue safe execution after the local-replanning budget is exhausted.",
+        "Record every action source as procedure, symbolic_goal, exploration, or llm.",
+        "Normalize recipe labels and melted/frozen state aliases."
+      ],
+      "prior_development_artifacts": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v4",
+      "amended_output_root": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v5"
+    },
+    {
+      "amendment_id": "E12A5R",
+      "basis": "E12A5 development-only controller regression; no formal-test result was inspected.",
+      "changes": [
+        "Validate deterministic actions against the full post-safety legal action set while retaining shortlist validation for LLM actions."
+      ],
+      "prior_development_artifacts": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v5",
+      "amended_output_root": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v5r"
+    },
+    {
+      "amendment_id": "E12A6",
+      "basis": "Completed E12A5R five-case development smoke; no formal-test result was inspected.",
+      "changes": [
+        "Exclude generic door waypoints from the unvisited-room set.",
+        "At a door waypoint, choose an exit other than the room just left.",
+        "Treat zero-reward returns to an already seen symbolic state as cycle obligations and block the edge at its source state."
+      ],
+      "prior_development_artifacts": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v5r",
+      "amended_output_root": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v6"
+    },
+    {
+      "amendment_id": "E12A7",
+      "basis": "Completed E12A6 five-case development smoke and read-only replay of its public environment actions; no gold path or formal-test result was inspected.",
+      "changes": [
+        "Retain the last real room while the agent is at the generic door waypoint.",
+        "Block a cyclic destination only when the source state offers another destination.",
+        "Block all surface-form aliases for the same cyclic destination while preserving a room's only exit."
+      ],
+      "prior_development_artifacts": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v6",
+      "amended_output_root": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v7"
+    },
+    {
+      "amendment_id": "E12A8",
+      "basis": "Completed E12A7 five-case development smoke; no gold path or formal-test result was inspected.",
+      "changes": [
+        "Gate train-procedure operations by the active acquisition subgoal.",
+        "Add a symbolic state-change workflow for target acquisition, target-to-pot transfer, device placement, activation, and waiting.",
+        "Mark target focus complete only after positive reward or terminal completion."
+      ],
+      "prior_development_artifacts": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v7",
+      "amended_output_root": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v8"
+    },
+    {
+      "amendment_id": "E12A9",
+      "basis": "Completed E12A8 five-case development smoke; no gold path or formal-test result was inspected.",
+      "changes": [
+        "Prefer the least-used legal destination during transit exploration.",
+        "Remember location-scoped open actions to avoid reopening the same container or fixture.",
+        "Apply the state-change workflow to any observed container holding the target.",
+        "Prioritize the active plan's grounded goal over the generic state-change workflow."
+      ],
+      "prior_development_artifacts": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v8",
+      "amended_output_root": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v9"
+    },
+    {
+      "amendment_id": "E12A10",
+      "basis": "Completed E12A9 five-case development smoke; no gold path or formal-test result was inspected.",
+      "changes": [
+        "Persist observed entity-to-room locations in a temporal symbolic map.",
+        "Route an unsatisfied symbolic goal back to the remembered room of its subject entity.",
+        "Pick up a target-bearing container before transport and route it to the remembered heat or cold device location.",
+        "Record entity-memory routing actions and final tracked-entity count as mechanism metrics."
+      ],
+      "prior_development_artifacts": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v9",
+      "amended_output_root": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v10"
+    },
+    {
+      "amendment_id": "E12A11",
+      "basis": "Completed E12A10 five-case development smoke; no gold path or formal-test result was inspected.",
+      "changes": [
+        "When a target-bearing container is already on its required device, activate or wait instead of picking the container up again.",
+        "Exclude the agent from entity-location routing so an explicit agent navigation goal cannot be overridden by a stale prior room."
+      ],
+      "prior_development_artifacts": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v10",
+      "amended_output_root": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v11"
+    },
+    {
+      "amendment_id": "E12A12",
+      "basis": "Completed E12A11 five-case development smoke plus read-only replay of its public actions and observations; no gold path or formal-test result was inspected.",
+      "changes": [
+        "Treat explicit broken-device feedback as persistent symbolic evidence and exclude failed devices from the state-change workflow.",
+        "Recover a target-bearing container from a failed device and route it to the next remembered compatible device.",
+        "Activate or wait on a device before considering redundant placement on that same device.",
+        "Repair an LLM-planned visible_in location when it conflicts with a verified initial entity location, with an explicit audit count."
+      ],
+      "prior_development_artifacts": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v11",
+      "amended_output_root": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v12"
+    },
+    {
+      "amendment_id": "E12A13",
+      "basis": "Completed E12A12 five-case development smoke and read-only replay of its public actions; no gold path or formal-test result was inspected.",
+      "changes": [
+        "Require a target container to be the grammatical action subject for pickup and device-placement rules.",
+        "Prefer a direct pick-up action over a combinatorial move-to-inventory surface form when both are exposed.",
+        "Require the task target to be the action subject for target-to-container transfer.",
+        "Reapply verified location repair as new observations arrive rather than only after the initial plan."
+      ],
+      "prior_development_artifacts": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v12",
+      "amended_output_root": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v13"
+    },
+    {
+      "amendment_id": "E12A14",
+      "basis": "Completed E12A13 five-case development smoke plus read-only replay of a public development trajectory; no gold path or formal-test result was inspected.",
+      "changes": [
+        "Open a verified closed parent container before acquiring the task target or metal pot.",
+        "Acquire the explicit task target as a global manipulation precondition rather than relying on an imperfect generated plan to request it.",
+        "Route to the remembered metal-pot location when the target is carried but the tool is not locally accessible.",
+        "Restrict heat/cold transport containers to portable vessel classes and exclude furniture and fixtures."
+      ],
+      "prior_development_artifacts": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v13",
+      "amended_output_root": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v14"
+    },
+    {
+      "amendment_id": "E12A15",
+      "basis": "Completed E12A14 five-case development smoke; no gold path or formal-test result was inspected.",
+      "changes": [
+        "Treat an explicit target already contained in a portable vessel as acquired so global acquisition cannot remove it from the verified workflow state.",
+        "Match portable-vessel classes by entity tokens so cupboard is not misclassified as cup."
+      ],
+      "prior_development_artifacts": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v14",
+      "amended_output_root": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v15"
+    },
+    {
+      "amendment_id": "E12A16",
+      "basis": "Completed E12A15 five-case development smoke plus read-only replay of a public development trajectory; no gold path or formal-test result was inspected.",
+      "changes": [
+        "Allow repeated wait or wait1 actions only when selected by the verified symbolic state-change workflow.",
+        "Do not classify those bounded temporal advances as no-progress failures or navigation cycles.",
+        "Record the number of workflow temporal-wait actions as a mechanism metric."
+      ],
+      "prior_development_artifacts": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v15",
+      "amended_output_root": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v16"
+    },
+    {
+      "amendment_id": "E12A17",
+      "basis": "Completed E12A16 five-case development smoke; no gold path or formal-test result was inspected.",
+      "changes": [
+        "When the metal-pot location is unknown, inspect an observed closed container through an exact legal open action before attempting blind tool acquisition."
+      ],
+      "prior_development_artifacts": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v16",
+      "amended_output_root": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v17"
+    },
+    {
+      "amendment_id": "E12A18",
+      "basis": "Completed the preregistered 180-episode development matrix and inspected development-only ENSR trajectories; no formal-test result or gold path was inspected.",
+      "changes": [
+        "Reject the exact irreversible action focus on agent for every task.",
+        "Skip a train-procedure step containing an unbound task-target or focus-object placeholder instead of matching only its action operator.",
+        "After both structured planning attempts fail, continue with one audited deterministic fallback subgoal that can use train-derived procedures, verified facts, and exact environment actions.",
+        "Record deterministic fallback-plan use as a mechanism metric and response normalization."
+      ],
+      "prior_development_artifacts": "artifacts/benchmarks/scienceworld/ensr_v2_dev_matrix_v1",
+      "amended_output_root": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v18"
+    },
+    {
+      "amendment_id": "E12A19",
+      "basis": "Completed the E12A18 60-episode development rerun and inspected its four development-only negative terminal trajectories; no formal-test result or gold path was inspected.",
+      "changes": [
+        "Parse ordered focus targets directly from the task description and group conditional answer targets into one alternative stage.",
+        "Expose focus actions only for the current stage and only when the named target is present in the verified visible state.",
+        "Execute a single-target focus stage symbolically, retain LLM choice only for explicit conditional alternatives, and advance the protocol only after positive reward or terminal completion.",
+        "Block every subsequent focus action after the focus protocol is complete and record verified stage advances."
+      ],
+      "prior_development_artifacts": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v18",
+      "amended_output_root": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v19"
+    },
+    {
+      "amendment_id": "E12A20",
+      "basis": "Completed the E12A19 60-episode development matrix, its formal development audit, and development-only targeted replays of high-scoring incomplete melting-point tasks; no formal-test result or gold path was inspected.",
+      "changes": [
+        "Rebuild train-only procedure memory with separate focus-tool and task-target placeholders, retaining all transition provenance.",
+        "Require procedure actions to preserve bound entity tokens and manipulation-subject structure, with an explicit examine-to-look-at surface alias.",
+        "After a verified heating or cooling setup, alternate grounded inspection and thermometer actions without treating their necessary no-change steps as failures.",
+        "Infer an above-threshold or below-threshold answer only from a measured temperature plus the still-observed phase or a verified phase transition, then choose the task-specified answer target.",
+        "Keep deterministic fallback plans under symbolic control instead of accepting an already-satisfied malformed local replan."
+      ],
+      "prior_development_artifacts": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v19",
+      "amended_memory": "artifacts/benchmarks/scienceworld/ensr_memory_v20.json",
+      "amended_output_root": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v20"
+    },
+    {
+      "amendment_id": "E12A21",
+      "basis": "Completed the E12A20 60-episode development matrix and inspected its sole negative terminal conductivity trajectory, then ran development-only targeted conductivity regressions; no formal-test result or gold path was inspected.",
+      "changes": [
+        "Separate train-derived conductivity probe structure from the variation-specific answer-box action so a training box color cannot be copied into the current task.",
+        "Build a role-consistent six-connection circuit from exact legal battery, wire, detector, and task-target endpoints, including alternate ScienceWorld endpoint surface forms.",
+        "Require two bounded waits and an observed detector on/off state before selecting the conductive or nonconductive box stated in the current task.",
+        "Preserve the focused target identity when same-named room and inventory entities coexist, and normalize the environment's unknown-substance action alias.",
+        "Record probe actions, probe waits, and evidence-conditioned terminal moves as mechanism metrics."
+      ],
+      "prior_development_artifacts": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v20",
+      "amended_memory": "artifacts/benchmarks/scienceworld/ensr_memory_v20.json",
+      "targeted_regression_artifacts": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v21_targeted3",
+      "amended_output_root": "artifacts/benchmarks/scienceworld/ensr_v2_runs_amended_v21"
+    }
+  ],
+  "reporting_boundary": "future_formal_machine_result",
+  "benchmark": {
+    "name": "ScienceWorld",
+    "version": "1.2.3",
+    "simplifications": "",
+    "max_environment_steps": 100
+  },
+  "research_hypothesis": "在相同基础模型、环境步数和模型调用预算下，证据门控神经符号重规划相较最强内部基线提高截断后的官方平均分，并减少无进展重复动作。",
+  "selection": {
+    "salt": "lanternquest-scienceworld-ensr-v2",
+    "rule": "每个任务的 train/dev/test variation 分别按 SHA256('{salt}|{task_id}|{split}|{variation}') 排序；取最多5个train、2个dev和1个未被E11/E11F使用的test。",
+    "prior_protocol_ids": [
+      "scienceworld_iper_v0",
+      "scienceworld_iper_auto_obligation_v1"
+    ],
+    "prior_test_overlap": 0,
+    "train_trajectory_count": 149,
+    "development_variation_count": 60,
+    "formal_test_variation_count": 30,
+    "tasks_with_fewer_than_five_train_variations": [
+      "8-2"
+    ],
+    "test_lock": "实现和超参数只允许依据train/dev结果修改；正式test首次运行前冻结代码、配置、提示词、知识库和依赖哈希。"
+  },
+  "model": {
+    "profile": "bit_qwen3_235b",
+    "temperature": 0.0,
+    "parameter_training": false
+  },
+  "runs": {
+    "formal_seeds": [
+      13,
+      31,
+      53
+    ],
+    "max_model_calls_per_episode": 100,
+    "max_retrieval_calls_per_episode": 8,
+    "max_planner_calls_per_episode": 4,
+    "initial_retrieval_k": 5,
+    "obligation_retrieval_k": 3,
+    "candidate_action_limit": 12,
+    "automatic_obligation_policy": "unsupported_or_stalled",
+    "max_automatic_obligations_per_episode": 3,
+    "failure_policy": "超时、接口错误、解析失败、非法动作和环境异常全部保留并分类，不得从分母删除。"
+  },
+  "methods": [
+    {
+      "method_id": "b4_sequential_planner",
+      "role": "固定初始检索的顺序规划对照；共享扩展后的训练知识库。"
+    },
+    {
+      "method_id": "iper_rag",
+      "role": "E11F证据义务控制器；共享扩展后的训练知识库。"
+    },
+    {
+      "method_id": "ensr_v2",
+      "role": "证据门控神经符号重规划：分层子目标、时序符号状态、转移验证、义务条件检索和局部重规划。"
+    }
+  ],
+  "primary_comparison": "ensr_v2 - strongest_internal_baseline",
+  "primary_baseline_selection": "正式测试前按完整dev矩阵的截断官方平均分选择B4或IPER；并列时按成功率选择，再并列时按method_id固定排序。",
+  "primary_baseline": "iper_rag",
+  "primary_metrics": [
+    "clipped official average score",
+    "task success rate"
+  ],
+  "secondary_metrics": [
+    "environment steps",
+    "no-progress action rate",
+    "invalid action count",
+    "model calls",
+    "retrieval calls",
+    "input/output tokens",
+    "wall-clock latency",
+    "failure category"
+  ],
+  "mechanism_metrics": [
+    "subgoal completion precision",
+    "verified transition coverage",
+    "obligation trigger count by source",
+    "retrieval new-fact yield",
+    "local replanning recovery rate",
+    "contradictory fact rejection count"
+  ],
+  "development_gates": [
+    "在dev上确认所有新增机制均被实际触发并可序列化审计。",
+    "接口或解析错误率低于5%。",
+    "ensr_v2在完整dev矩阵上的主分数高于最强内部基线后方可冻结。",
+    "不得依据任何正式test输出修改实现或超参数。"
+  ],
+  "formal_success_rule": {
+    "full_success": "相对最强内部基线的任务级配对bootstrap 95%区间在官方平均分上下界大于0，且成功率点估计不下降。",
+    "promising_only": "平均分点估计为正但95%区间跨0；此时只能报告趋势并预注册扩大样本，不能声称显著涨点。",
+    "failure": "平均分点估计不为正或成功率下降；保留结果，依据错误类型提出新版本，使用新的未见test复验。"
+  },
+  "planned_ablations_on_dev": [
+    "ensr_v2_without_hierarchical_subgoals",
+    "ensr_v2_without_symbolic_transition_verifier",
+    "ensr_v2_without_obligation_conditioned_retrieval",
+    "ensr_v2_accumulating_memory_instead_of_replacement"
+  ],
+  "selected_variations": [
+    {
+      "task_id": "1-1",
+      "task_name": "boil",
+      "train_variations": [
+        1,
+        0,
+        3,
+        4,
+        6
+      ],
+      "dev_variations": [
+        19,
+        16
+      ],
+      "test": 28
+    },
+    {
+      "task_id": "1-4",
+      "task_name": "change-the-state-of-matter-of",
+      "train_variations": [
+        13,
+        7,
+        6,
+        3,
+        12
+      ],
+      "dev_variations": [
+        17,
+        16
+      ],
+      "test": 23
+    },
+    {
+      "task_id": "6-1",
+      "task_name": "chemistry-mix",
+      "train_variations": [
+        1,
+        12,
+        13,
+        9,
+        15
+      ],
+      "dev_variations": [
+        16,
+        21
+      ],
+      "test": 24
+    },
+    {
+      "task_id": "6-2",
+      "task_name": "chemistry-mix-paint-secondary-color",
+      "train_variations": [
+        15,
+        0,
+        2,
+        7,
+        8
+      ],
+      "dev_variations": [
+        25,
+        23
+      ],
+      "test": 35
+    },
+    {
+      "task_id": "6-3",
+      "task_name": "chemistry-mix-paint-tertiary-color",
+      "train_variations": [
+        7,
+        11,
+        9,
+        10,
+        14
+      ],
+      "dev_variations": [
+        19,
+        21
+      ],
+      "test": 27
+    },
+    {
+      "task_id": "4-4",
+      "task_name": "find-animal",
+      "train_variations": [
+        24,
+        146,
+        75,
+        51,
+        26
+      ],
+      "dev_variations": [
+        213,
+        204
+      ],
+      "test": 299
+    },
+    {
+      "task_id": "4-1",
+      "task_name": "find-living-thing",
+      "train_variations": [
+        94,
+        26,
+        28,
+        34,
+        111
+      ],
+      "dev_variations": [
+        202,
+        171
+      ],
+      "test": 274
+    },
+    {
+      "task_id": "4-2",
+      "task_name": "find-non-living-thing",
+      "train_variations": [
+        106,
+        78,
+        60,
+        18,
+        123
+      ],
+      "dev_variations": [
+        177,
+        154
+      ],
+      "test": 287
+    },
+    {
+      "task_id": "4-3",
+      "task_name": "find-plant",
+      "train_variations": [
+        143,
+        41,
+        70,
+        40,
+        114
+      ],
+      "dev_variations": [
+        187,
+        188
+      ],
+      "test": 274
+    },
+    {
+      "task_id": "1-3",
+      "task_name": "freeze",
+      "train_variations": [
+        10,
+        4,
+        7,
+        13,
+        8
+      ],
+      "dev_variations": [
+        20,
+        16
+      ],
+      "test": 25
+    },
+    {
+      "task_id": "5-2",
+      "task_name": "grow-fruit",
+      "train_variations": [
+        40,
+        33,
+        36,
+        32,
+        57
+      ],
+      "dev_variations": [
+        86,
+        90
+      ],
+      "test": 115
+    },
+    {
+      "task_id": "5-1",
+      "task_name": "grow-plant",
+      "train_variations": [
+        41,
+        21,
+        52,
+        22,
+        14
+      ],
+      "dev_variations": [
+        91,
+        79
+      ],
+      "test": 107
+    },
+    {
+      "task_id": "8-1",
+      "task_name": "identify-life-stages-1",
+      "train_variations": [
+        2,
+        1,
+        3,
+        4,
+        5
+      ],
+      "dev_variations": [
+        7,
+        8
+      ],
+      "test": 11
+    },
+    {
+      "task_id": "8-2",
+      "task_name": "identify-life-stages-2",
+      "train_variations": [
+        2,
+        1,
+        0,
+        3
+      ],
+      "dev_variations": [
+        4,
+        5
+      ],
+      "test": 8
+    },
+    {
+      "task_id": "9-1",
+      "task_name": "inclined-plane-determine-angle",
+      "train_variations": [
+        35,
+        74,
+        16,
+        52,
+        77
+      ],
+      "dev_variations": [
+        95,
+        104
+      ],
+      "test": 144
+    },
+    {
+      "task_id": "9-2",
+      "task_name": "inclined-plane-friction-named-surfaces",
+      "train_variations": [
+        49,
+        577,
+        623,
+        643,
+        598
+      ],
+      "dev_variations": [
+        755,
+        950
+      ],
+      "test": 1235
+    },
+    {
+      "task_id": "9-3",
+      "task_name": "inclined-plane-friction-unnamed-surfaces",
+      "train_variations": [
+        74,
+        42,
+        78,
+        35,
+        57
+      ],
+      "dev_variations": [
+        96,
+        81
+      ],
+      "test": 142
+    },
+    {
+      "task_id": "7-1",
+      "task_name": "lifespan-longest-lived",
+      "train_variations": [
+        26,
+        14,
+        50,
+        44,
+        32
+      ],
+      "dev_variations": [
+        62,
+        91
+      ],
+      "test": 108
+    },
+    {
+      "task_id": "7-3",
+      "task_name": "lifespan-longest-lived-then-shortest-lived",
+      "train_variations": [
+        51,
+        53,
+        21,
+        10,
+        57
+      ],
+      "dev_variations": [
+        72,
+        62
+      ],
+      "test": 97
+    },
+    {
+      "task_id": "7-2",
+      "task_name": "lifespan-shortest-lived",
+      "train_variations": [
+        53,
+        26,
+        47,
+        30,
+        43
+      ],
+      "dev_variations": [
+        92,
+        91
+      ],
+      "test": 95
+    },
+    {
+      "task_id": "2-2",
+      "task_name": "measure-melting-point-known-substance",
+      "train_variations": [
+        16,
+        175,
+        139,
+        214,
+        158
+      ],
+      "dev_variations": [
+        226,
+        243
+      ],
+      "test": 356
+    },
+    {
+      "task_id": "2-3",
+      "task_name": "measure-melting-point-unknown-substance",
+      "train_variations": [
+        144,
+        0,
+        130,
+        42,
+        75
+      ],
+      "dev_variations": [
+        206,
+        182
+      ],
+      "test": 290
+    },
+    {
+      "task_id": "1-2",
+      "task_name": "melt",
+      "train_variations": [
+        6,
+        0,
+        12,
+        9,
+        8
+      ],
+      "dev_variations": [
+        18,
+        17
+      ],
+      "test": 24
+    },
+    {
+      "task_id": "10-1",
+      "task_name": "mendelian-genetics-known-plant",
+      "train_variations": [
+        34,
+        23,
+        58,
+        28,
+        3
+      ],
+      "dev_variations": [
+        85,
+        63
+      ],
+      "test": 90
+    },
+    {
+      "task_id": "10-2",
+      "task_name": "mendelian-genetics-unknown-plant",
+      "train_variations": [
+        31,
+        0,
+        131,
+        171,
+        61
+      ],
+      "dev_variations": [
+        328,
+        306
+      ],
+      "test": 439
+    },
+    {
+      "task_id": "3-1",
+      "task_name": "power-component",
+      "train_variations": [
+        0,
+        9,
+        1,
+        3,
+        8
+      ],
+      "dev_variations": [
+        12,
+        14
+      ],
+      "test": 18
+    },
+    {
+      "task_id": "3-2",
+      "task_name": "power-component-renewable-vs-nonrenewable-energy",
+      "train_variations": [
+        5,
+        3,
+        7,
+        1,
+        9
+      ],
+      "dev_variations": [
+        14,
+        12
+      ],
+      "test": 15
+    },
+    {
+      "task_id": "3-3",
+      "task_name": "test-conductivity",
+      "train_variations": [
+        362,
+        154,
+        126,
+        20,
+        109
+      ],
+      "dev_variations": [
+        528,
+        606
+      ],
+      "test": 790
+    },
+    {
+      "task_id": "3-4",
+      "task_name": "test-conductivity-of-unknown-substances",
+      "train_variations": [
+        19,
+        159,
+        42,
+        52,
+        237
+      ],
+      "dev_variations": [
+        416,
+        392
+      ],
+      "test": 466
+    },
+    {
+      "task_id": "2-1",
+      "task_name": "use-thermometer",
+      "train_variations": [
+        217,
+        161,
+        223,
+        56,
+        17
+      ],
+      "dev_variations": [
+        383,
+        399
+      ],
+      "test": 433
+    }
+  ],
+  "freeze": {
+    "frozen_at": "2026-09-18T10:55:20.648812+00:00",
+    "basis": "complete E12 development matrix and automatic development gates",
+    "dev_score_difference": {
+      "paired_task_count": 30,
+      "point_estimate": 7.933333333333334,
+      "ci95_low": -3.5166666666666666,
+      "ci95_high": 18.9,
+      "bootstrap_samples": 20000,
+      "bootstrap_seed": 12026
+    },
+    "dev_success_difference": {
+      "paired_task_count": 30,
+      "point_estimate": 0.03333333333333333,
+      "ci95_low": -0.1,
+      "ci95_high": 0.16666666666666666,
+      "bootstrap_samples": 20000,
+      "bootstrap_seed": 12027
+    },
+    "dev_mechanism_totals": {
+      "verified_transition_count": 48.0,
+      "obligation_count": 643.0,
+      "local_replan_count": 104.0,
+      "local_replan_recovery_count": 19.0,
+      "contradictory_fact_rejection_count": 1.0,
+      "no_progress_action_count": 643.0
+    },
+    "hashes": {
+      "draft_protocol_sha256": "1d6fba389f4f504577f2fda20866976323c7a9276bf0ad71eaad6c7e14189e2c",
+      "implementation_sha256": "f22736a2174cb5eadb1436c23643189f65ceed0b2bc1dba40390a028ceb4b032",
+      "memory_sha256": "ddc5f7c45703288518d88299258222fd4ec63edffae827d5572293dbfdf6e627",
+      "trajectory_manifest_sha256": "229b99ceb94d7978de60650ad4311a51565573770590045022f97c84e2354095",
+      "model_profiles_sha256": "ebfc77b074922d951659c2e83ef2f220424be16e2fe40160a8b79307e4cdd415",
+      "dev_audit_sha256": "0e48da567ee7f2a46842df9bcdc83655e71791585b3d95ae6ae0964dda6a57c0"
+    },
+    "post_freeze_rule": "正式测试首次运行后不得修改算法、提示词、知识库、超参数、基线选择或测试variation。"
+  }
+}

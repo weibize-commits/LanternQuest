@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lanternquest.local/schemas/lantern-ie-annotation.schema.json",
+  "title": "LanternQuest E27 entity and relation annotation",
+  "type": "object",
+  "required": [
+    "segment_id",
+    "source_group",
+    "source_id",
+    "locator",
+    "text",
+    "entities",
+    "relations",
+    "annotation_status"
+  ],
+  "properties": {
+    "segment_id": {"type": "string", "minLength": 1},
+    "source_group": {"enum": ["N001", "田野06", "田野07"]},
+    "source_id": {"type": "string", "pattern": "^src_[0-9a-f]{16}$"},
+    "locator": {"type": "string", "minLength": 1},
+    "text": {"type": "string", "minLength": 1},
+    "content_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "held_out_fold": {"enum": ["N001", "田野06", "田野07"]},
+    "evaluation_partition": {"enum": ["development", "test"]},
+    "annotation_status": {"enum": ["pending", "annotated", "adjudicated", "frozen"]},
+    "entities": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "start", "end", "text", "type"],
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "start": {"type": "integer", "minimum": 0},
+          "end": {"type": "integer", "minimum": 1},
+          "text": {"type": "string", "minLength": 1},
+          "type": {
+            "enum": [
+              "LANTERN_TYPE",
+              "PROCESS",
+              "MATERIAL",
+              "TOOL",
+              "PATTERN",
+              "STRUCTURE",
+              "EFFECT",
+              "CONDITION_PARAMETER",
+              "ACTOR"
+            ]
+          },
+          "canonical_id": {"type": ["string", "null"]}
+        },
+        "additionalProperties": false
+      }
+    },
+    "relations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "head", "tail", "type"],
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "head": {"type": "string", "minLength": 1},
+          "tail": {"type": "string", "minLength": 1},
+          "type": {
+            "enum": [
+              "USES_MATERIAL",
+              "USES_TOOL",
+              "APPLIES_TO",
+              "HAS_PATTERN",
+              "HAS_COMPONENT",
+              "PRECEDES",
+              "PRODUCES_EFFECT",
+              "HAS_CONDITION",
+              "PERFORMED_BY"
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": true
+}

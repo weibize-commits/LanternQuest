@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0",
+  "profile_set_id": "scienceworld_qwen3_8b_recovery_v1",
+  "selection_boundary": "Created after E15 completed and before any E15R held-out call.",
+  "rationale": "E15 Qwen3-8B had three IPER adapter errors caused by empty output after two 4096-token completions. The official Qwen3 model card provides a hard non-thinking mode for efficiency. A thinking-mode recovery candidate passed request probes but its first full IPER development episode did not finish within 20 minutes, so it was rejected before formal freeze.",
+  "profiles": [
+    {
+      "profile_id": "bit_qwen3_8b_recovery_v1",
+      "provider": "BIT MaaS (GPUStack)",
+      "base_url": "https://maas.bit.edu.cn/v1-openai",
+      "model_id": "qwen3-8b",
+      "api_key_setting": "bit_api_key",
+      "api_style": "responses",
+      "max_output_tokens": 2048,
+      "max_input_characters": 12000,
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "reasoning_effort": null,
+      "structured_output_mode": "json_object",
+      "provider_retry_count": 0,
+      "structured_output_retries": 1,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "role": "Prospective operational recovery of the E15 Qwen3-8B cell"
+    }
+  ],
+  "official_basis": [
+    "https://huggingface.co/Qwen/Qwen3-8B",
+    "https://qwen.readthedocs.io/en/v3.0/deployment/vllm.html"
+  ],
+  "reporting_boundary": "E15R is a separate post-E15 recovery experiment and never replaces E15."
+}

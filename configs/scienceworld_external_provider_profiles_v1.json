@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.0-preflight",
+  "profile_set_id": "scienceworld_external_provider_v1",
+  "selection_boundary": "Selected from each account's model-list response on 2026-09-24, before any ScienceWorld external-provider result was generated.",
+  "shared_settings": {
+    "temperature": 0.0,
+    "max_output_tokens": 2048,
+    "max_input_characters": 16000,
+    "structured_output_mode": "json_object",
+    "provider_retry_count": 1,
+    "structured_output_retries": 1,
+    "parameter_training": false
+  },
+  "profiles": [
+    {
+      "profile_id": "deepseek_v4_pro_external",
+      "provider": "DeepSeek API",
+      "base_url": "https://api.deepseek.com",
+      "model_id": "deepseek-v4-pro",
+      "api_key_setting": "deepseek_api_key",
+      "api_style": "chat_completions",
+      "max_output_tokens": 2048,
+      "max_input_characters": 16000,
+      "temperature": 0.0,
+      "reasoning_effort": null,
+      "structured_output_mode": "json_object",
+      "provider_retry_count": 1,
+      "structured_output_retries": 1,
+      "role": "current account-visible DeepSeek flagship"
+    },
+    {
+      "profile_id": "glm_5_3_external",
+      "provider": "Zhipu GLM API",
+      "base_url": "https://open.bigmodel.cn/api/paas/v4",
+      "model_id": "glm-5.3",
+      "api_key_setting": "glm_api_key",
+      "api_style": "chat_completions",
+      "max_output_tokens": 8192,
+      "max_input_characters": 16000,
+      "temperature": 0.0,
+      "reasoning_effort": "low",
+      "structured_output_mode": "json_object",
+      "provider_retry_count": 1,
+      "structured_output_retries": 1,
+      "role": "current account-visible GLM flagship"
+    },
+    {
+      "profile_id": "gpt_6_astra_external",
+      "provider": "OpenAI API",
+      "base_url": "https://api.openai.com/v1",
+      "model_id": "gpt-6-astra",
+      "api_key_setting": "openai_api_key",
+      "api_style": "responses",
+      "max_output_tokens": 2048,
+      "max_input_characters": 16000,
+      "temperature": null,
+      "reasoning_effort": null,
+      "structured_output_mode": "json_schema",
+      "provider_retry_count": 1,
+      "structured_output_retries": 1,
+      "role": "current account-visible OpenAI flagship"
+    }
+  ],
+  "pending_profiles": [
+    {
+      "provider": "Kimi",
+      "status": "blocked_invalid_authentication",
+      "reason": "The supplied key returned HTTP 401 on the official Kimi Open Platform and Kimi Code endpoints.",
+      "formal_handling": "Add by a versioned amendment only after a valid key passes preflight; do not count authentication failure as model failure."
+    }
+  ]
+}

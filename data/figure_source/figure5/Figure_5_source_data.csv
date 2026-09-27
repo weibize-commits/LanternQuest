@@ -1,0 +1,19 @@
+﻿experiment,panel,category,metric,estimate,ci95_low,ci95_high,episodes,paired_task_count,bootstrap_samples
+E13,a,Sequential planner,mean_clipped_score,21.955555555555556,,,90,,
+E13,b,Sequential planner,task_success_rate_percent,11.11111111111111,,,90,,
+E13,a,IPER-RAG,mean_clipped_score,24.866666666666667,,,90,,
+E13,b,IPER-RAG,task_success_rate_percent,7.777777777777778,,,90,,
+E13,a,ENSR,mean_clipped_score,49.21111111111111,,,90,,
+E13,b,ENSR,task_success_rate_percent,32.22222222222222,,,90,,
+E13,a,ENSR minus IPER-RAG,paired_mean_clipped_score_difference,24.344444444444445,12.366666666666667,36.41138888888887,,30,20000
+E13,b,ENSR minus IPER-RAG,paired_success_rate_difference_pp,24.444444444444443,7.777777777777778,41.111111111111114,,30,20000
+E14,c,Qwen3-235B,ensr_minus_iper_mean_score,24.566666666666666,11.5325,37.667499999999926,30,30,20000
+E14,d,Qwen3-235B,ensr_minus_iper_success_rate_pp,23.333333333333332,3.3333333333333335,43.333333333333336,30,30,20000
+E14,c,CEEP-70B,ensr_minus_iper_mean_score,34.333333333333336,22.333333333333332,46.667499999999926,30,30,20000
+E14,d,CEEP-70B,ensr_minus_iper_success_rate_pp,16.666666666666664,3.3333333333333335,30.0,30,30,20000
+E14,c,Qwen3-32B,ensr_minus_iper_mean_score,15.133333333333333,-0.6333333333333333,31.0,30,30,20000
+E14,d,Qwen3-32B,ensr_minus_iper_success_rate_pp,10.0,-10.0,30.0,30,30,20000
+E14,c,Qwen3-8B,ensr_minus_iper_mean_score,26.6,13.365833333333335,40.4,30,30,20000
+E14,d,Qwen3-8B,ensr_minus_iper_success_rate_pp,20.0,3.3333333333333335,36.666666666666664,30,30,20000
+E14,c,Qwen3-0.6B,ensr_minus_iper_mean_score,24.3,8.966666666666667,39.36666666666667,30,30,20000
+E14,d,Qwen3-0.6B,ensr_minus_iper_success_rate_pp,13.333333333333334,0.0,30.0,30,30,20000

@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0",
+  "freeze_id": "scienceworld_auto_obligation_formal_freeze_v1",
+  "experiment_id": "E11F",
+  "frozen_at": "2026-09-17T22:40:00+08:00",
+  "status": "frozen_ready_to_run",
+  "protocol": {
+    "path": "configs/scienceworld_protocol_auto_obligation_v1.json",
+    "sha256": "167f55a101c9e4154eadfcbabbffa6c4b617f4148b65c76a2993d218767f7415"
+  },
+  "implementation_sha256": "af36782817afe549f543023230868d9b786904a396f4484b615a7f0d73e1f532",
+  "model_profiles": {
+    "path": "configs/formal_model_profiles_v0.json",
+    "sha256": "ebfc77b074922d951659c2e83ef2f220424be16e2fe40160a8b79307e4cdd415",
+    "profile_id": "bit_qwen3_235b"
+  },
+  "inputs": {
+    "task_catalog_sha256": "d2a459a0078204863da9755f85e01ed1f3e830222137dbb61e2e4e04d147a512",
+    "train_skill_manifest_sha256": "01dd47e3a3953de4cb66dcfb6df892f3a621ab87ff6e509d70f7046f372efd6f"
+  },
+  "pilot_gate": {
+    "path": "artifacts/benchmarks/scienceworld/followup_pilot_final/scienceworld_iper_auto_obligation_v1/bit_qwen3_235b/PILOT_AUDIT.json",
+    "sha256": "ac40071bf43731581fa6c467b24db7511d6ab088943dcf984db00a9f80409d77",
+    "formal_test_may_unlock": true,
+    "role": "mechanism and stability gate only; pilot outcomes cannot support the paper claim"
+  },
+  "matrix": {
+    "methods": ["b4_sequential_planner", "iper_rag"],
+    "test_task_variations": 30,
+    "seeds": [11, 29, 47],
+    "episodes_per_method": 90,
+    "total_episodes": 180
+  },
+  "analysis": {
+    "primary_comparison": "iper_rag - b4_sequential_planner",
+    "primary_metrics": ["clipped official average score", "task success rate"],
+    "unit": "task_id after averaging the three seeds",
+    "interval": "paired nonparametric bootstrap over 30 task_id units, 95% interval",
+    "mechanism_metrics": [
+      "episodes_with_obligation_retrieval",
+      "obligation_source_counts",
+      "new_skill_yield_per_obligation",
+      "retrieval_budget_exhaustion"
+    ],
+    "claim_rule": "Only an interval excluding zero in the favorable direction supports an outperform claim for that metric. A point estimate alone is inconclusive.",
+    "sota_rule": "This follow-up is an internal controlled comparison and cannot establish SOTA against non-comparable published systems."
+  },
+  "preservation": {
+    "v0_results": "retain unchanged",
+    "failed_development_pilots": "retain in their original directories",
+    "test_selection": "the 30 preselected test variations have zero overlap with v0 and may not be replaced after outcomes are observed"
+  }
+}

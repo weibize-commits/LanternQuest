@@ -1,0 +1,5 @@
+﻿metric,unit,estimate,ci95_low,ci95_high,direction
+Domain correctness,score points,0.5555555555555555,0.13888888888888887,0.972222222222222,higher_is_better
+Evidence sufficiency,score points,0.5555555555555555,0.13888888888888887,0.972222222222222,higher_is_better
+Intent preserved,percentage points,8.333333333333332,0.0,25.0,higher_is_better
+Unsupported/unsafe claims,claims per rating,-0.08333333333333333,-0.25,0.0,lower_is_better

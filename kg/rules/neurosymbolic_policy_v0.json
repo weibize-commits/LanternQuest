@@ -1,0 +1,23 @@
+{
+  "schema_version": "0.1",
+  "policy_id": "lantern_neurosymbolic_gate_v0",
+  "status": "development_frozen",
+  "weights": {
+    "cross_modal_similarity": 0.45,
+    "extractor_confidence": 0.35,
+    "symbolic_rule_pass_rate": 0.20
+  },
+  "thresholds": {
+    "auto_accept": 0.80,
+    "human_review": 0.65
+  },
+  "hard_rules": [
+    "source_traceable",
+    "scope_compatible",
+    "no_known_conflict",
+    "safety_boundary_preserved"
+  ],
+  "auto_accept_review_statuses": ["source_checked", "expert_confirmed"],
+  "external_processing_allowed_rights_statuses": ["external_processing_allowed"],
+  "notes": "Neural scores propose candidates. Hard symbolic rules, provenance, scope and rights determine whether a candidate may be accepted or must be reviewed/blocked."
+}

@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0",
+  "experiment_id": "E27v2.1",
+  "title": "Supervised evidence-gated extraction with out-of-fold comparison against the strongest frozen baseline",
+  "status": "frozen_before_formal_execution",
+  "frozen_at": "2026-09-26T20:01:00+08:00",
+  "analysis_role": "post-freeze recovery experiment",
+  "rationale": "The original zero-shot experiment did not exceed the frozen rule baseline. E27v2.1 tests whether supervised ontology-aware extraction can produce out-of-fold gains while retaining evidence grounding and schema validity.",
+  "integrity_statement": "The original E27 result remains immutable. E27v2.1 is reported separately and every record is predicted by models that did not train on that record.",
+  "evaluation": {
+    "records": 160,
+    "folds": 5,
+    "fold_assignment": "source-aware deterministic round robin using source_group only",
+    "primary_metrics": [
+      "strict entity micro F1",
+      "end-to-end relation micro F1"
+    ],
+    "primary_comparator": "B0 frozen rule and lexicon baseline",
+    "supportive_test": "paired bootstrap over segments with 5000 resamples",
+    "success_definition": "Both primary F1 values exceed B0 and both paired bootstrap probabilities of a non-positive gain are below 0.025."
+  },
+  "audit_gates": {
+    "grounded_entity_rate_at_least": 0.98,
+    "schema_valid_relation_rate_at_least": 0.99
+  },
+  "descriptive_targets_not_in_original_protocol": {
+    "entity_f1_at_least": 0.80,
+    "relation_f1_at_least": 0.65
+  },
+  "fixed_model": {
+    "backbone": "bert-base-chinese",
+    "entity_head": "BIO token classification",
+    "relation_head": "ontology-masked ordered-pair classification",
+    "evidence_gate": "exact source spans and valid domain-range relations only"
+  },
+  "fixed_hyperparameters": {
+    "seed": 27021,
+    "entity_epochs": 14,
+    "relation_epochs": 12,
+    "batch_size": 12,
+    "learning_rate": 0.00003,
+    "max_length": 192,
+    "negative_ratio": 2,
+    "relation_threshold": 0.30
+  },
+  "gold": "artifacts/benchmarks/e27_ie/formal_gold_v1/E27_expert_adjudicated_gold_frozen.jsonl",
+  "baseline": "artifacts/benchmarks/e27_ie/B0_rule_lexicon_predictions_frozen.jsonl",
+  "implementation": "scripts/run_lanternquest_e27_supervised_cv.py"
+}
