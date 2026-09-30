@@ -1,0 +1,35 @@
+{
+  "protocol_id": "LANTERNQUEST_DYNAMIC_HERITAGE_V2_PENDING_CONFIRMATION",
+  "status": "pending_R3_revision_confirmation_not_frozen_not_run",
+  "candidate_file": "annotations\\benchmark\\lanternquest_dynamic_revised_v2_pending_confirmation.jsonl",
+  "candidate_sha256": "5c85538249e7d75bf5cbf7e97f9518d4e01092a0a990cc3e1de6dde491ebefa5",
+  "cases": 48,
+  "splits": {
+    "train": 29,
+    "development": 9,
+    "test": 10
+  },
+  "perturbations": {
+    "new_evidence_available": 12,
+    "applicability_scope_change": 12,
+    "failed_action_effect": 12,
+    "learner_intent_change": 12
+  },
+  "conditions": [
+    "full_ENSR",
+    "ENSR_base",
+    "B4"
+  ],
+  "primary_outcomes": [
+    "terminal_success",
+    "unsupported_action",
+    "persistent_obligation_resolved_correctly"
+  ],
+  "freeze_gate": {
+    "R3_revision_confirmation_complete": false,
+    "all_placeholders_resolved": true,
+    "source_conflict_cases_excluded": true,
+    "same_model_action_interface_and_resource_ceilings": true
+  },
+  "claim_decision_rules_source": "configs/lanternquest_dynamic_heritage_benchmark_protocol_draft_v1.json"
+}

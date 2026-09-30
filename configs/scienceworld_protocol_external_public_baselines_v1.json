@@ -1,0 +1,594 @@
+{
+  "schema_version": "1.0",
+  "protocol_id": "scienceworld_external_public_baselines_v1",
+  "experiment_id": "E72",
+  "status": "formal_frozen_test_unlocked",
+  "purpose": "Evaluate full ENSR against public language-agent references under the same held-out ScienceWorld cases, model profile, action interface, and aggregate environment-step and model-call ceilings.",
+  "reporting_boundary": "ReAct and Reflexion are local, method-faithful ScienceWorld adaptations. They are not claimed to reproduce the published GPT-4 scores.",
+  "source_protocol": {
+    "protocol_id": "scienceworld_ensr_v3",
+    "experiment_id": "E13",
+    "selected_test_variations_reused": true,
+    "reason": "A matched external comparison requires the same 30 task clusters and three seeds used for the full ENSR result."
+  },
+  "benchmark": {
+    "name": "ScienceWorld",
+    "version": "1.2.3",
+    "simplifications": "",
+    "max_environment_steps": 100
+  },
+  "model": {
+    "profile": "bit_qwen3_235b",
+    "temperature": 0.0,
+    "parameter_training": false
+  },
+  "runs": {
+    "formal_seeds": [
+      13,
+      31,
+      53
+    ],
+    "max_environment_steps_per_episode": 100,
+    "max_model_calls_per_episode": 100,
+    "candidate_action_limit": 12,
+    "failure_policy": "All provider, parser, adapter, invalid-action, budget, and environment failures remain in the denominator."
+  },
+  "methods": [
+    {
+      "method_id": "react",
+      "comparison_class": "compute_matched_training_free_public_reference"
+    },
+    {
+      "method_id": "reflexion",
+      "comparison_class": "compute_matched_training_free_public_reference"
+    },
+    {
+      "method_id": "swiftsage",
+      "comparison_class": "official_trained_protocol_reference",
+      "run_policy": "Run separately only when the official ScienceWorld checkpoint and environment dependencies can be reproduced. Never pool it with the compute-matched methods."
+    }
+  ],
+  "public_baseline_adaptation": {
+    "same_task_demonstrations": 1,
+    "demonstration_source": "train split only",
+    "action_grounding": "Structured selection from the same deterministic shortlist of current ScienceWorld valid actions used by the main evaluation.",
+    "recent_history_limit": 8,
+    "react": "One concise next-subgoal summary followed by one environment action per model call. One trial per episode. Stop an alternating two-action loop when it occupies five consecutive generated actions, following the public ScienceWorld adaptation.",
+    "reflexion_max_attempts": 4,
+    "reflexion": "Up to four reset trials. After each unsuccessful trial, one verbal reflection is stored as episodic memory for the next trial.",
+    "reflexion_step_allocation": "The remaining aggregate environment-step budget is divided equally among remaining trials. Reflection calls count toward the aggregate model-call ceiling.",
+    "best_attempt_scoring": "For multi-trial Reflexion, report the best official score reached within the frozen aggregate budget and retain every failed trial."
+  },
+  "primary_outcomes": [
+    "mean clipped official ScienceWorld score",
+    "terminal success rate"
+  ],
+  "secondary_outcomes": [
+    "environment steps",
+    "model calls",
+    "input tokens",
+    "output tokens",
+    "wall-clock time",
+    "invalid decisions",
+    "repeated actions",
+    "no-progress actions",
+    "failure category"
+  ],
+  "statistics": {
+    "unit": "task cluster averaged over three frozen seeds",
+    "contrast": "full ENSR minus each external baseline",
+    "bootstrap_samples": 20000,
+    "bootstrap_seed_score": 72026,
+    "bootstrap_seed_success": 72027,
+    "interval": "paired task-cluster bootstrap 95% confidence interval"
+  },
+  "public_sources": {
+    "react": {
+      "paper": "https://arxiv.org/abs/2210.03629",
+      "repository": "https://github.com/ysymyth/ReAct",
+      "commit": "6bdb3a1fd38b8188fc7ba4102969fe483df8fdc9"
+    },
+    "reflexion": {
+      "paper": "https://arxiv.org/abs/2303.11366",
+      "repository": "https://github.com/noahshinn/reflexion",
+      "commit": "218cf0ef1df84b05ce379dd4a8e47f17766733a0"
+    },
+    "swiftsage": {
+      "paper": "https://papers.neurips.cc/paper_files/paper/2023/file/4b0eea69deea512c9e2c469187643dc2-Paper-Conference.pdf",
+      "repository": "https://github.com/SwiftSage/SwiftSage",
+      "commit": "b8ea624231a6a8d83d78c1c12bea1b44b8ea758b",
+      "branch": "science_world"
+    }
+  },
+  "selected_variations": [
+    {
+      "task_id": "1-1",
+      "task_name": "boil",
+      "train_variations": [
+        1,
+        0,
+        3,
+        4,
+        6
+      ],
+      "dev_variations": [
+        19,
+        16
+      ],
+      "test": 25
+    },
+    {
+      "task_id": "1-4",
+      "task_name": "change-the-state-of-matter-of",
+      "train_variations": [
+        13,
+        7,
+        6,
+        3,
+        12
+      ],
+      "dev_variations": [
+        17,
+        16
+      ],
+      "test": 29
+    },
+    {
+      "task_id": "6-1",
+      "task_name": "chemistry-mix",
+      "train_variations": [
+        1,
+        12,
+        13,
+        9,
+        15
+      ],
+      "dev_variations": [
+        16,
+        21
+      ],
+      "test": 28
+    },
+    {
+      "task_id": "6-2",
+      "task_name": "chemistry-mix-paint-secondary-color",
+      "train_variations": [
+        15,
+        0,
+        2,
+        7,
+        8
+      ],
+      "dev_variations": [
+        25,
+        23
+      ],
+      "test": 32
+    },
+    {
+      "task_id": "6-3",
+      "task_name": "chemistry-mix-paint-tertiary-color",
+      "train_variations": [
+        7,
+        11,
+        9,
+        10,
+        14
+      ],
+      "dev_variations": [
+        19,
+        21
+      ],
+      "test": 32
+    },
+    {
+      "task_id": "4-4",
+      "task_name": "find-animal",
+      "train_variations": [
+        24,
+        146,
+        75,
+        51,
+        26
+      ],
+      "dev_variations": [
+        213,
+        204
+      ],
+      "test": 271
+    },
+    {
+      "task_id": "4-1",
+      "task_name": "find-living-thing",
+      "train_variations": [
+        94,
+        26,
+        28,
+        34,
+        111
+      ],
+      "dev_variations": [
+        202,
+        171
+      ],
+      "test": 268
+    },
+    {
+      "task_id": "4-2",
+      "task_name": "find-non-living-thing",
+      "train_variations": [
+        106,
+        78,
+        60,
+        18,
+        123
+      ],
+      "dev_variations": [
+        177,
+        154
+      ],
+      "test": 252
+    },
+    {
+      "task_id": "4-3",
+      "task_name": "find-plant",
+      "train_variations": [
+        143,
+        41,
+        70,
+        40,
+        114
+      ],
+      "dev_variations": [
+        187,
+        188
+      ],
+      "test": 246
+    },
+    {
+      "task_id": "1-3",
+      "task_name": "freeze",
+      "train_variations": [
+        10,
+        4,
+        7,
+        13,
+        8
+      ],
+      "dev_variations": [
+        20,
+        16
+      ],
+      "test": 29
+    },
+    {
+      "task_id": "5-2",
+      "task_name": "grow-fruit",
+      "train_variations": [
+        40,
+        33,
+        36,
+        32,
+        57
+      ],
+      "dev_variations": [
+        86,
+        90
+      ],
+      "test": 105
+    },
+    {
+      "task_id": "5-1",
+      "task_name": "grow-plant",
+      "train_variations": [
+        41,
+        21,
+        52,
+        22,
+        14
+      ],
+      "dev_variations": [
+        91,
+        79
+      ],
+      "test": 124
+    },
+    {
+      "task_id": "8-1",
+      "task_name": "identify-life-stages-1",
+      "train_variations": [
+        2,
+        1,
+        3,
+        4,
+        5
+      ],
+      "dev_variations": [
+        7,
+        8
+      ],
+      "test": 9
+    },
+    {
+      "task_id": "8-2",
+      "task_name": "identify-life-stages-2",
+      "train_variations": [
+        2,
+        1,
+        0,
+        3
+      ],
+      "dev_variations": [
+        4,
+        5
+      ],
+      "test": 7
+    },
+    {
+      "task_id": "9-1",
+      "task_name": "inclined-plane-determine-angle",
+      "train_variations": [
+        35,
+        74,
+        16,
+        52,
+        77
+      ],
+      "dev_variations": [
+        95,
+        104
+      ],
+      "test": 151
+    },
+    {
+      "task_id": "9-2",
+      "task_name": "inclined-plane-friction-named-surfaces",
+      "train_variations": [
+        49,
+        577,
+        623,
+        643,
+        598
+      ],
+      "dev_variations": [
+        755,
+        950
+      ],
+      "test": 1046
+    },
+    {
+      "task_id": "9-3",
+      "task_name": "inclined-plane-friction-unnamed-surfaces",
+      "train_variations": [
+        74,
+        42,
+        78,
+        35,
+        57
+      ],
+      "dev_variations": [
+        96,
+        81
+      ],
+      "test": 141
+    },
+    {
+      "task_id": "7-1",
+      "task_name": "lifespan-longest-lived",
+      "train_variations": [
+        26,
+        14,
+        50,
+        44,
+        32
+      ],
+      "dev_variations": [
+        62,
+        91
+      ],
+      "test": 120
+    },
+    {
+      "task_id": "7-3",
+      "task_name": "lifespan-longest-lived-then-shortest-lived",
+      "train_variations": [
+        51,
+        53,
+        21,
+        10,
+        57
+      ],
+      "dev_variations": [
+        72,
+        62
+      ],
+      "test": 119
+    },
+    {
+      "task_id": "7-2",
+      "task_name": "lifespan-shortest-lived",
+      "train_variations": [
+        53,
+        26,
+        47,
+        30,
+        43
+      ],
+      "dev_variations": [
+        92,
+        91
+      ],
+      "test": 97
+    },
+    {
+      "task_id": "2-2",
+      "task_name": "measure-melting-point-known-substance",
+      "train_variations": [
+        16,
+        175,
+        139,
+        214,
+        158
+      ],
+      "dev_variations": [
+        226,
+        243
+      ],
+      "test": 399
+    },
+    {
+      "task_id": "2-3",
+      "task_name": "measure-melting-point-unknown-substance",
+      "train_variations": [
+        144,
+        0,
+        130,
+        42,
+        75
+      ],
+      "dev_variations": [
+        206,
+        182
+      ],
+      "test": 243
+    },
+    {
+      "task_id": "1-2",
+      "task_name": "melt",
+      "train_variations": [
+        6,
+        0,
+        12,
+        9,
+        8
+      ],
+      "dev_variations": [
+        18,
+        17
+      ],
+      "test": 26
+    },
+    {
+      "task_id": "10-1",
+      "task_name": "mendelian-genetics-known-plant",
+      "train_variations": [
+        34,
+        23,
+        58,
+        28,
+        3
+      ],
+      "dev_variations": [
+        85,
+        63
+      ],
+      "test": 115
+    },
+    {
+      "task_id": "10-2",
+      "task_name": "mendelian-genetics-unknown-plant",
+      "train_variations": [
+        31,
+        0,
+        131,
+        171,
+        61
+      ],
+      "dev_variations": [
+        328,
+        306
+      ],
+      "test": 441
+    },
+    {
+      "task_id": "3-1",
+      "task_name": "power-component",
+      "train_variations": [
+        0,
+        9,
+        1,
+        3,
+        8
+      ],
+      "dev_variations": [
+        12,
+        14
+      ],
+      "test": 15
+    },
+    {
+      "task_id": "3-2",
+      "task_name": "power-component-renewable-vs-nonrenewable-energy",
+      "train_variations": [
+        5,
+        3,
+        7,
+        1,
+        9
+      ],
+      "dev_variations": [
+        14,
+        12
+      ],
+      "test": 19
+    },
+    {
+      "task_id": "3-3",
+      "task_name": "test-conductivity",
+      "train_variations": [
+        362,
+        154,
+        126,
+        20,
+        109
+      ],
+      "dev_variations": [
+        528,
+        606
+      ],
+      "test": 715
+    },
+    {
+      "task_id": "3-4",
+      "task_name": "test-conductivity-of-unknown-substances",
+      "train_variations": [
+        19,
+        159,
+        42,
+        52,
+        237
+      ],
+      "dev_variations": [
+        416,
+        392
+      ],
+      "test": 552
+    },
+    {
+      "task_id": "2-1",
+      "task_name": "use-thermometer",
+      "train_variations": [
+        217,
+        161,
+        223,
+        56,
+        17
+      ],
+      "dev_variations": [
+        383,
+        399
+      ],
+      "test": 472
+    }
+  ],
+  "formal_run_rule": "Freeze prompts, code, demonstrations, cases, seeds, budgets, and model profile before the first external-baseline test call. No change is permitted after inspection of a formal ReAct or Reflexion result.",
+  "freeze": {
+    "frozen_at": "2026-09-29T11:25:57.353288+00:00",
+    "hashes": {
+      "source_protocol_sha256": "6578560e63eb4a7a290d6065e1637d58c6f27f6cdf7657f42fa30170ad1bd0b5",
+      "implementation_sha256": "cc6ec393b3c77399c8fcadcd5bf095f637ef72af122b0d5daec31e441de46dc2",
+      "runner_sha256": "56ac5ccefcb64429d1b05fd2e03fffe816382d02c77e5a0c103affd6b03764d6",
+      "model_profiles_sha256": "ebfc77b074922d951659c2e83ef2f220424be16e2fe40160a8b79307e4cdd415"
+    }
+  }
+}

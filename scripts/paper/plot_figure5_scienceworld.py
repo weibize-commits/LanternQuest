@@ -55,7 +55,7 @@ COLORS = {
 
 METHODS = [
     ("b4_sequential_planner", "Sequential planner", COLORS["sequential"]),
-    ("iper_rag", "IPER-RAG", COLORS["iper"]),
+    ("iper_rag", "ENSR-base", COLORS["iper"]),
     ("ensr_v2", "ENSR", COLORS["ensr"]),
 ]
 
@@ -357,7 +357,7 @@ def plot_episode_distributions(
     ax.text(
         99,
         2.62,
-        "ENSR − IPER-RAG\n"
+        "ENSR − ENSR-base\n"
         f"+{effect['point_estimate']:.1f}  "
         f"[{effect['ci95_low']:.1f}, {effect['ci95_high']:.1f}]",
         ha="right",
@@ -396,7 +396,7 @@ def plot_success_matrix(
         tick.set_fontweight("semibold")
     ax.set_xticks([0, 9, 19, 29])
     ax.set_xticklabels(["1", "10", "20", "30"])
-    ax.set_xlabel("Paired task rank (ordered by ENSR − IPER-RAG score gain)")
+    ax.set_xlabel("Paired task rank (ordered by ENSR − ENSR-base score gain)")
     ax.set_xticks(np.arange(-0.5, matrix.shape[1], 1), minor=True)
     ax.set_yticks(np.arange(-0.5, matrix.shape[0], 1), minor=True)
     ax.grid(which="minor", color="white", linewidth=0.8)
@@ -505,7 +505,7 @@ def plot_cross_model_slopes(ax: plt.Axes, rows: list[dict]) -> None:
     ax.set_xlim(-0.18, 1.95)
     ax.set_ylim(0, 57)
     ax.set_xticks([0, 1])
-    ax.set_xticklabels(["IPER-RAG", "ENSR"])
+    ax.set_xticklabels(["ENSR-base", "ENSR"])
     ax.set_ylabel("Mean clipped score")
     ax.set_yticks([0, 10, 20, 30, 40, 50])
     ax.set_title("Scores rise across model profiles", loc="left", pad=7)
@@ -572,7 +572,7 @@ def plot_success_intervals(ax: plt.Axes, rows: list[dict]) -> None:
     ax.set_ylim(-0.65, 4.85)
     ax.set_yticks(y)
     ax.set_yticklabels([row["model"] for row in rows])
-    ax.set_xlabel("ENSR − IPER-RAG success rate (percentage points)")
+    ax.set_xlabel("ENSR − ENSR-base success rate (percentage points)")
     ax.set_title("Success effects and uncertainty", loc="left", pad=7)
     ax.text(
         67,
@@ -638,16 +638,17 @@ def write_caption() -> None:
 
 **Figure 5 | Held-out ScienceWorld performance and cross-model robustness.**
 **a**, Episode-level clipped-score distributions for the sequential planner,
-IPER-RAG and ENSR in E13. Half violins show kernel-density estimates, points
+ENSR-base and full ENSR in E13. ENSR-base is the internal controller
+preregistered under the protocol identifier IPER-RAG. Half violins show kernel-density estimates, points
 show all 90 episodes per method, thick segments show the interquartile range,
 white ticks show medians and diamonds show means. The annotation gives the
-paired ENSR minus IPER-RAG mean-score difference and 95% bootstrap confidence
+paired full-ENSR minus ENSR-base mean-score difference and 95% bootstrap confidence
 interval. **b**, Number of successful seeds (0–3) for each of 30 paired task
-variants, ordered by the ENSR minus IPER-RAG score gain. Right-hand labels give
-aggregate successes and rates. **c**, Absolute IPER-RAG and ENSR mean scores
+variants, ordered by the full-ENSR minus ENSR-base score gain. Right-hand labels give
+aggregate successes and rates. **c**, Absolute ENSR-base and full-ENSR mean scores
 across five model profiles in E14; labels on each slope give the point-estimate
 gain. The open endpoint identifies the model profile for which the paired score
-confidence interval crosses zero. **d**, Paired ENSR minus IPER-RAG task-success
+confidence interval crosses zero. **d**, Paired full-ENSR minus ENSR-base task-success
 differences across the same model profiles. Lines denote 95% bootstrap
 confidence intervals; open markers indicate intervals that touch or cross zero.
 E14 contained 30 episodes per method and model. All confidence intervals use

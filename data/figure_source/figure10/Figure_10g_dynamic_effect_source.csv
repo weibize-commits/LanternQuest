@@ -1,0 +1,5 @@
+﻿metric,metric_label,comparator,difference_pp,ci95_low_pp,ci95_high_pp,discordant_positive_difference,discordant_negative_difference,ties
+terminal_success,Terminal control,ENSR_base,70.0,40.0,100.0,7,0,3
+terminal_success,Terminal control,B4,100.0,100.0,100.0,10,0,0
+evidence_trace_complete,Complete evidence trace,ENSR_base,50.0,20.0,80.0,5,0,5
+evidence_trace_complete,Complete evidence trace,B4,100.0,100.0,100.0,10,0,0

@@ -38,6 +38,9 @@ E70_LONG = E70_RETURN / "e70_unblinded_long_v1.csv"
 E70_PANEL = E70_RETURN / "expert_panel_verification_v1.json"
 E70_KEY = E70_ROOT / "private_key.csv"
 E70_RAW_ROOT = E70_RETURN / "raw"
+DYNAMIC_ROOT = REPO_ROOT / "artifacts" / "eval" / "lanternquest_dynamic_v2_1_controller_formal"
+DYNAMIC_ANALYSIS = DYNAMIC_ROOT / "formal_analysis.json"
+DYNAMIC_CASES = DYNAMIC_ROOT / "case_level_results.csv"
 
 
 COLORS = {
@@ -70,7 +73,7 @@ METHOD_LABELS = {
     "b1_rag": "B1 RAG",
     "b2_kg_rag": "B2 KG-RAG",
     "b4_sequential": "B4 Sequential",
-    "iper_rag": "IPER-RAG",
+    "iper_rag": "ENSR-base",
     "ensr": "ENSR",
 }
 
@@ -598,6 +601,249 @@ def draw_panel_f(ax: plt.Axes, case_means: list[dict]) -> list[dict]:
     return delta_rows
 
 
+def extract_dynamic(analysis: dict, case_rows: list[dict]) -> tuple[list[dict], list[dict]]:
+    if analysis.get("analysis_population") != "frozen test split" or analysis.get("case_count") != 10:
+        raise RuntimeError("Dynamic formal analysis is not the frozen ten-case test result.")
+    if analysis.get("prespecified_claim_decision") != "incremental_ENSR_mechanism_supported":
+        raise RuntimeError("Dynamic formal claim decision is not the frozen supported result.")
+    if len(case_rows) != 30:
+        raise RuntimeError(f"Expected 30 dynamic case-method rows, found {len(case_rows)}.")
+    normalized = []
+    for row in case_rows:
+        normalized.append(
+            {
+                "case_id": row["case_id"],
+                "case_number": row["case_id"].split("_")[2],
+                "perturbation_type": row["perturbation_type"],
+                "method": row["method"],
+                "terminal_success": int(row["terminal_success"]),
+                "persistent_obligation_resolved_correctly": int(
+                    row["persistent_obligation_resolved_correctly"]
+                ),
+                "unsupported_action": int(row["unsupported_action"]),
+            }
+        )
+    effects = []
+    for metric, label in (
+        ("terminal_success", "Terminal control"),
+        ("evidence_trace_complete", "Complete evidence trace"),
+    ):
+        comparisons = analysis["metrics"][metric]["paired_comparisons"]
+        for comparison in comparisons:
+            effects.append(
+                {
+                    "metric": metric,
+                    "metric_label": label,
+                    "comparator": comparison["comparison"].replace("full_ENSR-minus-", ""),
+                    "difference_pp": 100 * comparison["absolute_paired_difference"],
+                    "ci95_low_pp": 100 * comparison["paired_case_bootstrap_95_ci"][0],
+                    "ci95_high_pp": 100 * comparison["paired_case_bootstrap_95_ci"][1],
+                    "discordant_positive_difference": comparison[
+                        "discordant_positive_difference"
+                    ],
+                    "discordant_negative_difference": comparison[
+                        "discordant_negative_difference"
+                    ],
+                    "ties": comparison["ties"],
+                }
+            )
+    return normalized, effects
+
+
+def draw_panel_g(fig: plt.Figure, spec, case_rows: list[dict], effects: list[dict]) -> None:
+    sub = spec.subgridspec(1, 2, width_ratios=[1.55, 1.0], wspace=0.32)
+    ax_cases = fig.add_subplot(sub[0, 0])
+    ax_effect = fig.add_subplot(sub[0, 1])
+    panel_label(ax_cases, "g", x=-0.10, y=1.12)
+    ax_cases.text(
+        0.0,
+        1.12,
+        "Frozen dynamic heritage controller benchmark (10 test cases)",
+        transform=ax_cases.transAxes,
+        fontsize=8.5,
+        fontweight="semibold",
+        ha="left",
+        va="bottom",
+    )
+
+    perturbation_order = [
+        "new_evidence_available",
+        "applicability_scope_change",
+        "failed_action_effect",
+        "learner_intent_change",
+    ]
+    perturbation_labels = {
+        "new_evidence_available": "New evidence",
+        "applicability_scope_change": "Scope change",
+        "failed_action_effect": "Failed effect",
+        "learner_intent_change": "Intent change",
+    }
+    perturbation_colors = {
+        "new_evidence_available": COLORS["gold"],
+        "applicability_scope_change": COLORS["green"],
+        "failed_action_effect": COLORS["ensr"],
+        "learner_intent_change": COLORS["iper"],
+    }
+    methods = ["full_ENSR", "ENSR_base", "B4"]
+    method_labels = {"full_ENSR": "Full ENSR", "ENSR_base": "ENSR-base", "B4": "B4"}
+    method_colors = {"full_ENSR": COLORS["ensr"], "ENSR_base": COLORS["iper"], "B4": COLORS["neutral_dark"]}
+    cases = []
+    for perturbation in perturbation_order:
+        cases.extend(
+            sorted(
+                {
+                    row["case_id"]
+                    for row in case_rows
+                    if row["perturbation_type"] == perturbation
+                },
+                key=lambda value: int(value.split("_")[2]),
+            )
+        )
+    lookup = {(row["case_id"], row["method"]): row for row in case_rows}
+    for yi, method in enumerate(methods):
+        for xi, case_id in enumerate(cases):
+            value = lookup[(case_id, method)]["terminal_success"]
+            if value:
+                ax_cases.scatter(
+                    xi,
+                    yi,
+                    s=50,
+                    marker="o",
+                    facecolor=method_colors[method],
+                    edgecolor="white",
+                    linewidth=0.7,
+                    zorder=3,
+                )
+            else:
+                ax_cases.scatter(
+                    xi,
+                    yi,
+                    s=42,
+                    marker="o",
+                    facecolor="white",
+                    edgecolor=method_colors[method],
+                    linewidth=1.1,
+                    zorder=3,
+                )
+                ax_cases.plot(
+                    [xi - 0.10, xi + 0.10],
+                    [yi - 0.10, yi + 0.10],
+                    color=method_colors[method],
+                    linewidth=0.8,
+                    zorder=4,
+                )
+                ax_cases.plot(
+                    [xi - 0.10, xi + 0.10],
+                    [yi + 0.10, yi - 0.10],
+                    color=method_colors[method],
+                    linewidth=0.8,
+                    zorder=4,
+                )
+    cursor = 0
+    for perturbation in perturbation_order:
+        count = sum(
+            1
+            for case_id in cases
+            if lookup[(case_id, "full_ENSR")]["perturbation_type"] == perturbation
+        )
+        start, end = cursor - 0.42, cursor + count - 0.58
+        ax_cases.plot(
+            [start, end],
+            [-0.72, -0.72],
+            color=perturbation_colors[perturbation],
+            linewidth=2.8,
+            solid_capstyle="butt",
+            clip_on=False,
+        )
+        ax_cases.text(
+            (start + end) / 2,
+            -0.96,
+            perturbation_labels[perturbation],
+            fontsize=5.1,
+            color=COLORS["subtext"],
+            ha="center",
+            va="top",
+            clip_on=False,
+        )
+        cursor += count
+        if cursor < len(cases):
+            ax_cases.axvline(cursor - 0.5, color=COLORS["grid"], linewidth=1.0)
+    ax_cases.set_xlim(-0.55, len(cases) - 0.45)
+    ax_cases.set_ylim(2.6, -1.02)
+    ax_cases.set_xticks(range(len(cases)), [case_id.split("_")[2] for case_id in cases])
+    ax_cases.set_yticks(range(3), [method_labels[method] for method in methods])
+    ax_cases.tick_params(axis="both", length=0)
+    for label, method in zip(ax_cases.get_yticklabels(), methods):
+        label.set_color(method_colors[method])
+        label.set_fontweight("bold" if method != "B4" else "normal")
+    for yi in range(3):
+        ax_cases.axhline(yi, color=COLORS["grid"], linewidth=0.55, zorder=0)
+    for spine in ax_cases.spines.values():
+        spine.set_visible(False)
+    ax_cases.text(
+        0.99,
+        0.03,
+        "filled: correct terminal control  |  cross: incorrect",
+        transform=ax_cases.transAxes,
+        fontsize=5.1,
+        color=COLORS["subtext"],
+        ha="right",
+        va="bottom",
+    )
+
+    effect_order = [
+        ("terminal_success", "ENSR_base"),
+        ("terminal_success", "B4"),
+        ("evidence_trace_complete", "ENSR_base"),
+        ("evidence_trace_complete", "B4"),
+    ]
+    effect_lookup = {(row["metric"], row["comparator"]): row for row in effects}
+    y = np.array([3.15, 2.45, 1.15, 0.45])
+    labels = [
+        "Terminal control  vs ENSR-base",
+        "Terminal control  vs B4",
+        "Evidence trace  vs ENSR-base",
+        "Evidence trace  vs B4",
+    ]
+    for yi, key in zip(y, effect_order):
+        row = effect_lookup[key]
+        estimate = row["difference_pp"]
+        low, high = row["ci95_low_pp"], row["ci95_high_pp"]
+        color = COLORS["iper"] if key[1] == "ENSR_base" else COLORS["neutral_dark"]
+        ax_effect.errorbar(
+            estimate,
+            yi,
+            xerr=np.array([[estimate - low], [high - estimate]]),
+            fmt="o",
+            markersize=5.2,
+            markerfacecolor=COLORS["ensr"],
+            markeredgecolor="white",
+            markeredgewidth=0.6,
+            ecolor=color,
+            elinewidth=1.25,
+            capsize=2.3,
+            zorder=3,
+        )
+        ax_effect.text(
+            min(104, high + 3),
+            yi,
+            f"{estimate:.0f} [{low:.0f}, {high:.0f}]",
+            fontsize=5.2,
+            color=COLORS["text"],
+            ha="left" if high < 96 else "right",
+            va="center",
+        )
+    ax_effect.axvline(0, color=COLORS["subtext"], linewidth=0.8, linestyle=(0, (3, 2)))
+    ax_effect.axhline(1.8, color=COLORS["grid"], linewidth=0.8)
+    ax_effect.set_xlim(-5, 108)
+    ax_effect.set_ylim(0.0, 3.65)
+    ax_effect.set_yticks(y, labels)
+    ax_effect.set_xlabel("Full ENSR minus comparator (percentage points)")
+    ax_effect.set_title("Paired effects with 95% case-bootstrap intervals", loc="left", pad=6)
+    ax_effect.grid(axis="x", color=COLORS["grid"], linewidth=0.65)
+    clean_axis(ax_effect, left=False, bottom=True)
+
+
 def render() -> None:
     configure_style()
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
@@ -613,19 +859,23 @@ def render() -> None:
     e21_aggregates, e21_cases = extract_e21(e21_summary, e21_score_rows)
     effects, e70_long, case_means = extract_e70(e70_analysis, e70_long_rows)
     preferences = extract_preferences()
+    dynamic_analysis = read_json(DYNAMIC_ANALYSIS)
+    dynamic_case_rows, dynamic_effects = extract_dynamic(
+        dynamic_analysis, read_csv(DYNAMIC_CASES)
+    )
 
-    fig = plt.figure(figsize=(12.2, 9.5))
+    fig = plt.figure(figsize=(12.2, 11.45))
     outer = fig.add_gridspec(
-        3,
+        4,
         2,
         width_ratios=[0.95, 1.35],
-        height_ratios=[1.0, 1.0, 0.83],
+        height_ratios=[1.0, 1.0, 0.83, 0.76],
         left=0.09,
         right=0.985,
-        bottom=0.085,
+        bottom=0.065,
         top=0.965,
         wspace=0.31,
-        hspace=0.43,
+        hspace=0.47,
     )
     ax_a = fig.add_subplot(outer[0, 0])
     ax_b = fig.add_subplot(outer[0, 1])
@@ -638,6 +888,7 @@ def render() -> None:
     draw_panel_d(ax_d, preferences)
     reliability_rows = draw_panel_e(fig, outer[2, 0], e70_analysis)
     family_delta_rows = draw_panel_f(ax_f, case_means)
+    draw_panel_g(fig, outer[3, :], dynamic_case_rows, dynamic_effects)
 
     fig.savefig(OUTPUT_STEM.with_suffix(".png"), dpi=600, facecolor="white")
     fig.savefig(OUTPUT_STEM.with_suffix(".svg"), facecolor="white")
@@ -651,6 +902,8 @@ def render() -> None:
     write_csv(OUTPUT_DIR / "Figure_10d_E70_preferences_source.csv", preferences)
     write_csv(OUTPUT_DIR / "Figure_10e_E70_reliability_source.csv", reliability_rows)
     write_csv(OUTPUT_DIR / "Figure_10f_E70_family_effects_source.csv", family_delta_rows)
+    write_csv(OUTPUT_DIR / "Figure_10g_dynamic_case_source.csv", dynamic_case_rows)
+    write_csv(OUTPUT_DIR / "Figure_10g_dynamic_effect_source.csv", dynamic_effects)
     write_csv(OUTPUT_DIR / "Figure_10_E70_case_means_source.csv", case_means)
 
     raw_paths = sorted(E70_RAW_ROOT.glob("R*/expert_review_R*.csv"))
@@ -662,6 +915,8 @@ def render() -> None:
         E70_LONG,
         E70_PANEL,
         E70_KEY,
+        DYNAMIC_ANALYSIS,
+        DYNAMIC_CASES,
         *raw_paths,
     ]
     manifest = {
@@ -677,8 +932,10 @@ def render() -> None:
             "e70_long_ratings": len(e70_long),
             "e70_preferences": len(preferences),
             "e70_gradable": e70_analysis["analysis"]["gradable_count"],
+            "dynamic_test_cases": 10,
+            "dynamic_case_method_rows": len(dynamic_case_rows),
         },
-        "claim_boundary": "E21 found ENSR tied with IPER-RAG. E70 compares ENSR with B4 Sequential only and does not establish superiority over IPER-RAG or SOTA.",
+        "claim_boundary": "E21 found full ENSR tied with ENSR-base on static heritage cases. E70 evaluates the prespecified full ENSR versus B4 Sequential output-quality contrast. Panel g reports deterministic post-transition controller replay, in which the neural proposal was held fixed and terminal control success includes justified withholding.",
     }
     (OUTPUT_DIR / "Figure_10_source_manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2), encoding="utf-8")
 

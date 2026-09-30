@@ -11,3 +11,11 @@ Two masked raters scored factual consistency, source scope, separation of docume
 ## Aggregate files
 
 Aggregate CSV and JSON files preserve the estimates, confidence intervals, audit rates and method labels reported in the manuscript. They contain no source text, free-text responses or direct identifiers.
+
+## `dynamic_benchmark/case_level_metrics_anonymized.csv`
+
+`public_case_id` is a release-specific case label. `figure_case_number` links the row to the numeric label shown in Figure 10g without releasing the underlying expert-authored case. `perturbation_type`, `method` and the binary or count outcomes support independent recalculation of the reported paired effects. Source locators, reviewed case text, action identifiers, controller rationales and expert comments are excluded.
+
+## `dynamic_benchmark/formal_analysis.json`
+
+Aggregate method summaries, paired case-bootstrap intervals, discordant-case counts and the prespecified mechanism decision for the ten-case frozen test split.

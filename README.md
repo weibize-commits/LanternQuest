@@ -9,7 +9,7 @@ LanternQuest is a browser-based WebXR environment and research codebase for evid
 - `scripts`: frozen analyses and manuscript figure-generation code.
 - `configs`: frozen machine-evaluation and extraction protocols.
 - `kg`: public ontology, schemas and graph-processing code.
-- `data`: anonymized analysis-ready participant outcomes and aggregate machine, expert, extraction and figure source data.
+- `data`: anonymized analysis-ready participant outcomes and aggregate machine, expert, extraction, dynamic-controller and figure source data.
 
 ## Environment
 
@@ -34,7 +34,7 @@ The formal participant sessions used a Meta Quest 3 head-mounted display with Me
 
 ## Data boundaries
 
-The public human-study file uses release-specific participant and block identifiers. Direct identifiers, contact details, dates, timestamps, narratives, comments, raw event logs, photographs, consent forms and demographic microdata are excluded. The raw heritage media, the 160 restricted text segments, row-level extraction predictions and trained checkpoints are also excluded because their source agreements prohibit public redistribution. See `DATA_AVAILABILITY.md` and `data/DATA_DICTIONARY.md`.
+The public human-study file uses release-specific participant and block identifiers. The dynamic benchmark contains only de-identified case-level metrics and aggregate analysis. Direct identifiers, contact details, dates, timestamps, narratives, comments, raw event logs, photographs, consent forms, demographic microdata, expert-authored dynamic cases and controller rationales are excluded. The raw heritage media, the 160 restricted text segments, row-level extraction predictions and trained checkpoints are also excluded because their source agreements prohibit public redistribution. See `DATA_AVAILABILITY.md` and `data/DATA_DICTIONARY.md`.
 
 ## Citation
 

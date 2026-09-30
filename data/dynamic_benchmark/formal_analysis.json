@@ -1,0 +1,408 @@
+{
+  "schema_version": "1.0",
+  "analysis_population": "frozen test split",
+  "case_count": 10,
+  "method_count": 3,
+  "bootstrap_replicates": 10000,
+  "bootstrap_seed": 27103,
+  "metrics": {
+    "terminal_success": {
+      "method_summary": {
+        "full_ENSR": {
+          "sum": 10.0,
+          "mean": 1.0,
+          "n": 10
+        },
+        "ENSR_base": {
+          "sum": 3.0,
+          "mean": 0.3,
+          "n": 10
+        },
+        "B4": {
+          "sum": 0.0,
+          "mean": 0.0,
+          "n": 10
+        }
+      },
+      "paired_comparisons": [
+        {
+          "comparison": "full_ENSR-minus-ENSR_base",
+          "absolute_paired_difference": 0.7,
+          "paired_case_bootstrap_95_ci": [
+            0.4,
+            1.0
+          ],
+          "discordant_positive_difference": 7,
+          "discordant_negative_difference": 0,
+          "ties": 3,
+          "exact_two_sided_discordant_p": 0.015625
+        },
+        {
+          "comparison": "full_ENSR-minus-B4",
+          "absolute_paired_difference": 1.0,
+          "paired_case_bootstrap_95_ci": [
+            1.0,
+            1.0
+          ],
+          "discordant_positive_difference": 10,
+          "discordant_negative_difference": 0,
+          "ties": 0,
+          "exact_two_sided_discordant_p": 0.001953125
+        }
+      ]
+    },
+    "persistent_obligation_resolved_correctly": {
+      "method_summary": {
+        "full_ENSR": {
+          "sum": 10.0,
+          "mean": 1.0,
+          "n": 10
+        },
+        "ENSR_base": {
+          "sum": 3.0,
+          "mean": 0.3,
+          "n": 10
+        },
+        "B4": {
+          "sum": 0.0,
+          "mean": 0.0,
+          "n": 10
+        }
+      },
+      "paired_comparisons": [
+        {
+          "comparison": "full_ENSR-minus-ENSR_base",
+          "absolute_paired_difference": 0.7,
+          "paired_case_bootstrap_95_ci": [
+            0.4,
+            1.0
+          ],
+          "discordant_positive_difference": 7,
+          "discordant_negative_difference": 0,
+          "ties": 3,
+          "exact_two_sided_discordant_p": 0.015625
+        },
+        {
+          "comparison": "full_ENSR-minus-B4",
+          "absolute_paired_difference": 1.0,
+          "paired_case_bootstrap_95_ci": [
+            1.0,
+            1.0
+          ],
+          "discordant_positive_difference": 10,
+          "discordant_negative_difference": 0,
+          "ties": 0,
+          "exact_two_sided_discordant_p": 0.001953125
+        }
+      ]
+    },
+    "unsupported_action": {
+      "method_summary": {
+        "full_ENSR": {
+          "sum": 0.0,
+          "mean": 0.0,
+          "n": 10
+        },
+        "ENSR_base": {
+          "sum": 0.0,
+          "mean": 0.0,
+          "n": 10
+        },
+        "B4": {
+          "sum": 1.0,
+          "mean": 0.1,
+          "n": 10
+        }
+      },
+      "paired_comparisons": [
+        {
+          "comparison": "full_ENSR-minus-ENSR_base",
+          "absolute_paired_difference": 0.0,
+          "paired_case_bootstrap_95_ci": [
+            0.0,
+            0.0
+          ],
+          "discordant_positive_difference": 0,
+          "discordant_negative_difference": 0,
+          "ties": 10,
+          "exact_two_sided_discordant_p": 1.0
+        },
+        {
+          "comparison": "full_ENSR-minus-B4",
+          "absolute_paired_difference": -0.1,
+          "paired_case_bootstrap_95_ci": [
+            -0.3,
+            0.0
+          ],
+          "discordant_positive_difference": 0,
+          "discordant_negative_difference": 1,
+          "ties": 9,
+          "exact_two_sided_discordant_p": 1.0
+        }
+      ]
+    },
+    "repair_locality_success": {
+      "method_summary": {
+        "full_ENSR": {
+          "sum": 10.0,
+          "mean": 1.0,
+          "n": 10
+        },
+        "ENSR_base": {
+          "sum": 10.0,
+          "mean": 1.0,
+          "n": 10
+        },
+        "B4": {
+          "sum": 9.0,
+          "mean": 0.9,
+          "n": 10
+        }
+      },
+      "paired_comparisons": [
+        {
+          "comparison": "full_ENSR-minus-ENSR_base",
+          "absolute_paired_difference": 0.0,
+          "paired_case_bootstrap_95_ci": [
+            0.0,
+            0.0
+          ],
+          "discordant_positive_difference": 0,
+          "discordant_negative_difference": 0,
+          "ties": 10,
+          "exact_two_sided_discordant_p": 1.0
+        },
+        {
+          "comparison": "full_ENSR-minus-B4",
+          "absolute_paired_difference": 0.1,
+          "paired_case_bootstrap_95_ci": [
+            0.0,
+            0.3
+          ],
+          "discordant_positive_difference": 1,
+          "discordant_negative_difference": 0,
+          "ties": 9,
+          "exact_two_sided_discordant_p": 1.0
+        }
+      ]
+    },
+    "evidence_trace_complete": {
+      "method_summary": {
+        "full_ENSR": {
+          "sum": 10.0,
+          "mean": 1.0,
+          "n": 10
+        },
+        "ENSR_base": {
+          "sum": 5.0,
+          "mean": 0.5,
+          "n": 10
+        },
+        "B4": {
+          "sum": 0.0,
+          "mean": 0.0,
+          "n": 10
+        }
+      },
+      "paired_comparisons": [
+        {
+          "comparison": "full_ENSR-minus-ENSR_base",
+          "absolute_paired_difference": 0.5,
+          "paired_case_bootstrap_95_ci": [
+            0.2,
+            0.8
+          ],
+          "discordant_positive_difference": 5,
+          "discordant_negative_difference": 0,
+          "ties": 5,
+          "exact_two_sided_discordant_p": 0.0625
+        },
+        {
+          "comparison": "full_ENSR-minus-B4",
+          "absolute_paired_difference": 1.0,
+          "paired_case_bootstrap_95_ci": [
+            1.0,
+            1.0
+          ],
+          "discordant_positive_difference": 10,
+          "discordant_negative_difference": 0,
+          "ties": 0,
+          "exact_two_sided_discordant_p": 0.001953125
+        }
+      ]
+    },
+    "avoidable_rework_count": {
+      "method_summary": {
+        "full_ENSR": {
+          "sum": 0.0,
+          "mean": 0.0,
+          "n": 10
+        },
+        "ENSR_base": {
+          "sum": 0.0,
+          "mean": 0.0,
+          "n": 10
+        },
+        "B4": {
+          "sum": 1.0,
+          "mean": 0.1,
+          "n": 10
+        }
+      },
+      "paired_comparisons": [
+        {
+          "comparison": "full_ENSR-minus-ENSR_base",
+          "absolute_paired_difference": 0.0,
+          "paired_case_bootstrap_95_ci": [
+            0.0,
+            0.0
+          ],
+          "discordant_positive_difference": 0,
+          "discordant_negative_difference": 0,
+          "ties": 10,
+          "exact_two_sided_discordant_p": 1.0
+        },
+        {
+          "comparison": "full_ENSR-minus-B4",
+          "absolute_paired_difference": -0.1,
+          "paired_case_bootstrap_95_ci": [
+            -0.3,
+            0.0
+          ],
+          "discordant_positive_difference": 0,
+          "discordant_negative_difference": 1,
+          "ties": 9,
+          "exact_two_sided_discordant_p": 1.0
+        }
+      ]
+    },
+    "retrieval_calls": {
+      "method_summary": {
+        "full_ENSR": {
+          "sum": 4.0,
+          "mean": 0.4,
+          "n": 10
+        },
+        "ENSR_base": {
+          "sum": 4.0,
+          "mean": 0.4,
+          "n": 10
+        },
+        "B4": {
+          "sum": 0.0,
+          "mean": 0.0,
+          "n": 10
+        }
+      },
+      "paired_comparisons": [
+        {
+          "comparison": "full_ENSR-minus-ENSR_base",
+          "absolute_paired_difference": 0.0,
+          "paired_case_bootstrap_95_ci": [
+            0.0,
+            0.0
+          ],
+          "discordant_positive_difference": 0,
+          "discordant_negative_difference": 0,
+          "ties": 10,
+          "exact_two_sided_discordant_p": 1.0
+        },
+        {
+          "comparison": "full_ENSR-minus-B4",
+          "absolute_paired_difference": 0.4,
+          "paired_case_bootstrap_95_ci": [
+            0.1,
+            0.7
+          ],
+          "discordant_positive_difference": 4,
+          "discordant_negative_difference": 0,
+          "ties": 6,
+          "exact_two_sided_discordant_p": 0.125
+        }
+      ]
+    }
+  },
+  "by_perturbation_type": {
+    "applicability_scope_change": {
+      "full_ENSR": {
+        "n": 2,
+        "terminal_success": 2,
+        "persistent_obligation_resolved_correctly": 2,
+        "unsupported_action": 0
+      },
+      "ENSR_base": {
+        "n": 2,
+        "terminal_success": 0,
+        "persistent_obligation_resolved_correctly": 0,
+        "unsupported_action": 0
+      },
+      "B4": {
+        "n": 2,
+        "terminal_success": 0,
+        "persistent_obligation_resolved_correctly": 0,
+        "unsupported_action": 0
+      }
+    },
+    "failed_action_effect": {
+      "full_ENSR": {
+        "n": 3,
+        "terminal_success": 3,
+        "persistent_obligation_resolved_correctly": 3,
+        "unsupported_action": 0
+      },
+      "ENSR_base": {
+        "n": 3,
+        "terminal_success": 3,
+        "persistent_obligation_resolved_correctly": 3,
+        "unsupported_action": 0
+      },
+      "B4": {
+        "n": 3,
+        "terminal_success": 0,
+        "persistent_obligation_resolved_correctly": 0,
+        "unsupported_action": 1
+      }
+    },
+    "learner_intent_change": {
+      "full_ENSR": {
+        "n": 3,
+        "terminal_success": 3,
+        "persistent_obligation_resolved_correctly": 3,
+        "unsupported_action": 0
+      },
+      "ENSR_base": {
+        "n": 3,
+        "terminal_success": 0,
+        "persistent_obligation_resolved_correctly": 0,
+        "unsupported_action": 0
+      },
+      "B4": {
+        "n": 3,
+        "terminal_success": 0,
+        "persistent_obligation_resolved_correctly": 0,
+        "unsupported_action": 0
+      }
+    },
+    "new_evidence_available": {
+      "full_ENSR": {
+        "n": 2,
+        "terminal_success": 2,
+        "persistent_obligation_resolved_correctly": 2,
+        "unsupported_action": 0
+      },
+      "ENSR_base": {
+        "n": 2,
+        "terminal_success": 0,
+        "persistent_obligation_resolved_correctly": 0,
+        "unsupported_action": 0
+      },
+      "B4": {
+        "n": 2,
+        "terminal_success": 0,
+        "persistent_obligation_resolved_correctly": 0,
+        "unsupported_action": 0
+      }
+    }
+  },
+  "prespecified_claim_decision": "incremental_ENSR_mechanism_supported"
+}

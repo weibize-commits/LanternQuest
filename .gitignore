@@ -5,9 +5,9 @@ dist/
 artifacts/
 models/
 *.py[cod]
+*.tsbuildinfo
 __pycache__/
 .pytest_cache/
 .ruff_cache/
 .DS_Store
 Thumbs.db
-*.tsbuildinfo

@@ -1,0 +1,60 @@
+{
+  "protocol_id": "LANTERNQUEST_DYNAMIC_HERITAGE_V2_1",
+  "status": "frozen_not_run",
+  "frozen_at": "2026-09-30T03:55:22.368309+00:00",
+  "design": "Deterministic paired controller replay on identical expert-approved pre-event action traces. The neural proposal is held fixed to isolate post-transition memory, retrieval and authorization behavior.",
+  "conditions": [
+    "full_ENSR",
+    "ENSR_base",
+    "B4"
+  ],
+  "formal_split": "test",
+  "formal_case_count": 10,
+  "formal_scenario_families": [
+    "test_compositional_choices",
+    "test_evidence_boundary",
+    "test_intent_and_rework"
+  ],
+  "dataset_sha256": "adf45a05498c0142faa3324cad4476a8b079c32364316583987d6570f0812124",
+  "base_dataset_sha256": "369675c12a9c03f026ea939f7985b049db4b29832ea93bf4136f506a937809bc",
+  "dataset_manifest_sha256": "028973cf2edda418b2347d23198dc09e477b61f50e3ff097fe160851558d07b6",
+  "development_summary_sha256": "658f33fcb096f80ed12cc21bf5b9952d8e3da3155808df7d50ef606f8e648105",
+  "train_summary_sha256": "e8b13f6c2b70841c8f6e39788352835350ecc2cb2c736eedf3f121e28ef89ad7",
+  "implementation_sha256": {
+    "src/lanternquest/dynamic_eval.py": "1ee142a254be2cd2584cbdac34fde2597d94fab1946613df65e6df4399c74f8b",
+    "scripts/run_lanternquest_dynamic_controller_v2_1.py": "6dee172a039703dd570f205e8838dbbfb3d130fab4a03effe8ede021c90cf1c8",
+    "scripts/analyze_lanternquest_dynamic_v2_1.py": "68a0fc341ba034ead893df2ceb663f3d8de2abda4b0715614fc390a9e4889e14"
+  },
+  "data_governance": {
+    "research_use_allowed": true,
+    "external_processing": false,
+    "model_training": false,
+    "model_inference_in_dynamic_controller_replay": false
+  },
+  "primary_outcomes": [
+    "terminal_success",
+    "persistent_obligation_resolved_correctly",
+    "unsupported_action"
+  ],
+  "secondary_outcomes": [
+    "repair_locality_success",
+    "evidence_trace_complete",
+    "avoidable_rework_count",
+    "retrieval_calls"
+  ],
+  "analysis": {
+    "unit": "paired dynamic case",
+    "effect": "absolute paired mean difference",
+    "interval": "95% paired case-bootstrap percentile interval",
+    "bootstrap_replicates": 10000,
+    "bootstrap_seed": 27103,
+    "binary_discordance": "exact two-sided paired binomial test with discordant counts",
+    "report_all_cases": true
+  },
+  "claim_decision_rules": {
+    "incremental_ENSR_mechanism_supported": "Full ENSR must outperform ENSR-base on correctly resolved persistent obligations, show no increase in unsupported actions, and improve either terminal success or repair locality.",
+    "package_only_claim": "If full ENSR outperforms B4 but ties ENSR-base on persistent-obligation resolution, evidence supports the complete package relative to fixed sequential control but not the incremental persistence mechanism.",
+    "mechanism_not_supported": "If full ENSR ties or underperforms ENSR-base on persistent-obligation resolution, the target-domain mechanism claim is not supported."
+  },
+  "formal_test_has_been_run": false
+}

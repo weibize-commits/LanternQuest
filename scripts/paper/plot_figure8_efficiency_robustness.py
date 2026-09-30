@@ -2,7 +2,7 @@
 
 The six panels separate algorithmic resource use from deployment boundaries:
   a) paired performance-resource trajectories across ten internal settings,
-  b) relative resource use (ENSR / IPER-RAG),
+  b) relative resource use (full ENSR / ENSR-base),
   c) adapter-error burden before and after frozen adapter changes,
   d) external-provider directional effects with paired-bootstrap 95% CIs,
   e) external-provider outcome composition and estimated API-cost ranges,
@@ -379,7 +379,7 @@ def draw_panel_a(ax: plt.Axes, pairs: list[dict]) -> None:
     ax.xaxis.set_minor_formatter(NullFormatter())
     clean_axis(ax)
     method_handles = [
-        Line2D([], [], marker="o", linestyle="none", markerfacecolor="white", markeredgecolor=COLORS["iper"], label="IPER-RAG"),
+        Line2D([], [], marker="o", linestyle="none", markerfacecolor="white", markeredgecolor=COLORS["iper"], label="ENSR-base"),
         Line2D([], [], marker="o", linestyle="none", markerfacecolor=COLORS["ensr"], markeredgecolor="white", label="ENSR"),
     ]
     shape_handles = [
@@ -389,7 +389,7 @@ def draw_panel_a(ax: plt.Axes, pairs: list[dict]) -> None:
     legend1 = ax.legend(handles=method_handles, loc="upper right", ncol=2, fontsize=5.6, handletextpad=0.35, columnspacing=0.8)
     ax.add_artist(legend1)
     ax.legend(handles=shape_handles, loc="lower right", ncol=4, fontsize=5.2, handletextpad=0.1, columnspacing=0.55)
-    ax.text(0.01, 0.98, "Arrow: IPER-RAG → ENSR; point area: mean score", transform=ax.transAxes, fontsize=5.3, color=COLORS["subtext"], va="top")
+    ax.text(0.01, 0.98, "Arrow: ENSR-base → full ENSR; point area: mean score", transform=ax.transAxes, fontsize=5.3, color=COLORS["subtext"], va="top")
 
 
 def draw_panel_b(ax: plt.Axes, pairs: list[dict]) -> None:
@@ -412,7 +412,7 @@ def draw_panel_b(ax: plt.Axes, pairs: list[dict]) -> None:
     ax.set_yscale("log")
     ax.set_ylim(0.015, 7.5)
     ax.set_xticks(x, ["Model calls", "Tokens", "Retrievals"])
-    ax.set_ylabel("ENSR / IPER-RAG")
+    ax.set_ylabel("Full ENSR / ENSR-base")
     ax.yaxis.set_major_locator(LogLocator(base=10, subs=(1.0,)))
     ax.yaxis.set_major_formatter(FuncFormatter(lambda v, _: f"{v:g}×"))
     ax.grid(axis="y", which="major", color=COLORS["grid"], linewidth=0.7)
@@ -452,7 +452,7 @@ def draw_panel_c(ax: plt.Axes, rows: list[dict]) -> None:
     ax.text(28.4, y[0] + 0.62, "Operational gate", fontsize=5.2, color=COLORS["subtext"], ha="center", va="bottom")
     ax.legend(
         handles=[
-            Line2D([], [], marker="s", linestyle="none", markerfacecolor="white", markeredgecolor=COLORS["iper"], label="IPER-RAG"),
+            Line2D([], [], marker="s", linestyle="none", markerfacecolor="white", markeredgecolor=COLORS["iper"], label="ENSR-base"),
             Line2D([], [], marker="o", linestyle="none", markerfacecolor=COLORS["ensr"], markeredgecolor="white", label="ENSR"),
         ],
         loc="lower right",
@@ -496,7 +496,7 @@ def draw_panel_d(ax: plt.Axes, rows: list[dict]) -> None:
         ax.annotate(row["provider"], (x, y), xytext=(dx, dy), textcoords="offset points", fontsize=5.6, fontweight="semibold" if pass_flag else "normal")
     ax.set_xlim(-35, 67)
     ax.set_ylim(-56, 57)
-    ax.set_xlabel("ENSR − IPER-RAG mean score")
+    ax.set_xlabel("Full ENSR − ENSR-base mean score")
     ax.set_ylabel("Success-rate difference (pp)")
     ax.grid(color=COLORS["grid"], linewidth=0.7)
     clean_axis(ax)
@@ -550,7 +550,7 @@ def draw_panel_e(ax_status: plt.Axes, ax_cost: plt.Axes, effect_rows: list[dict]
     ax_status.set_xticks([0, 10, 20, 30])
     ax_status.grid(axis="x", color=COLORS["grid"], linewidth=0.7)
     clean_axis(ax_status)
-    ax_status.text(0.99, 1.01, "I: IPER-RAG   E: ENSR", transform=ax_status.transAxes, fontsize=5.1, color=COLORS["subtext"], ha="right", va="bottom")
+    ax_status.text(0.99, 1.01, "B: ENSR-base   F: full ENSR", transform=ax_status.transAxes, fontsize=5.1, color=COLORS["subtext"], ha="right", va="bottom")
     ax_status.legend(
         handles=[Line2D([], [], color=color, linewidth=5, label=label) for _, label, color in categories[:-1]],
         loc="lower center",
